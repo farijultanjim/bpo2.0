@@ -1,0 +1,19 @@
+Testimonial avatars — source photographs
+
+All five are from Pexels (https://www.pexels.com), used under the Pexels
+License: free for commercial use, no attribution required. Cropped to a
+160x160 square and converted to WebP.
+
+  elena-reed.webp     https://www.pexels.com/photo/35721589/
+  daniel-cho.webp     https://www.pexels.com/photo/31052395/
+  maya-thompson.webp  https://www.pexels.com/photo/3973711/
+  grace-lim.webp      https://www.pexels.com/photo/31530222/
+  tom-brennan.webp    https://www.pexels.com/photo/9092311/
+
+IMPORTANT, BEFORE THIS GOES LIVE FOR A REAL BUSINESS:
+The Pexels License does not permit imagery that implies the people shown
+endorse a product or service. These portraits sit beside invented quotes
+attributed to invented customers, which is exactly that. They are fine for a
+demo, portfolio piece or design review. For a real roofing company, replace
+them with photographs of actual customers (with permission) alongside their
+real words, or drop the avatars and keep the monogram fallback.
