@@ -4,14 +4,12 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight } from "lucide-react";
-import { prefersReducedMotion } from "../lib/motion";
-import { useMagnetic } from "../lib/use-magnetic";
+import { prefersReducedMotion } from "@/app/lib/motion";
+import { CtaButton } from "@/components/ui/CtaButton";
 
-export function CraftSection() {
+export function Craft() {
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useMagnetic<HTMLAnchorElement>(0.26);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -182,16 +180,9 @@ export function CraftSection() {
 
             {/* Direct Action Button */}
             <div data-reveal className="pt-2">
-              <a
-                ref={ctaRef}
-                href="#services"
-                className="button-accent group inline-flex items-center gap-5 rounded-full py-2 pl-5 pr-2 text-sm font-bold"
-              >
+              <CtaButton href="#services">
                 Explore services
-                <span className="grid size-10 place-items-center rounded-full bg-ink text-paper transition-transform duration-500 ease-out group-hover:rotate-45">
-                  <ArrowUpRight size={18} strokeWidth={2} />
-                </span>
-              </a>
+              </CtaButton>
             </div>
           </div>
         </div>
@@ -229,3 +220,6 @@ export function CraftSection() {
     </section>
   );
 }
+
+export default Craft;
+export { Craft as CraftSection };

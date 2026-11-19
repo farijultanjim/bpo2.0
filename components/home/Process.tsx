@@ -4,14 +4,13 @@ import { useEffect, useRef, type ComponentType } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  ArrowUpRight,
   ClipboardCheck,
   FileCheck,
   Rocket,
   type LucideProps,
 } from "lucide-react";
-import { prefersReducedMotion } from "../lib/motion";
-import { useMagnetic } from "../lib/use-magnetic";
+import { prefersReducedMotion } from "@/app/lib/motion";
+import { CtaButton } from "@/components/ui/CtaButton";
 
 const steps: Array<{
   number: string;
@@ -39,9 +38,8 @@ const steps: Array<{
   },
 ];
 
-export function ProcessSection() {
+export function Process() {
   const sectionRef = useRef<HTMLElement>(null);
-  const ctaRef = useMagnetic<HTMLAnchorElement>(0.22);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -116,16 +114,12 @@ export function ProcessSection() {
               Transitioning operations should feel seamless from day one. Our
               methodology keeps control in your hands and progress measurable.
             </p>
-            <a
-              ref={ctaRef}
+            <CtaButton
               href="#contact"
-              className="button-dark group inline-flex items-center gap-5 rounded-full py-2 pl-6 pr-2 text-sm font-bold"
+              variant="dark"
             >
               Start onboarding
-              <span className="grid size-11 place-items-center rounded-full bg-paper text-ink transition-transform duration-500 group-hover:rotate-45">
-                <ArrowUpRight size={19} strokeWidth={1.8} />
-              </span>
-            </a>
+            </CtaButton>
           </div>
         </div>
 
@@ -171,3 +165,6 @@ export function ProcessSection() {
     </section>
   );
 }
+
+export default Process;
+export { Process as ProcessSection };

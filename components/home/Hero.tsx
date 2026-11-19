@@ -4,9 +4,8 @@ import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUpRight } from "lucide-react";
-import { prefersReducedMotion } from "../lib/motion";
-import { useMagnetic } from "../lib/use-magnetic";
+import { prefersReducedMotion } from "@/app/lib/motion";
+import { CtaButton } from "@/components/ui/CtaButton";
 
 const storyMoments = [
   {
@@ -32,11 +31,10 @@ const storyMoments = [
   },
 ];
 
-export function HeroSection() {
+export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useMagnetic<HTMLAnchorElement>(0.3);
   const [reduced, setReduced] = useState(false);
 
   useLayoutEffect(() => {
@@ -202,17 +200,13 @@ export function HeroSection() {
                   operations. 500+ domain experts working US hours with 24/7
                   support and up to 72% lower cost per FTE.
                 </p>
-                <a
-                  ref={ctaRef}
+                <CtaButton
                   data-hero-detail
                   href="#services"
-                  className="button-accent group pointer-events-auto invisible inline-flex items-center gap-5 rounded-full py-2 pl-5 pr-2 text-sm font-bold"
+                  className="pointer-events-auto invisible"
                 >
                   Explore services
-                  <span className="grid size-10 place-items-center rounded-full bg-ink text-paper transition-transform duration-500 ease-out group-hover:rotate-45">
-                    <ArrowUpRight size={18} strokeWidth={2} />
-                  </span>
-                </a>
+                </CtaButton>
               </div>
             </div>
           </div>
@@ -279,3 +273,6 @@ export function HeroSection() {
     </>
   );
 }
+
+export default Hero;
+export { Hero as HeroSection };

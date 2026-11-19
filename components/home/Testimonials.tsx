@@ -5,17 +5,13 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Quote, Star } from "lucide-react";
-import { prefersReducedMotion } from "../lib/motion";
+import { prefersReducedMotion } from "@/app/lib/motion";
 
 type Testimonial = {
   quote: string;
   name: string;
   project: string;
   initials: string;
-  /**
-   * Optional portrait. Drop a square image in public/images/people/ and set the
-   * path here; without one the monogram is shown instead of a broken image.
-   */
   image?: string;
 };
 
@@ -62,7 +58,7 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-export function TestimonialsSection() {
+export function Testimonials() {
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -233,3 +229,6 @@ export function TestimonialsSection() {
     </section>
   );
 }
+
+export default Testimonials;
+export { Testimonials as TestimonialsSection };

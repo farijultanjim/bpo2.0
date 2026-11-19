@@ -5,7 +5,6 @@ import { useEffect, useRef, useState, type ComponentType } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  ArrowUpRight,
   ChevronLeft,
   ChevronRight,
   Compass,
@@ -18,7 +17,8 @@ import {
   Users,
   type LucideProps,
 } from "lucide-react";
-import { prefersReducedMotion } from "../lib/motion";
+import { prefersReducedMotion } from "@/app/lib/motion";
+import { CtaButton } from "@/components/ui/CtaButton";
 
 type ServiceStep = {
   title: string;
@@ -299,7 +299,7 @@ const services: ServiceItem[] = [
   },
 ];
 
-export function ServicesSection() {
+export function Services() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLElement | null)[]>([]);
@@ -812,15 +812,12 @@ export function ServicesSection() {
             </div>
 
             {/* Common Primary Dynamic CTA Button outside cards (Matches Hero Section Design) */}
-            <a
+            <CtaButton
               href="#contact"
-              className="button-accent group inline-flex w-full items-center justify-between gap-5 rounded-full py-2 pl-5 pr-2 text-sm font-bold shadow-xl transition-transform duration-300 hover:scale-[1.01]"
+              fullWidth
             >
-              <span className="truncate">Inquire about {services[mobileIndex].title}</span>
-              <span className="grid size-10 place-items-center rounded-full bg-ink text-paper transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0">
-                <ArrowUpRight size={18} strokeWidth={2} />
-              </span>
-            </a>
+              Inquire about {services[mobileIndex].title}
+            </CtaButton>
           </div>
         </div>
 
@@ -1005,15 +1002,12 @@ export function ServicesSection() {
                     <p className="text-xs font-medium text-paper/80 hidden sm:block drop-shadow-sm">
                       Direct integration into your CRM, TMS & freight software.
                     </p>
-                    <a
+                    <CtaButton
                       href="#contact"
-                      className="button-accent group ml-auto inline-flex items-center gap-5 rounded-full py-2 pl-5 pr-2 text-sm font-bold shadow-xl transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
+                      className="ml-auto"
                     >
-                      <span>Inquire about {service.title}</span>
-                      <span className="grid size-10 place-items-center rounded-full bg-ink text-paper transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0">
-                        <ArrowUpRight size={18} strokeWidth={2} />
-                      </span>
-                    </a>
+                      Inquire about {service.title}
+                    </CtaButton>
                   </div>
                 </article>
               );
@@ -1024,3 +1018,6 @@ export function ServicesSection() {
     </section>
   );
 }
+
+export default Services;
+export { Services as ServicesSection };

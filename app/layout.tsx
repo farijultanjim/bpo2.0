@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Manrope } from "next/font/google";
-import { SmoothScroll } from "./components/smooth-scroll";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -19,7 +22,11 @@ export const metadata: Metadata = {
     "Your offshore partner for freight forwarding and logistics operations. 500+ domain experts working US hours with 24/7 support and up to 72% lower cost per FTE.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
@@ -31,7 +38,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <noscript>
           <style>{`.invisible{visibility:visible}canvas{opacity:1}`}</style>
         </noscript>
-        <SmoothScroll>{children}</SmoothScroll>
+        <CustomCursor />
+        <SmoothScroll>
+          <Header />
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

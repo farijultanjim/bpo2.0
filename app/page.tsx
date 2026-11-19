@@ -1,25 +1,23 @@
-import { CraftSection } from "./components/craft-section";
-import { ContactSection } from "./components/contact-section";
-import { FaqSection } from "./components/faq-section";
-import { HeroSection } from "./components/hero-section";
-import { ProcessSection } from "./components/process-section";
-import { ResultsSection } from "./components/results-section";
-import { ServicesSection } from "./components/services-section";
-import { SiteHeader } from "./components/site-header";
-import { TestimonialsSection } from "./components/testimonials-section";
+import { Hero } from "@/components/home/Hero";
+import { Craft } from "@/components/home/Craft";
+import { Services } from "@/components/home/Services";
+import { Process } from "@/components/home/Process";
+import { Metrics } from "@/components/home/Metrics";
+import { Testimonials } from "@/components/home/Testimonials";
+import { Faq } from "@/components/home/Faq";
+import { Contact } from "@/components/home/Contact";
 
 export default function Home() {
   return (
     <main id="top">
-      <SiteHeader />
-      <HeroSection />
-      <CraftSection />
-      <ServicesSection />
-      <ProcessSection />
-      <ResultsSection />
-      <TestimonialsSection />
-      <FaqSection />
-      <ContactSection />
+      <Hero />
+      <Craft />
+      <Services />
+      <Process />
+      <Metrics />
+      <Testimonials />
+      <Faq />
+      <Contact />
     </main>
   );
 }

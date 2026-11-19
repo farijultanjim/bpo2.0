@@ -3,13 +3,12 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowUp, ArrowUpRight, Mail, Phone } from "lucide-react";
-import { prefersReducedMotion } from "../lib/motion";
-import { useMagnetic } from "../lib/use-magnetic";
+import { ArrowUp, Phone } from "lucide-react";
+import { prefersReducedMotion } from "@/app/lib/motion";
+import { CtaButton } from "@/components/ui/CtaButton";
 
-export function ContactSection() {
+export function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
-  const ctaRef = useMagnetic<HTMLAnchorElement>(0.26);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -58,7 +57,7 @@ export function ContactSection() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative overflow-hidden bg-ink px-5 pb-8 pt-24 text-paper sm:px-8 sm:pt-32 lg:px-12 lg:pt-44"
+      className="relative overflow-hidden bg-ink px-5 pb-20 pt-24 text-paper sm:px-8 sm:pb-28 sm:pt-32 lg:px-12 lg:pb-36 lg:pt-44"
     >
       <svg
         aria-hidden="true"
@@ -101,22 +100,14 @@ export function ContactSection() {
               savings forecast.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                ref={ctaRef}
+              <CtaButton
                 href="mailto:contact@spectra.com"
-                className="button-accent group inline-flex items-center gap-4 rounded-full py-3 pl-5 pr-3 text-sm font-bold"
               >
-                <Mail size={18} strokeWidth={1.8} />
                 Get in touch
-                <ArrowUpRight
-                  size={18}
-                  strokeWidth={1.8}
-                  className="transition-transform duration-500 group-hover:rotate-45"
-                />
-              </a>
+              </CtaButton>
               <a
                 href="tel:+18005927489"
-                className="inline-flex items-center gap-3 rounded-full border border-paper/25 px-5 py-3 text-sm font-bold transition-colors duration-300 hover:bg-paper hover:text-ink"
+                className="inline-flex items-center gap-3 rounded-full border border-paper/25 px-5 py-2.5 text-sm font-bold transition-colors duration-300 hover:bg-paper hover:text-ink cursor-pointer"
               >
                 <Phone size={17} strokeWidth={1.8} />
                 +1 (800) 592-7489
@@ -137,26 +128,10 @@ export function ContactSection() {
             />
           </a>
         </div>
-
-        <footer className="mt-24 grid gap-8 border-t border-paper/20 py-7 text-xs font-bold uppercase tracking-wider text-paper/65 sm:mt-32 sm:grid-cols-3 lg:mt-44">
-          <p>© 2026 Spectra Operations Inc.</p>
-          <div className="flex gap-6 sm:justify-center">
-            <a href="#services" className="transition-colors hover:text-paper">
-              Services
-            </a>
-            <a href="#process" className="transition-colors hover:text-paper">
-              Process
-            </a>
-            <a href="#results" className="transition-colors hover:text-paper">
-              Proof
-            </a>
-            <a href="#faq" className="transition-colors hover:text-paper">
-              FAQ
-            </a>
-          </div>
-          <p className="sm:text-right">Outsourcing with savings.</p>
-        </footer>
       </div>
     </section>
   );
 }
+
+export default Contact;
+export { Contact as ContactSection };

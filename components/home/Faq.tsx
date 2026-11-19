@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Minus, Plus } from "lucide-react";
-import { prefersReducedMotion } from "../lib/motion";
+import { prefersReducedMotion } from "@/app/lib/motion";
 
 const questions = [
   {
@@ -29,7 +29,7 @@ const questions = [
   },
 ];
 
-export function FaqSection() {
+export function Faq() {
   const sectionRef = useRef<HTMLElement>(null);
   const [openItem, setOpenItem] = useState(0);
 
@@ -153,3 +153,6 @@ export function FaqSection() {
     </section>
   );
 }
+
+export default Faq;
+export { Faq as FaqSection };

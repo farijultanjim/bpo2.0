@@ -10,7 +10,7 @@ import {
   Star,
   type LucideProps,
 } from "lucide-react";
-import { prefersReducedMotion } from "../lib/motion";
+import { prefersReducedMotion } from "@/app/lib/motion";
 
 type Result = {
   value: number;
@@ -53,7 +53,7 @@ const results: Result[] = [
 
 const format = (value: number, decimals: number) => value.toFixed(decimals);
 
-export function ResultsSection() {
+export function Metrics() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -193,3 +193,6 @@ export function ResultsSection() {
     </section>
   );
 }
+
+export default Metrics;
+export { Metrics as ResultsSection, Metrics as Results };

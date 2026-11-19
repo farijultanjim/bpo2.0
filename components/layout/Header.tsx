@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useMagnetic } from "../lib/use-magnetic";
+import { useMagnetic } from "@/app/lib/use-magnetic";
 
 const EASE = "cubic-bezier(0.8, 0, 0.3, 1)";
 
@@ -58,7 +58,7 @@ const getIsDarkUnderHeader = (): boolean => {
   return true;
 };
 
-export default function Header() {
+export function Header() {
   const [open, setOpen] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -455,4 +455,5 @@ export default function Header() {
   );
 }
 
+export default Header;
 export { Header as SiteHeader };
