@@ -169,6 +169,40 @@ a {
   min-height: 34rem;
 }
 
+.min-h-card {
+  min-height: 32rem;
+}
+
+.service-text-active {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0);
+  pointer-events: auto;
+  transition: opacity 750ms cubic-bezier(0.16, 1, 0.3, 1),
+              filter 750ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 750ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-text-hidden-up {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(-12px);
+  pointer-events: none;
+  transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
+              filter 650ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-text-hidden-down {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
+              filter 650ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .parallax-bleed {
   top: -12%;
   bottom: -12%;

@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "Process", href: "#work" },
   { label: "Why us", href: "#metrics" },
-  { label: "Security", href: "#security-compliance" },
+  { label: "Infrastructure", href: "#infrastructure" },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -21,7 +21,7 @@ const smoothScrollTo = (target: string, e?: React.MouseEvent) => {
   const targetMap: Record<string, string> = {
     "#work": "#process",
     "#metrics": "#results",
-    "#security-compliance": "#results",
+    "#infrastructure": "#infrastructure",
   };
   const resolvedTarget = targetMap[target] || target;
   const el =

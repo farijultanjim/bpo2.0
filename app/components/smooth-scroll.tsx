@@ -27,7 +27,14 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     gsap.ticker.add(updateLenis);
     gsap.ticker.lagSmoothing(0);
 
+    if (typeof window !== "undefined") {
+      (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
+    }
+
     return () => {
+      if (typeof window !== "undefined") {
+        delete (window as unknown as { __lenis?: Lenis }).__lenis;
+      }
       gsap.ticker.remove(updateLenis);
       lenis.destroy();
     };

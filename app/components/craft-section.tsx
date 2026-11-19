@@ -33,21 +33,43 @@ export function CraftSection() {
         },
       });
 
-      gsap.fromTo(
-        image,
-        { width: "74%", borderRadius: "3rem" },
-        {
-          width: "100%",
-          borderRadius: "0rem",
-          ease: "none",
-          scrollTrigger: {
-            trigger: image,
-            start: "top 88%",
-            end: "center 45%",
-            scrub: 1,
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 768px)", () => {
+        gsap.fromTo(
+          image,
+          { width: "74%", borderRadius: "3rem" },
+          {
+            width: "100%",
+            borderRadius: "0rem",
+            ease: "none",
+            scrollTrigger: {
+              trigger: image,
+              start: "top 88%",
+              end: "center 45%",
+              scrub: 1,
+            },
           },
-        },
-      );
+        );
+      });
+
+      mm.add("(max-width: 767px)", () => {
+        gsap.fromTo(
+          image,
+          { width: "92%", borderRadius: "1.25rem" },
+          {
+            width: "100%",
+            borderRadius: "0rem",
+            ease: "none",
+            scrollTrigger: {
+              trigger: image,
+              start: "top 88%",
+              end: "center 45%",
+              scrub: 1,
+            },
+          },
+        );
+      });
 
       gsap.fromTo(
         "[data-parallax-image]",
