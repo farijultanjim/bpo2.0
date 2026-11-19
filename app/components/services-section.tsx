@@ -73,7 +73,12 @@ const services: ServiceItem[] = [
     tagline: "Key accounts, run inside your own systems",
     description:
       "Rates, bookings, and visibility reporting for your enterprise accounts. We manage the entire lifecycle from lead generation to final billing.",
-    pills: ["Key accounts", "Booking support", "Pricing & quoting", "Reporting"],
+    pills: [
+      "Key accounts",
+      "Booking support",
+      "Pricing & quoting",
+      "Reporting",
+    ],
     image: "/images/bpo/global-operations.webp",
     icon: Compass,
     steps: [
@@ -105,7 +110,12 @@ const services: ServiceItem[] = [
     tagline: "A 24/7 front line for your customers",
     description:
       "A dedicated front line that keeps your customers informed and exceptions under tight control, working US hours directly inside your CRM and email.",
-    pills: ["24/7 coverage", "US-hour alignment", "Exception control", "Works in your tools"],
+    pills: [
+      "24/7 coverage",
+      "US-hour alignment",
+      "Exception control",
+      "Works in your tools",
+    ],
     image: "/images/bpo/customer-service.webp",
     icon: Headset,
     steps: [
@@ -137,7 +147,13 @@ const services: ServiceItem[] = [
     tagline: "Every load tracked through to POD",
     description:
       "Loads planned, carriers tendered, and deliveries tracked live from shipment readiness to signed proof of delivery and invoice reconciliation.",
-    pills: ["Intake & planning", "Carrier tendering", "GPS tracking", "Appointments", "POD"],
+    pills: [
+      "Intake & planning",
+      "Carrier tendering",
+      "GPS tracking",
+      "Appointments",
+      "POD",
+    ],
     image: "/images/bpo/dispatch.webp",
     icon: Route,
     steps: [
@@ -169,7 +185,12 @@ const services: ServiceItem[] = [
     tagline: "Quotation to settlement",
     description:
       "Every truck booked, tracked, delivered, and billed with active exception management running at every stage: detect, log, classify, resolve, and close.",
-    pills: ["Quote & booking", "Truck assignment", "Live tracking", "POD & billing"],
+    pills: [
+      "Quote & booking",
+      "Truck assignment",
+      "Live tracking",
+      "POD & billing",
+    ],
     image: "/images/bpo/trucking.webp",
     icon: Truck,
     steps: [
@@ -201,7 +222,12 @@ const services: ServiceItem[] = [
     tagline: "From carrier invoice to customer payment",
     description:
       "Accurate billing and clean ledgers. Billing and delivery-cost updates are processed by the same offshore team running your shipments.",
-    pills: ["AP / AR", "Billing & invoicing", "Freight bill audit", "Month-end close"],
+    pills: [
+      "AP / AR",
+      "Billing & invoicing",
+      "Freight bill audit",
+      "Month-end close",
+    ],
     image: "/images/bpo/finance.webp",
     icon: Receipt,
     steps: [
@@ -233,7 +259,12 @@ const services: ServiceItem[] = [
     tagline: "Payroll and recruitment, end to end",
     description:
       "Recruitment, screening, and payroll handled end to end for your offshore team, providing vetted domain specialists ready to produce from day one.",
-    pills: ["Dedicated staffing", "Screening", "Interviews", "Payroll & compliance"],
+    pills: [
+      "Dedicated staffing",
+      "Screening",
+      "Interviews",
+      "Payroll & compliance",
+    ],
     image: "/images/bpo/hr-team.webp",
     icon: Users,
     steps: [
@@ -265,7 +296,12 @@ const services: ServiceItem[] = [
     tagline: "Plan, create, publish, analyze, optimize",
     description:
       "Your logistics brand kept active, on-message, and driving inbound shipper inquiries across LinkedIn, email marketing, and digital channels.",
-    pills: ["Social media", "Content writing", "Analytics & CRM", "Video editing"],
+    pills: [
+      "Social media",
+      "Content writing",
+      "Analytics & CRM",
+      "Video editing",
+    ],
     image: "/images/bpo/marketing.webp",
     icon: Megaphone,
     steps: [
@@ -378,7 +414,8 @@ export function ServicesSection() {
     }
 
     // 1. Calculate the container's static document top (unaffected by current scroll position or sticky states)
-    const containerDocTop = container.getBoundingClientRect().top + window.scrollY;
+    const containerDocTop =
+      container.getBoundingClientRect().top + window.scrollY;
     const containerPaddingTop =
       parseFloat(getComputedStyle(container).paddingTop) || 0;
 
@@ -396,7 +433,7 @@ export function ServicesSection() {
 
     // 3. Static target document top of this card
     const cardDocTop = containerDocTop + offsetFromContainer;
-    const parkTop = parseFloat(getComputedStyle(card).top) || (80 + index * 8.8);
+    const parkTop = parseFloat(getComputedStyle(card).top) || 80 + index * 8.8;
 
     // Target scroll lands the card at its exact park position (or slightly past to ensure clean stacking)
     const targetY = Math.max(
@@ -415,7 +452,11 @@ export function ServicesSection() {
         __lenis?: {
           scrollTo: (
             target: number,
-            opts?: { duration?: number; lock?: boolean; onComplete?: () => void },
+            opts?: {
+              duration?: number;
+              lock?: boolean;
+              onComplete?: () => void;
+            },
           ) => void;
         };
       }
@@ -459,8 +500,8 @@ export function ServicesSection() {
                 const stateClass = isActive
                   ? "service-text-active"
                   : isPast
-                  ? "service-text-hidden-up"
-                  : "service-text-hidden-down";
+                    ? "service-text-hidden-up"
+                    : "service-text-hidden-down";
 
                 return (
                   <div
@@ -548,9 +589,9 @@ export function ServicesSection() {
                   style={{
                     top: `calc(var(--stack-base, 5rem) + ${index * 0.55}rem)`,
                   }}
-                  className="group sticky min-h-card overflow-hidden rounded-3xl border border-paper/20 bg-ink shadow-2xl shadow-ink/70"
+                  className="group sticky min-h-[34rem] sm:min-h-[35rem] lg:min-h-[36rem] overflow-hidden rounded-3xl border border-paper/20 bg-ink shadow-2xl shadow-ink/70 flex flex-col justify-between p-7 sm:p-8 lg:p-9"
                 >
-                  {/* High-Impact Attention-Grabbing Picture */}
+                  {/* Full Background Image (Full-bleed & Bright) */}
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -559,79 +600,73 @@ export function ServicesSection() {
                     className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                   />
 
-                  {/* Cinematic Scrim: lets the top photo shine brightly, while darkening the lower content area for crisp legibility */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-ink/25 via-ink/65 to-ink/95" />
+                  {/* Soft & Transparent Gradient: keeps the photo bright & vivid while supporting text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-ink/15 via-ink/30 to-ink/75 pointer-events-none" />
 
-                  {/* Card Content Overlay */}
-                  <div className="relative z-1 flex flex-col justify-between h-full p-6 sm:p-8 space-y-6">
-                    {/* Card Top Row */}
-                    <div className="space-y-3 border-b border-paper/20 pb-5">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <span className="text-xs font-extrabold uppercase tracking-widest text-accent drop-shadow-md">
-                            SERVICE / {service.number}
-                          </span>
-                          <span className="hidden sm:inline-block size-1 rounded-full bg-paper/60" />
-                          <span className="hidden sm:inline-block text-xs font-bold uppercase tracking-wider text-paper drop-shadow-md">
-                            {service.title}
-                          </span>
-                        </div>
-                        <span className="grid size-12 place-items-center rounded-full border border-paper/40 bg-ink/40 backdrop-blur-md transition-all duration-500 group-hover:rotate-12 group-hover:bg-accent group-hover:text-ink shadow-lg">
-                          <Icon size={22} strokeWidth={1.8} />
-                        </span>
-                      </div>
-
-                      {/* Mobile-only context: Displays tagline & brief overview so mobile users have full context */}
-                      <div className="lg:hidden space-y-1 pt-1">
-                        <p className="text-xs font-bold uppercase tracking-wider text-accent">
-                          {service.tagline}
-                        </p>
-                        <p className="text-xs text-paper/85 font-medium leading-relaxed line-clamp-2">
-                          {service.description}
-                        </p>
-                      </div>
+                  {/* Top Header Row */}
+                  <div className="relative z-1 flex items-center justify-between border-b border-paper/15 pb-4">
+                    <div className="flex items-center gap-3">
+                      <span className="rounded-full border border-accent/40 bg-ink/60 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-accent backdrop-blur-md shadow-sm">
+                        SERVICE / {service.number}
+                      </span>
+                      <span className="hidden sm:inline-block text-xs font-bold uppercase tracking-wider text-paper drop-shadow-md">
+                        {service.title}
+                      </span>
                     </div>
 
-                    {/* Middle: 4 Operational Workflow Steps with Frosted Glass Panels */}
-                    <div className="space-y-3">
-                      <p className="text-xs font-extrabold uppercase tracking-widest text-paper/80 drop-shadow-md">
+                    <span className="grid size-11 place-items-center rounded-full border border-paper/30 bg-ink/50 text-paper backdrop-blur-md transition-all duration-500 group-hover:rotate-12 group-hover:bg-accent group-hover:text-ink shadow-md">
+                      <Icon size={20} strokeWidth={1.8} />
+                    </span>
+                  </div>
+
+                  {/* Middle: 4 Frosted Glass Milestone Tiles with Compact Typography (Wide-Open Picture View) */}
+                  <div className="relative z-1 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <p className="text-xs font-extrabold uppercase tracking-widest text-accent drop-shadow-md">
                         Operational Execution
                       </p>
-                      <div className="grid gap-3 sm:grid-cols-2">
-                        {service.steps.map((step, sIdx) => (
-                          <div
-                            key={step.title}
-                            className="rounded-2xl border border-paper/20 bg-ink/50 p-4 backdrop-blur-md transition-colors duration-300 hover:border-accent/40 hover:bg-ink/70"
-                          >
-                            <p className="text-xs font-extrabold text-accent uppercase tracking-wider">
-                              Step 0{sIdx + 1}
-                            </p>
-                            <h4 className="mt-1 font-bricolage text-sm sm:text-base font-bold text-paper uppercase">
-                              {step.title}
-                            </h4>
-                            <p className="mt-1.5 text-xs leading-relaxed text-paper/80">
-                              {step.description}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
+                      <span className="text-xs font-semibold text-paper/75 uppercase tracking-wider hidden sm:inline-block drop-shadow-sm">
+                        Dedicated US-Hour Desk
+                      </span>
                     </div>
 
-                    {/* Card Footer */}
-                    <div className="flex items-center justify-between border-t border-paper/20 pt-5">
-                      <p className="text-xs font-medium text-paper/80 hidden sm:block drop-shadow-sm">
-                        Dedicated multi-shift desk operating inside your software.
-                      </p>
-                      <a
-                        href="#contact"
-                        className="button-accent group/btn ml-auto inline-flex items-center gap-3 rounded-full py-2 pl-4 pr-1.5 text-xs font-bold uppercase tracking-wider cursor-pointer shadow-lg"
-                      >
-                        Inquire about {service.title}
-                        <span className="grid size-7 place-items-center rounded-full bg-ink text-paper transition-transform duration-300 group-hover/btn:rotate-45">
-                          <ArrowUpRight size={14} strokeWidth={2} />
-                        </span>
-                      </a>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {service.steps.map((step, sIdx) => (
+                        <div
+                          key={step.title}
+                          className="rounded-2xl border border-paper/20 bg-ink/50 p-3 sm:p-3.5 backdrop-blur-md transition-all duration-300 hover:border-accent/40 hover:bg-ink/75 shadow-sm"
+                        >
+                          <div className="flex items-center gap-2">
+                            <span className="text-[0.65rem] font-extrabold text-accent uppercase tracking-wider">
+                              Step 0{sIdx + 1}
+                            </span>
+                            <span className="size-1 rounded-full bg-paper/40" />
+                            <h4 className="font-bricolage text-xs sm:text-sm font-bold uppercase text-paper tracking-wide truncate">
+                              {step.title}
+                            </h4>
+                          </div>
+                          <p className="mt-1 text-[0.72rem] sm:text-xs leading-relaxed text-paper/85 font-medium line-clamp-2">
+                            {step.description}
+                          </p>
+                        </div>
+                      ))}
                     </div>
+                  </div>
+
+                  {/* Card Footer */}
+                  <div className="relative z-1 flex items-center justify-between border-t border-paper/15 pt-4">
+                    <p className="text-xs font-medium text-paper/80 hidden sm:block drop-shadow-sm">
+                      Direct integration into your CRM, TMS & freight software.
+                    </p>
+                    <a
+                      href="#contact"
+                      className="button-accent group/btn ml-auto inline-flex items-center gap-3 rounded-full py-2.5 pl-5 pr-2 text-xs font-bold uppercase tracking-wider cursor-pointer shadow-lg"
+                    >
+                      Inquire about {service.title}
+                      <span className="grid size-7 place-items-center rounded-full bg-ink text-paper transition-transform duration-300 group-hover/btn:rotate-45">
+                        <ArrowUpRight size={14} strokeWidth={2} />
+                      </span>
+                    </a>
                   </div>
                 </article>
               );
