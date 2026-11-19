@@ -6,6 +6,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
   Compass,
   Headset,
   Megaphone,
@@ -46,24 +48,20 @@ const services: ServiceItem[] = [
     icon: Plane,
     steps: [
       {
-        title: "Pre-alert & setup",
-        description:
-          "Validate HAWB/MAWB or MBL/HBL, manifest, and invoice; create the master job file.",
+        title: "Pre-alert setup",
+        description: "Audit HAWB/MBL & create master job files.",
       },
       {
-        title: "Booking & cargo-ready",
-        description:
-          "Book directly with airlines or shipping lines and issue draft HAWB/HBL for approval.",
+        title: "Carrier booking",
+        description: "Direct airline & ocean bookings with draft HBL.",
       },
       {
-        title: "AMS, ISF & customs",
-        description:
-          "Match AMS, submit ISF, identify entry type, and follow up clearance with customs brokers.",
+        title: "Customs & ISF",
+        description: "Match AMS, file ISF & expedite broker release.",
       },
       {
-        title: "Arrival, POD & close-out",
-        description:
-          "Issue arrival notices, release freight holds, monitor POD, and confirm delivery.",
+        title: "Arrival & POD",
+        description: "Issue arrival notices, verify POD & close.",
       },
     ],
   },
@@ -83,24 +81,20 @@ const services: ServiceItem[] = [
     icon: Compass,
     steps: [
       {
-        title: "Lead generation",
-        description:
-          "Target industries and trade lanes, shortlist prospective clients, and initiate outreach.",
+        title: "Lead pipeline",
+        description: "Target trade lanes & qualify shipper accounts.",
       },
       {
-        title: "Rate & quotation",
-        description:
-          "Procure competitive buy rates, calculate margins, submit quotes, and track win/loss.",
+        title: "Rate & quotes",
+        description: "Procure buy rates, price margins & submit quotes.",
       },
       {
-        title: "Booking management",
-        description:
-          "Customer confirmations, schedule coordination, uplift follow-up, and billing instructions.",
+        title: "Booking lifecycle",
+        description: "Confirm uplift, coordinate schedules & billing.",
       },
       {
-        title: "Reporting & KPIs",
-        description:
-          "Win/loss ratios, pricing trends, daily shipment logs, and revenue reconciliations.",
+        title: "KPI reporting",
+        description: "Daily shipment logs, win/loss & margin audits.",
       },
     ],
   },
@@ -121,23 +115,19 @@ const services: ServiceItem[] = [
     steps: [
       {
         title: "Track & trace",
-        description:
-          "Proactive status updates, milestone verification, and ETA alerts before customers ask.",
+        description: "Proactive status alerts before shippers ask.",
       },
       {
-        title: "Scheduling support",
-        description:
-          "Warehouse pickup and consignee delivery appointments coordinated with all parties.",
+        title: "Appointments",
+        description: "Coordinate warehouse pickups & delivery times.",
       },
       {
-        title: "Escalation handling",
-        description:
-          "Port congestion, customs holds, and carrier delays flagged early and followed through.",
+        title: "Exception desk",
+        description: "Resolve port holds, customs delays & carrier reroutes.",
       },
       {
-        title: "Live US-hour desk",
-        description:
-          "Real-time communication and instant responses inside your email, portal, and Slack.",
+        title: "Live US shifts",
+        description: "Real-time responses in your email, portal & Slack.",
       },
     ],
   },
@@ -158,24 +148,20 @@ const services: ServiceItem[] = [
     icon: Route,
     steps: [
       {
-        title: "Intake & load planning",
-        description:
-          "Confirm cargo readiness, select mode, and match carriers from your approved matrix.",
+        title: "Load planning",
+        description: "Confirm cargo readiness & select mode.",
       },
       {
-        title: "Tender & GPS dispatch",
-        description:
-          "Tender loads, capture driver contact details, and verify active GPS tracking before pickup.",
+        title: "Tender & GPS",
+        description: "Tender loads, verify driver & track live GPS.",
       },
       {
-        title: "Documents & scheduling",
-        description:
-          "Issue delivery orders, customs releases, appointment bookings, and TMS trip entries.",
+        title: "Trip orders",
+        description: "Issue delivery orders & terminal release.",
       },
       {
-        title: "Track, POD & close-out",
-        description:
-          "Confirm delivery completion, archive signed PODs, and audit carrier rate sheets.",
+        title: "POD archive",
+        description: "Collect signed PODs & audit carrier charges.",
       },
     ],
   },
@@ -195,24 +181,20 @@ const services: ServiceItem[] = [
     icon: Truck,
     steps: [
       {
-        title: "Quote & booking",
-        description:
-          "Quote from contracted rate sheets, secure equipment capacity, and book files.",
+        title: "Rate & booking",
+        description: "Lock contracted rates & secure truck capacity.",
       },
       {
-        title: "Assignment & pickup",
-        description:
-          "Assign trucks and drivers; confirm container release, terminal appointments, and ETAs.",
+        title: "Dispatch & ETA",
+        description: "Assign drivers, pull containers & monitor ETA.",
       },
       {
-        title: "EDI tracking & POD",
-        description:
-          "Real-time EDI tracking, signed bills of lading, and delivery receipts verified and uploaded.",
+        title: "EDI & signed POD",
+        description: "Real-time EDI tracking with signed receipts.",
       },
       {
-        title: "Invoicing & closure",
-        description:
-          "Validate line-haul rates and accessorials (detention/layover), reconcile, and close.",
+        title: "Billing & audit",
+        description: "Validate detention/layover & settle invoices.",
       },
     ],
   },
@@ -233,23 +215,19 @@ const services: ServiceItem[] = [
     steps: [
       {
         title: "AP / AR processing",
-        description:
-          "Vendor invoice matching, payment approvals, customer invoicing, and collection calls.",
+        description: "Match vendor bills & manage collections.",
       },
       {
-        title: "Job costing & billing",
-        description:
-          "Delivery cost reconciliations, accessorial verification, and final customer invoices.",
+        title: "Job costing",
+        description: "Reconcile delivery costs & issue invoices.",
       },
       {
         title: "Freight bill audit",
-        description:
-          "Audit carrier bills against contracted tariffs, spot rates, and revenue checks.",
+        description: "Verify tariff rates & accessorial accuracy.",
       },
       {
-        title: "Month-end reconciliation",
-        description:
-          "Accruals, inter-company billing, and bank reconciliations completed on schedule.",
+        title: "Month-end close",
+        description: "Accruals, inter-company billing & reconciliation.",
       },
     ],
   },
@@ -269,24 +247,20 @@ const services: ServiceItem[] = [
     icon: Users,
     steps: [
       {
-        title: "Sourcing & screening",
-        description:
-          "Job posting, candidate outreach, English proficiency vetting, and logistics screening.",
+        title: "Talent sourcing",
+        description: "Post roles & screen logistics candidates.",
       },
       {
-        title: "Interviews & offers",
-        description:
-          "Rigorous technical evaluations, background checks, and standard employment agreements.",
+        title: "Domain interviews",
+        description: "Technical tests, English vetting & checks.",
       },
       {
-        title: "Onboarding & IT setup",
-        description:
-          "Secure workstation configuration, VPN/VDI access, and initial productivity training.",
+        title: "IT & onboarding",
+        description: "Configure secure workstations & VPN access.",
       },
       {
-        title: "Payroll management",
-        description:
-          "Timesheets, statutory compliance, benefits administration, and performance reviews.",
+        title: "Payroll & reviews",
+        description: "Manage timesheets, compliance & evaluations.",
       },
     ],
   },
@@ -306,24 +280,20 @@ const services: ServiceItem[] = [
     icon: Megaphone,
     steps: [
       {
-        title: "Social & content creation",
-        description:
-          "Channel management, logistics thought leadership, on-brand graphics, and copy.",
+        title: "Content & social",
+        description: "Logistics thought leadership & visual graphics.",
       },
       {
-        title: "Analytics & pipeline audits",
-        description:
-          "Campaign performance tracking, web traffic analytics, and inbound lead reporting.",
+        title: "Pipeline audits",
+        description: "Track campaign performance & inbound traffic.",
       },
       {
-        title: "Paid ads & CRM sync",
-        description:
-          "Targeted B2B campaigns with qualified shipper leads synced to HubSpot or Salesforce.",
+        title: "Paid campaigns",
+        description: "Target shippers & sync leads into HubSpot/CRM.",
       },
       {
-        title: "Audio & video editing",
-        description:
-          "Service walkthroughs, customer interview clips, and promotional reels.",
+        title: "Video editing",
+        description: "Produce service walkthroughs & client reels.",
       },
     ],
   },
@@ -336,6 +306,109 @@ export function ServicesSection() {
   const isJumpingRef = useRef(false);
   const jumpTimeoutRef = useRef<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const activeIndexRef = useRef(0);
+  const desktopTabsRef = useRef<HTMLDivElement>(null);
+
+  // Mobile continuous snap carousel state & smooth controllers
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const [isSnapping, setIsSnapping] = useState(true);
+  const mobileCarouselRef = useRef<HTMLDivElement>(null);
+  const mobileTabsRef = useRef<HTMLDivElement>(null);
+  const isMobileScrollingRef = useRef(false);
+  const mobileScrollTimerRef = useRef<number | null>(null);
+
+  const scrollMobileTo = (index: number) => {
+    const container = mobileCarouselRef.current;
+    if (!container) return;
+
+    const card0 = container.children[0] as HTMLElement | undefined;
+    const targetCard = container.children[index] as HTMLElement | undefined;
+    if (!card0 || !targetCard) return;
+
+    const targetScrollLeft = Math.max(0, targetCard.offsetLeft - card0.offsetLeft);
+
+    // If already at target position, no-op
+    if (index === mobileIndex && Math.abs(container.scrollLeft - targetScrollLeft) < 4) {
+      return;
+    }
+
+    // Immediately select index so button smoothly extends & shifts color without lag
+    setMobileIndex(index);
+    isMobileScrollingRef.current = true;
+    setIsSnapping(false);
+    container.style.scrollSnapType = "none";
+    container.style.scrollBehavior = "auto";
+
+    if (mobileScrollTimerRef.current) {
+      window.clearTimeout(mobileScrollTimerRef.current);
+    }
+
+    gsap.killTweensOf(container);
+
+    // Fast, responsive, snappy card slide (0.45s)
+    gsap.to(container, {
+      scrollLeft: targetScrollLeft,
+      duration: 0.45,
+      ease: "power2.out",
+      onComplete: () => {
+        if (container) {
+          container.style.scrollSnapType = "x mandatory";
+        }
+        setIsSnapping(true);
+        isMobileScrollingRef.current = false;
+      },
+    });
+
+    if (mobileTabsRef.current) {
+      const activeBtn = mobileTabsRef.current.children[index] as HTMLElement | undefined;
+      if (activeBtn && typeof activeBtn.scrollIntoView === "function") {
+        activeBtn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+    }
+  };
+
+  const handleMobileScroll = () => {
+    if (isMobileScrollingRef.current) return;
+    const container = mobileCarouselRef.current;
+    if (!container) return;
+
+    const cards = Array.from(container.children) as HTMLElement[];
+    if (!cards.length) return;
+    const card0 = cards[0];
+
+    const scrollLeft = container.scrollLeft;
+    let closestIdx = 0;
+    let minDistance = Infinity;
+
+    cards.forEach((card, idx) => {
+      const cardPos = card.offsetLeft - card0.offsetLeft;
+      const distance = Math.abs(scrollLeft - cardPos);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIdx = idx;
+      }
+    });
+
+    if (closestIdx !== mobileIndex) {
+      setMobileIndex(closestIdx);
+      if (mobileTabsRef.current) {
+        const activeBtn = mobileTabsRef.current.children[closestIdx] as HTMLElement | undefined;
+        if (activeBtn && typeof activeBtn.scrollIntoView === "function") {
+          activeBtn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        }
+      }
+    }
+  };
+
+  const prevMobileService = () => {
+    const nextIdx = (mobileIndex - 1 + services.length) % services.length;
+    scrollMobileTo(nextIdx);
+  };
+
+  const nextMobileService = () => {
+    const nextIdx = (mobileIndex + 1) % services.length;
+    scrollMobileTo(nextIdx);
+  };
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -343,56 +416,79 @@ export function ServicesSection() {
     if (!section) return;
     if (prefersReducedMotion()) return;
 
-    const cards = cardsRef.current.filter((c): c is HTMLElement => c !== null);
+    const mm = gsap.matchMedia();
 
-    const syncStack = () => {
-      let topActive = 0;
-      const parkThreshold = 220;
+    mm.add("(min-width: 1024px)", () => {
+      const cards = cardsRef.current.filter((c): c is HTMLElement => c !== null);
 
-      cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top <= parkThreshold) {
-          topActive = index;
-        }
+      const syncStack = () => {
+        let topActive = 0;
 
-        const next = cards[index + 1];
-        if (!next) {
-          gsap.set(card, { scale: 1, opacity: 1 });
-          return;
-        }
-
-        const enters = window.innerHeight;
-        const parks = parseFloat(getComputedStyle(next).top) || 0;
-        const progress = gsap.utils.clamp(
-          0,
-          1,
-          (enters - next.getBoundingClientRect().top) / (enters - parks),
-        );
-
-        gsap.set(card, {
-          scale: 1 - 0.035 * progress,
-          opacity: 1,
-          transformOrigin: "center top",
+        cards.forEach((card, index) => {
+          if (index === 0) return;
+          const parkTop = parseFloat(getComputedStyle(card).top) || (80 + index * 8.8);
+          // Hysteresis: require card to be closer to stack to activate,
+          // but give more leeway before deactivating when scrolling back up.
+          const threshold = index <= activeIndexRef.current ? parkTop + 115 : parkTop + 80;
+          const rect = card.getBoundingClientRect();
+          if (rect.top <= threshold) {
+            topActive = index;
+          }
         });
+
+        cards.forEach((card, index) => {
+          const next = cards[index + 1];
+          if (!next) {
+            gsap.set(card, { scale: 1, opacity: 1 });
+            return;
+          }
+
+          const enters = window.innerHeight;
+          const parks = parseFloat(getComputedStyle(next).top) || 0;
+          const progress = gsap.utils.clamp(
+            0,
+            1,
+            (enters - next.getBoundingClientRect().top) / (enters - parks),
+          );
+
+          gsap.set(card, {
+            scale: 1 - 0.035 * progress,
+            opacity: 1,
+            transformOrigin: "center top",
+          });
+        });
+
+        if (!isJumpingRef.current) {
+          if (topActive !== activeIndexRef.current) {
+            activeIndexRef.current = topActive;
+            setActiveIndex(topActive);
+            if (desktopTabsRef.current) {
+              const activeBtn = desktopTabsRef.current.children[topActive] as HTMLElement | undefined;
+              if (activeBtn && typeof activeBtn.scrollIntoView === "function") {
+                activeBtn.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+              }
+            }
+          }
+        }
+      };
+
+      const trigger = ScrollTrigger.create({
+        trigger: section,
+        start: "top bottom",
+        end: "bottom top",
+        onUpdate: syncStack,
+        onRefresh: syncStack,
       });
 
-      if (!isJumpingRef.current) {
-        setActiveIndex(topActive);
-      }
-    };
+      syncStack();
 
-    const trigger = ScrollTrigger.create({
-      trigger: section,
-      start: "top bottom",
-      end: "bottom top",
-      onUpdate: syncStack,
-      onRefresh: syncStack,
+      return () => {
+        trigger.kill();
+      };
     });
 
-    syncStack();
-
     return () => {
-      trigger.kill();
+      mm.revert();
       if (jumpTimeoutRef.current) {
         window.clearTimeout(jumpTimeoutRef.current);
       }
@@ -400,10 +496,18 @@ export function ServicesSection() {
   }, []);
 
   const scrollToService = (index: number) => {
+    activeIndexRef.current = index;
     setActiveIndex(index);
     isJumpingRef.current = true;
     if (jumpTimeoutRef.current) {
       window.clearTimeout(jumpTimeoutRef.current);
+    }
+
+    if (desktopTabsRef.current) {
+      const activeBtn = desktopTabsRef.current.children[index] as HTMLElement | undefined;
+      if (activeBtn && typeof activeBtn.scrollIntoView === "function") {
+        activeBtn.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+      }
     }
 
     const container = cardsContainerRef.current;
@@ -445,7 +549,7 @@ export function ServicesSection() {
       isJumpingRef.current = false;
     };
 
-    jumpTimeoutRef.current = window.setTimeout(unlock, 1200);
+    jumpTimeoutRef.current = window.setTimeout(unlock, 1550);
 
     const lenis = (
       window as unknown as {
@@ -454,6 +558,7 @@ export function ServicesSection() {
             target: number,
             opts?: {
               duration?: number;
+              easing?: (t: number) => number;
               lock?: boolean;
               onComplete?: () => void;
             },
@@ -464,7 +569,8 @@ export function ServicesSection() {
 
     if (lenis && typeof lenis.scrollTo === "function") {
       lenis.scrollTo(targetY, {
-        duration: 1.1,
+        duration: 1.45,
+        easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
         lock: false,
         onComplete: unlock,
       });
@@ -482,13 +588,252 @@ export function ServicesSection() {
       className="relative bg-ink px-5 py-24 text-paper sm:px-8 sm:py-32 lg:px-12 lg:py-44"
     >
       <div className="relative mx-auto max-w-site">
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+        {/* ========================================================= */}
+        {/* MOBILE VIEW (< lg: 1024px) - Fluid Continuous Snap Carousel */}
+        {/* ========================================================= */}
+        <div className="block lg:hidden space-y-5">
+          {/* Mobile Dynamic Heading Stage (Smooth Blurred Crossfade on Swipe/Jump) */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <span className="size-2 rounded-full bg-accent" />
+              <p className="text-xs font-bold uppercase tracking-widest text-paper/80">
+                What we do • Specialized Operations
+              </p>
+            </div>
+
+            {/* Blurred Crossfade Overlapping Grid for Heading & Description */}
+            <div className="grid grid-cols-1 grid-rows-1 min-h-[10.5rem]">
+              {services.map((item, idx) => {
+                const isActive = idx === mobileIndex;
+                const isPast = idx < mobileIndex;
+                const stateClass = isActive
+                  ? "service-text-active"
+                  : isPast
+                    ? "service-text-hidden-up"
+                    : "service-text-hidden-down";
+
+                return (
+                  <div
+                    key={item.number}
+                    className={`col-start-1 row-start-1 space-y-3 ${stateClass}`}
+                  >
+                    <div className="space-y-1">
+                      <h2 className="font-bricolage text-3xl sm:text-4xl font-semibold uppercase tracking-tight text-paper">
+                        {item.title}
+                      </h2>
+                      <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-accent">
+                        {item.tagline}
+                      </p>
+                    </div>
+
+                    <p className="text-xs sm:text-sm font-medium leading-relaxed text-paper/75 line-clamp-3 sm:line-clamp-none">
+                      {item.description}
+                    </p>
+
+                    {/* Scope Pills */}
+                    <div className="flex flex-wrap gap-1.5 pt-0.5">
+                      {item.pills.map((pill) => (
+                        <span
+                          key={pill}
+                          className="rounded-full border border-paper/20 bg-paper/5 px-2.5 py-0.5 text-[0.65rem] font-semibold text-paper/90"
+                        >
+                          {pill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Horizontal Scrollable Segmented Tab Bar (Symmetric & Balanced) */}
+          <div className="border-t border-paper/15 pt-4">
+            <div
+              ref={mobileTabsRef}
+              className="flex items-center gap-2 overflow-x-auto py-1 scrollbar-none"
+            >
+              {services.map((service, idx) => {
+                const isSelected = idx === mobileIndex;
+                return (
+                  <button
+                    key={service.number}
+                    type="button"
+                    onClick={() => scrollMobileTo(idx)}
+                    className={`group relative flex shrink-0 items-center rounded-full px-3.5 py-2 text-xs font-bold transition-[background-color,color,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ${
+                      isSelected
+                        ? "bg-accent text-primary border border-accent"
+                        : "border border-paper/20 bg-paper/5 text-paper/70 hover:border-paper/40 hover:bg-paper/10 hover:text-paper"
+                    }`}
+                  >
+                    <span className="shrink-0">{service.number}</span>
+                    <span
+                      className={`inline-block overflow-hidden whitespace-nowrap transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                        isSelected
+                          ? "max-w-44 opacity-100 pl-2"
+                          : "max-w-0 opacity-0 pl-0"
+                      }`}
+                    >
+                      {service.title}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Continuous Real-time Horizontal Snap Track with All 8 Clean Cards */}
+          <div
+            ref={mobileCarouselRef}
+            onScroll={handleMobileScroll}
+            onTouchStart={() => {
+              gsap.killTweensOf(mobileCarouselRef.current);
+              setIsSnapping(true);
+              isMobileScrollingRef.current = false;
+            }}
+            onPointerDown={(e) => {
+              if (e.pointerType === "touch") {
+                gsap.killTweensOf(mobileCarouselRef.current);
+                setIsSnapping(true);
+                isMobileScrollingRef.current = false;
+              }
+            }}
+            className={`relative flex gap-4 overflow-x-auto scrollbar-none px-1 py-1 ${
+              isSnapping ? "snap-x snap-mandatory" : ""
+            }`}
+            style={{
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
+            {services.map((item, sIdx) => {
+              const CurIcon = item.icon;
+              return (
+                <div
+                  key={item.number}
+                  className="group relative overflow-hidden rounded-3xl border border-paper/20 bg-ink shadow-md flex flex-col justify-between p-5 pb-5 sm:p-7 sm:pb-7 w-[86vw] sm:w-[82vw] max-w-[27rem] shrink-0 snap-start min-h-[25.5rem]"
+                >
+                  {/* Full-bleed Background Picture (Vivid & Bright) */}
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="86vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+
+                  {/* Strictly Internal Gradient Scrim: 100% Clipped inside Rounded Card */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 via-50% to-ink/10 pointer-events-none" />
+
+                  {/* Card Top: Prominent Service Title & Floating Glass Icon */}
+                  <div className="relative z-1 flex items-start justify-between gap-3">
+                    <h3 className="font-bricolage text-xl sm:text-2xl font-bold uppercase tracking-tight text-paper drop-shadow-lg leading-tight">
+                      {item.title}
+                    </h3>
+
+                    <span className="grid size-11 place-items-center rounded-full border border-paper/30 bg-ink/60 text-paper backdrop-blur-md transition-all duration-500 group-hover:rotate-12 group-hover:bg-accent group-hover:text-ink shadow-md shrink-0">
+                      <CurIcon size={20} strokeWidth={1.8} />
+                    </span>
+                  </div>
+
+                  {/* Middle/Bottom: 4 Operational Milestones (Seamlessly Docked to Base) */}
+                  <div className="relative z-1 mt-auto space-y-2">
+                    <p className="text-xs font-extrabold uppercase tracking-widest text-accent drop-shadow-sm">
+                      Operational Execution
+                    </p>
+
+                    <div className="grid grid-cols-2 gap-2">
+                      {item.steps.map((step, stepIdx) => (
+                        <div
+                          key={step.title}
+                          className="rounded-2xl border border-paper/15 bg-ink/60 p-2.5 backdrop-blur-md transition-all duration-300 hover:border-accent/40 hover:bg-ink/80 shadow-sm"
+                        >
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-[0.62rem] font-extrabold text-accent uppercase tracking-wider">
+                              0{stepIdx + 1}
+                            </span>
+                            <span className="size-1 rounded-full bg-paper/40" />
+                            <h4 className="font-bricolage text-[0.72rem] font-bold uppercase text-paper leading-tight">
+                              {step.title}
+                            </h4>
+                          </div>
+                          <p className="mt-1 text-[0.68rem] leading-snug text-paper/85 font-medium">
+                            {step.description}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom Floating Navigation Controls & Common Dedicated CTA */}
+          <div className="space-y-3 px-1 pt-1">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={prevMobileService}
+                  aria-label="Previous Service"
+                  className="grid size-10 place-items-center rounded-full border border-paper/25 bg-ink/60 text-paper transition-all hover:bg-accent hover:text-ink cursor-pointer shadow-md"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  type="button"
+                  onClick={nextMobileService}
+                  aria-label="Next Service"
+                  className="grid size-10 place-items-center rounded-full border border-paper/25 bg-ink/60 text-paper transition-all hover:bg-accent hover:text-ink cursor-pointer shadow-md"
+                >
+                  <ChevronRight size={18} />
+                </button>
+                <span className="ml-2 text-xs font-bold text-paper/60">
+                  Swipe cards ↔
+                </span>
+              </div>
+
+              {/* Pagination dots indicator */}
+              <div className="flex items-center gap-1.5">
+                {services.map((_, dotIdx) => (
+                  <button
+                    key={dotIdx}
+                    type="button"
+                    onClick={() => scrollMobileTo(dotIdx)}
+                    aria-label={`Go to slide ${dotIdx + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                      dotIdx === mobileIndex
+                        ? "w-6 bg-accent"
+                        : "w-1.5 bg-paper/30 hover:bg-paper/50"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Common Primary Dynamic CTA Button outside cards (Matches Hero Section Design) */}
+            <a
+              href="#contact"
+              className="button-accent group inline-flex w-full items-center justify-between gap-5 rounded-full py-2 pl-5 pr-2 text-sm font-bold shadow-xl transition-transform duration-300 hover:scale-[1.01]"
+            >
+              <span className="truncate">Inquire about {services[mobileIndex].title}</span>
+              <span className="grid size-10 place-items-center rounded-full bg-ink text-paper transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0">
+                <ArrowUpRight size={18} strokeWidth={2} />
+              </span>
+            </a>
+          </div>
+        </div>
+
+        {/* ========================================================= */}
+        {/* DESKTOP VIEW (>= lg: 1024px) - 2-Column Stacking Stage   */}
+        {/* ========================================================= */}
+        <div className="hidden lg:grid gap-14 lg:grid-cols-12 lg:gap-16">
           {/* Left Column: Vertically Centered Sticky Stage with smooth crossfade */}
           <div className="lg:col-span-5 lg:sticky lg:top-0 lg:h-svh lg:flex lg:flex-col lg:justify-center lg:self-start space-y-6">
             <div className="flex items-center gap-3">
               <span className="size-2 rounded-full bg-accent" />
               <p className="text-xs font-bold uppercase tracking-widest text-paper/80">
-                What we do • Service {activeService.number} of 08
+                What we do • Specialized Operations
               </p>
             </div>
 
@@ -522,20 +867,15 @@ export function ServicesSection() {
                     </p>
 
                     {/* Scope / Sub-service pills */}
-                    <div className="space-y-2 pt-2">
-                      <p className="text-xs font-extrabold uppercase tracking-widest text-paper/50">
-                        Service Scope
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {item.pills.map((pill) => (
-                          <span
-                            key={pill}
-                            className="rounded-full border border-paper/20 bg-paper/5 px-3.5 py-1 text-xs font-semibold text-paper/90"
-                          >
-                            {pill}
-                          </span>
-                        ))}
-                      </div>
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {item.pills.map((pill) => (
+                        <span
+                          key={pill}
+                          className="rounded-full border border-paper/20 bg-paper/5 px-3.5 py-1 text-xs font-semibold text-paper/90"
+                        >
+                          {pill}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 );
@@ -545,9 +885,12 @@ export function ServicesSection() {
             {/* Interactive 8-Service Navigator */}
             <div className="pt-4 border-t border-paper/15 space-y-3">
               <p className="text-xs font-extrabold uppercase tracking-widest text-paper/50">
-                Jump to Service
+                Jump to Division
               </p>
-              <div className="flex flex-wrap gap-1.5">
+              <div
+                ref={desktopTabsRef}
+                className="flex items-center gap-2 overflow-x-auto py-1 scrollbar-none"
+              >
                 {services.map((item, idx) => {
                   const isActive = idx === activeIndex;
                   return (
@@ -555,14 +898,23 @@ export function ServicesSection() {
                       key={item.number}
                       type="button"
                       onClick={() => scrollToService(idx)}
-                      className={`h-8 px-3 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer ${
+                      className={`group relative flex shrink-0 items-center rounded-full px-3.5 py-1.5 text-xs font-bold transition-[background-color,color,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ${
                         isActive
-                          ? "bg-accent text-primary shadow-md scale-105"
-                          : "bg-paper/10 text-paper/70 hover:bg-paper/20 hover:text-paper"
+                          ? "bg-accent text-primary border border-accent shadow-sm"
+                          : "border border-paper/15 bg-paper/10 text-paper/70 hover:border-paper/30 hover:bg-paper/20 hover:text-paper"
                       }`}
                       aria-label={`Jump to ${item.title}`}
                     >
-                      {item.number}
+                      <span className="shrink-0">{item.number}</span>
+                      <span
+                        className={`inline-block overflow-hidden whitespace-nowrap transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                          isActive
+                            ? "max-w-44 opacity-100 pl-2"
+                            : "max-w-0 opacity-0 pl-0"
+                        }`}
+                      >
+                        {item.title}
+                      </span>
                     </button>
                   );
                 })}
@@ -603,19 +955,14 @@ export function ServicesSection() {
                   {/* Soft & Transparent Gradient: keeps the photo bright & vivid while supporting text readability */}
                   <div className="absolute inset-0 bg-gradient-to-b from-ink/15 via-ink/30 to-ink/75 pointer-events-none" />
 
-                  {/* Top Header Row */}
-                  <div className="relative z-1 flex items-center justify-between border-b border-paper/15 pb-4">
-                    <div className="flex items-center gap-3">
-                      <span className="rounded-full border border-accent/40 bg-ink/60 px-3.5 py-1 text-xs font-extrabold uppercase tracking-widest text-accent backdrop-blur-md shadow-sm">
-                        SERVICE / {service.number}
-                      </span>
-                      <span className="hidden sm:inline-block text-xs font-bold uppercase tracking-wider text-paper drop-shadow-md">
-                        {service.title}
-                      </span>
-                    </div>
+                  {/* Top Header Row: Large Prominent Title & Floating Glass Icon (Clean & Uncut) */}
+                  <div className="relative z-1 flex items-start justify-between gap-4">
+                    <h3 className="font-bricolage text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-paper drop-shadow-lg leading-tight">
+                      {service.title}
+                    </h3>
 
-                    <span className="grid size-11 place-items-center rounded-full border border-paper/30 bg-ink/50 text-paper backdrop-blur-md transition-all duration-500 group-hover:rotate-12 group-hover:bg-accent group-hover:text-ink shadow-md">
-                      <Icon size={20} strokeWidth={1.8} />
+                    <span className="grid size-12 sm:size-14 place-items-center rounded-full border border-paper/30 bg-ink/50 text-paper backdrop-blur-md transition-all duration-500 group-hover:rotate-12 group-hover:bg-accent group-hover:text-ink shadow-md shrink-0">
+                      <Icon size={24} strokeWidth={1.8} />
                     </span>
                   </div>
 
@@ -641,11 +988,11 @@ export function ServicesSection() {
                               Step 0{sIdx + 1}
                             </span>
                             <span className="size-1 rounded-full bg-paper/40" />
-                            <h4 className="font-bricolage text-xs sm:text-sm font-bold uppercase text-paper tracking-wide truncate">
+                            <h4 className="font-bricolage text-xs sm:text-sm font-bold uppercase text-paper tracking-wide">
                               {step.title}
                             </h4>
                           </div>
-                          <p className="mt-1 text-[0.72rem] sm:text-xs leading-relaxed text-paper/85 font-medium line-clamp-2">
+                          <p className="mt-1 text-[0.72rem] sm:text-xs leading-relaxed text-paper/85 font-medium">
                             {step.description}
                           </p>
                         </div>
@@ -660,11 +1007,11 @@ export function ServicesSection() {
                     </p>
                     <a
                       href="#contact"
-                      className="button-accent group/btn ml-auto inline-flex items-center gap-3 rounded-full py-2.5 pl-5 pr-2 text-xs font-bold uppercase tracking-wider cursor-pointer shadow-lg"
+                      className="button-accent group ml-auto inline-flex items-center gap-5 rounded-full py-2 pl-5 pr-2 text-sm font-bold shadow-xl transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
                     >
-                      Inquire about {service.title}
-                      <span className="grid size-7 place-items-center rounded-full bg-ink text-paper transition-transform duration-300 group-hover/btn:rotate-45">
-                        <ArrowUpRight size={14} strokeWidth={2} />
+                      <span>Inquire about {service.title}</span>
+                      <span className="grid size-10 place-items-center rounded-full bg-ink text-paper transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0">
+                        <ArrowUpRight size={18} strokeWidth={2} />
                       </span>
                     </a>
                   </div>
