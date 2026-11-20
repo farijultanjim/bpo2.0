@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
 import { prefersReducedMotion } from "@/app/lib/motion";
 
-export interface CtaButtonProps {
+export interface CtaButtonProps extends React.HTMLAttributes<HTMLElement> {
   children?: ReactNode;
   label?: string;
   href?: string;
@@ -22,7 +22,6 @@ export interface CtaButtonProps {
   type?: "button" | "submit" | "reset";
   "aria-label"?: string;
   fullWidth?: boolean;
-  [key: string]: unknown;
 }
 
 export const CtaButton = forwardRef<HTMLElement, CtaButtonProps>(

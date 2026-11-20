@@ -2,8 +2,15 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState, type ComponentType } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+  useReducedMotion,
+  type MotionValue,
+} from "framer-motion";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ChevronLeft,
   ChevronRight,
@@ -299,15 +306,200 @@ const services: ServiceItem[] = [
   },
 ];
 
+interface ServiceStackCardProps {
+  service: ServiceItem;
+  index: number;
+  totalCards: number;
+  progress: MotionValue<number>;
+  reduced: boolean;
+  wrapperRefCallback: (el: HTMLDivElement | null) => void;
+}
+
+/** One sticky desktop service card with scroll-driven scale, depth stacking and zoom-in entrance */
+function ServiceStackCard({
+  service,
+  index,
+  totalCards,
+  progress,
+  reduced,
+  wrapperRefCallback,
+}: ServiceStackCardProps) {
+  const cardWrapperRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: cardEntryProgress } = useScroll({
+    target: cardWrapperRef,
+    offset: ["start end", "start start"],
+  });
+
+  // Dynamic scale and gradual upward lift from perfect vertical center:
+  // The active card sits in the absolute vertical center of the viewport (equal top and bottom gap).
+  // As subsequent cards arrive on top of it, earlier cards gradually shift UPWARD and scale down,
+  // creating a clean, stepped staircase deck rising above the active card.
+  const targetScale = 1 - (totalCards - 1 - index) * 0.035;
+  const targetY = -((totalCards - 1 - index) * 16);
+  const rangeStart = index / totalCards;
+  const rangeEnd = 1;
+
+  const scale = useTransform(progress, [rangeStart, rangeEnd], [1, targetScale]);
+  const y = useTransform(progress, [rangeStart, rangeEnd], [0, targetY]);
+  const imageScale = useTransform(cardEntryProgress, [0, 1], [1.35, 1]);
+
+  const Icon = service.icon;
+
+  return (
+    <div
+      ref={(el) => {
+        cardWrapperRef.current = el;
+        wrapperRefCallback(el);
+      }}
+      className="sticky top-0 h-svh lg:h-[100dvh] flex items-center justify-center overflow-visible pointer-events-none"
+    >
+      <motion.article
+        id={`service-${service.number}`}
+        style={{
+          scale: reduced ? 1 : scale,
+          y: reduced ? 0 : y,
+        }}
+        className="group pointer-events-auto relative origin-top min-h-[30rem] sm:min-h-[31rem] lg:min-h-[32rem] overflow-hidden rounded-3xl border border-paper/20 bg-ink shadow-2xl shadow-black/60 flex flex-col justify-between p-6 sm:p-7 lg:p-8 w-full"
+      >
+        {/* Full Background Image (Full-bleed & Bright) with smooth entrance zoom-out */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            style={{ scale: reduced ? 1 : imageScale }}
+            className="relative w-full h-full"
+          >
+            <Image
+              src={service.image}
+              alt={service.title}
+              fill
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+            />
+          </motion.div>
+        </div>
+
+        {/* Soft & Transparent Gradient: keeps the photo bright & vivid while supporting text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/15 via-ink/30 to-ink/75 pointer-events-none" />
+
+        {/* Top Header Row: Large Prominent Title & Floating Glass Icon (Clean & Uncut) */}
+        <div className="relative z-1 flex items-start justify-between gap-4">
+          <h3 className="font-bricolage text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-paper drop-shadow-lg leading-tight">
+            {service.title}
+          </h3>
+
+          <span className="grid size-12 sm:size-14 place-items-center rounded-full border border-paper/30 bg-ink/50 text-paper backdrop-blur-md transition-all duration-500 group-hover:rotate-12 group-hover:bg-accent group-hover:text-ink shadow-md shrink-0">
+            <Icon size={24} strokeWidth={1.8} />
+          </span>
+        </div>
+
+        {/* Middle: 4 Frosted Glass Milestone Tiles with Compact Typography (Wide-Open Picture View) */}
+        <div className="relative z-1 space-y-3">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-accent drop-shadow-md">
+              Operational Execution
+            </p>
+            <span className="text-xs font-semibold text-paper/75 uppercase tracking-wider hidden sm:inline-block drop-shadow-sm">
+              Dedicated US-Hour Desk
+            </span>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {service.steps.map((step, sIdx) => (
+              <div
+                key={step.title}
+                className="rounded-2xl border border-paper/20 bg-ink/50 p-3 sm:p-3.5 backdrop-blur-md transition-all duration-300 hover:border-accent/40 hover:bg-ink/75 shadow-sm"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-[0.65rem] font-extrabold text-accent uppercase tracking-wider">
+                    Step 0{sIdx + 1}
+                  </span>
+                  <span className="size-1 rounded-full bg-paper/40" />
+                  <h4 className="font-bricolage text-xs sm:text-sm font-bold uppercase text-paper tracking-wide">
+                    {step.title}
+                  </h4>
+                </div>
+                <p className="mt-1 text-[0.72rem] sm:text-xs leading-relaxed text-paper/85 font-medium">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Card Footer: Integration Note & Master CTA Button */}
+        <div className="relative z-1 flex items-center justify-between border-t border-paper/15 pt-4">
+          <p className="text-xs font-medium text-paper/80 hidden sm:block drop-shadow-sm">
+            Direct integration into your CRM, TMS & freight software.
+          </p>
+          <CtaButton
+            href="#contact"
+            className="ml-auto"
+          >
+            Inquire about {service.title}
+          </CtaButton>
+        </div>
+      </motion.article>
+    </div>
+  );
+}
+
 export function Services() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLElement | null)[]>([]);
+  const cardWrappersRef = useRef<(HTMLDivElement | null)[]>([]);
   const isJumpingRef = useRef(false);
   const jumpTimeoutRef = useRef<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const activeIndexRef = useRef(0);
   const desktopTabsRef = useRef<HTMLDivElement>(null);
+
+  const reducedMotion = useReducedMotion();
+  const isReduced = !!reducedMotion;
+
+  // Shared scroll range drives scale and depth of sticky desktop cards
+  const { scrollYProgress } = useScroll({
+    target: cardsContainerRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Synchronize active tab in left column with scroll progress
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (isJumpingRef.current) return;
+    const index = Math.min(
+      services.length - 1,
+      Math.max(0, Math.floor(latest * services.length * 1.02)),
+    );
+    if (index !== activeIndexRef.current) {
+      activeIndexRef.current = index;
+      setActiveIndex(index);
+      if (desktopTabsRef.current) {
+        const activeBtn = desktopTabsRef.current.children[index] as HTMLElement | undefined;
+        activeBtn?.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+      }
+    }
+  });
+
+  const scrollToService = (index: number) => {
+    activeIndexRef.current = index;
+    setActiveIndex(index);
+    isJumpingRef.current = true;
+    if (jumpTimeoutRef.current) {
+      window.clearTimeout(jumpTimeoutRef.current);
+    }
+
+    if (desktopTabsRef.current) {
+      const activeBtn = desktopTabsRef.current.children[index] as HTMLElement | undefined;
+      activeBtn?.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+    }
+
+    const wrapper = cardWrappersRef.current[index];
+    if (wrapper) {
+      wrapper.scrollIntoView({ behavior: "smooth" });
+    }
+
+    jumpTimeoutRef.current = window.setTimeout(() => {
+      isJumpingRef.current = false;
+    }, 900);
+  };
 
   // Mobile continuous snap carousel state & smooth controllers
   const [mobileIndex, setMobileIndex] = useState(0);
@@ -411,173 +603,15 @@ export function Services() {
   };
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const section = sectionRef.current;
-    if (!section) return;
-    if (prefersReducedMotion()) return;
-
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 1024px)", () => {
-      const cards = cardsRef.current.filter((c): c is HTMLElement => c !== null);
-
-      const syncStack = () => {
-        let topActive = 0;
-
-        cards.forEach((card, index) => {
-          if (index === 0) return;
-          const parkTop = parseFloat(getComputedStyle(card).top) || (80 + index * 8.8);
-          // Hysteresis: require card to be closer to stack to activate,
-          // but give more leeway before deactivating when scrolling back up.
-          const threshold = index <= activeIndexRef.current ? parkTop + 115 : parkTop + 80;
-          const rect = card.getBoundingClientRect();
-          if (rect.top <= threshold) {
-            topActive = index;
-          }
-        });
-
-        cards.forEach((card, index) => {
-          const next = cards[index + 1];
-          if (!next) {
-            gsap.set(card, { scale: 1, opacity: 1 });
-            return;
-          }
-
-          const enters = window.innerHeight;
-          const parks = parseFloat(getComputedStyle(next).top) || 0;
-          const progress = gsap.utils.clamp(
-            0,
-            1,
-            (enters - next.getBoundingClientRect().top) / (enters - parks),
-          );
-
-          gsap.set(card, {
-            scale: 1 - 0.035 * progress,
-            opacity: 1,
-            transformOrigin: "center top",
-          });
-        });
-
-        if (!isJumpingRef.current) {
-          if (topActive !== activeIndexRef.current) {
-            activeIndexRef.current = topActive;
-            setActiveIndex(topActive);
-            if (desktopTabsRef.current) {
-              const activeBtn = desktopTabsRef.current.children[topActive] as HTMLElement | undefined;
-              if (activeBtn && typeof activeBtn.scrollIntoView === "function") {
-                activeBtn.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
-              }
-            }
-          }
-        }
-      };
-
-      const trigger = ScrollTrigger.create({
-        trigger: section,
-        start: "top bottom",
-        end: "bottom top",
-        onUpdate: syncStack,
-        onRefresh: syncStack,
-      });
-
-      syncStack();
-
-      return () => {
-        trigger.kill();
-      };
-    });
-
     return () => {
-      mm.revert();
       if (jumpTimeoutRef.current) {
         window.clearTimeout(jumpTimeoutRef.current);
       }
+      if (mobileScrollTimerRef.current) {
+        window.clearTimeout(mobileScrollTimerRef.current);
+      }
     };
   }, []);
-
-  const scrollToService = (index: number) => {
-    activeIndexRef.current = index;
-    setActiveIndex(index);
-    isJumpingRef.current = true;
-    if (jumpTimeoutRef.current) {
-      window.clearTimeout(jumpTimeoutRef.current);
-    }
-
-    if (desktopTabsRef.current) {
-      const activeBtn = desktopTabsRef.current.children[index] as HTMLElement | undefined;
-      if (activeBtn && typeof activeBtn.scrollIntoView === "function") {
-        activeBtn.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
-      }
-    }
-
-    const container = cardsContainerRef.current;
-    const card = cardsRef.current[index];
-    if (!container || !card) {
-      isJumpingRef.current = false;
-      return;
-    }
-
-    // 1. Calculate the container's static document top (unaffected by current scroll position or sticky states)
-    const containerDocTop =
-      container.getBoundingClientRect().top + window.scrollY;
-    const containerPaddingTop =
-      parseFloat(getComputedStyle(container).paddingTop) || 0;
-
-    // 2. Compute natural un-stuck offset using layout heights and standard margins
-    let offsetFromContainer = containerPaddingTop;
-    for (let i = 0; i < index; i++) {
-      const cardEl = cardsRef.current[i];
-      const nextCardEl = cardsRef.current[i + 1];
-      const cardHeight = cardEl ? cardEl.offsetHeight : 550;
-      const margin = nextCardEl
-        ? parseFloat(getComputedStyle(nextCardEl).marginTop) || 32
-        : 32;
-      offsetFromContainer += cardHeight + margin;
-    }
-
-    // 3. Static target document top of this card
-    const cardDocTop = containerDocTop + offsetFromContainer;
-    const parkTop = parseFloat(getComputedStyle(card).top) || 80 + index * 8.8;
-
-    // Target scroll lands the card at its exact park position (or slightly past to ensure clean stacking)
-    const targetY = Math.max(
-      0,
-      Math.round(cardDocTop - parkTop + (index === 0 ? 0 : 35)),
-    );
-
-    const unlock = () => {
-      isJumpingRef.current = false;
-    };
-
-    jumpTimeoutRef.current = window.setTimeout(unlock, 1550);
-
-    const lenis = (
-      window as unknown as {
-        __lenis?: {
-          scrollTo: (
-            target: number,
-            opts?: {
-              duration?: number;
-              easing?: (t: number) => number;
-              lock?: boolean;
-              onComplete?: () => void;
-            },
-          ) => void;
-        };
-      }
-    ).__lenis;
-
-    if (lenis && typeof lenis.scrollTo === "function") {
-      lenis.scrollTo(targetY, {
-        duration: 1.45,
-        easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
-        lock: false,
-        onComplete: unlock,
-      });
-    } else {
-      window.scrollTo({ top: targetY, behavior: "smooth" });
-    }
-  };
 
   const activeService = services[activeIndex] || services[0];
 
@@ -919,101 +953,24 @@ export function Services() {
             </div>
           </div>
 
-          {/* Right Column: High-Impact Stacking Cards with Attention-Grabbing Imagery */}
+          {/* Right Column: High-Impact Framer Motion Stacking Cards */}
           <div
             ref={cardsContainerRef}
-            className="lg:col-span-7 space-y-8 lg:pt-6"
-            style={{ "--stack-base": "5rem" } as React.CSSProperties}
+            className="lg:col-span-7 relative"
           >
-            {services.map((service, index) => {
-              const Icon = service.icon;
-
-              return (
-                <article
-                  id={`service-${service.number}`}
-                  key={service.number}
-                  ref={(el) => {
-                    cardsRef.current[index] = el;
-                  }}
-                  style={{
-                    top: `calc(var(--stack-base, 5rem) + ${index * 0.55}rem)`,
-                  }}
-                  className="group sticky min-h-[34rem] sm:min-h-[35rem] lg:min-h-[36rem] overflow-hidden rounded-3xl border border-paper/20 bg-ink shadow-2xl shadow-ink/70 flex flex-col justify-between p-7 sm:p-8 lg:p-9"
-                >
-                  {/* Full Background Image (Full-bleed & Bright) wrapped in absolute container to satisfy Next.js fill constraint on sticky parents */}
-                  <div className="absolute inset-0">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      sizes="(min-width: 1024px) 58vw, 100vw"
-                      className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                    />
-                  </div>
-
-                  {/* Soft & Transparent Gradient: keeps the photo bright & vivid while supporting text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-ink/15 via-ink/30 to-ink/75 pointer-events-none" />
-
-                  {/* Top Header Row: Large Prominent Title & Floating Glass Icon (Clean & Uncut) */}
-                  <div className="relative z-1 flex items-start justify-between gap-4">
-                    <h3 className="font-bricolage text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-paper drop-shadow-lg leading-tight">
-                      {service.title}
-                    </h3>
-
-                    <span className="grid size-12 sm:size-14 place-items-center rounded-full border border-paper/30 bg-ink/50 text-paper backdrop-blur-md transition-all duration-500 group-hover:rotate-12 group-hover:bg-accent group-hover:text-ink shadow-md shrink-0">
-                      <Icon size={24} strokeWidth={1.8} />
-                    </span>
-                  </div>
-
-                  {/* Middle: 4 Frosted Glass Milestone Tiles with Compact Typography (Wide-Open Picture View) */}
-                  <div className="relative z-1 space-y-3">
-                    <div className="flex items-center justify-between">
-                      <p className="text-xs font-extrabold uppercase tracking-widest text-accent drop-shadow-md">
-                        Operational Execution
-                      </p>
-                      <span className="text-xs font-semibold text-paper/75 uppercase tracking-wider hidden sm:inline-block drop-shadow-sm">
-                        Dedicated US-Hour Desk
-                      </span>
-                    </div>
-
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {service.steps.map((step, sIdx) => (
-                        <div
-                          key={step.title}
-                          className="rounded-2xl border border-paper/20 bg-ink/50 p-3 sm:p-3.5 backdrop-blur-md transition-all duration-300 hover:border-accent/40 hover:bg-ink/75 shadow-sm"
-                        >
-                          <div className="flex items-center gap-2">
-                            <span className="text-[0.65rem] font-extrabold text-accent uppercase tracking-wider">
-                              Step 0{sIdx + 1}
-                            </span>
-                            <span className="size-1 rounded-full bg-paper/40" />
-                            <h4 className="font-bricolage text-xs sm:text-sm font-bold uppercase text-paper tracking-wide">
-                              {step.title}
-                            </h4>
-                          </div>
-                          <p className="mt-1 text-[0.72rem] sm:text-xs leading-relaxed text-paper/85 font-medium">
-                            {step.description}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Card Footer */}
-                  <div className="relative z-1 flex items-center justify-between border-t border-paper/15 pt-4">
-                    <p className="text-xs font-medium text-paper/80 hidden sm:block drop-shadow-sm">
-                      Direct integration into your CRM, TMS & freight software.
-                    </p>
-                    <CtaButton
-                      href="#contact"
-                      className="ml-auto"
-                    >
-                      Inquire about {service.title}
-                    </CtaButton>
-                  </div>
-                </article>
-              );
-            })}
+            {services.map((service, index) => (
+              <ServiceStackCard
+                key={service.number}
+                service={service}
+                index={index}
+                totalCards={services.length}
+                progress={scrollYProgress}
+                reduced={isReduced}
+                wrapperRefCallback={(el) => {
+                  cardWrappersRef.current[index] = el;
+                }}
+              />
+            ))}
           </div>
         </div>
       </div>
