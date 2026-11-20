@@ -246,18 +246,18 @@ export function Header() {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => smoothScrollTo(link.href, e)}
-                  className="group relative flex h-9 items-center rounded-full px-4 text-xs font-medium uppercase tracking-wider text-foreground transition-colors duration-300 hover:bg-accent/25 hover:text-primary"
+                  className="group relative flex h-9 items-center rounded-full px-4 text-[13px] font-medium uppercase tracking-wider text-foreground transition-colors duration-300 hover:bg-accent/25 hover:text-primary"
                   style={{ transitionTimingFunction: EASE }}
                 >
-                  <span className="relative block h-4 overflow-hidden">
+                  <span className="relative block h-4 overflow-hidden whitespace-nowrap">
                     <span
-                      className="block leading-4 transition-transform duration-400 group-hover:-translate-y-full"
+                      className="block leading-4 whitespace-nowrap transition-transform duration-400 group-hover:-translate-y-full"
                       style={{ transitionTimingFunction: EASE }}
                     >
                       {link.label}
                     </span>
                     <span
-                      className="absolute top-0 left-0 block leading-4 translate-y-full transition-transform duration-400 group-hover:translate-y-0 text-primary font-bold"
+                      className="absolute top-0 left-0 block leading-4 whitespace-nowrap translate-y-full transition-transform duration-400 group-hover:translate-y-0"
                       style={{ transitionTimingFunction: EASE }}
                       aria-hidden="true"
                     >
@@ -411,15 +411,15 @@ export function Header() {
                     style={{ transitionTimingFunction: EASE }}
                   />
                   <div className="relative flex items-center justify-between overflow-hidden">
-                    <div className="relative block h-7 overflow-hidden">
+                    <div className="relative block h-7 overflow-hidden whitespace-nowrap">
                       <span
-                        className="block text-2xl leading-7 font-medium uppercase tracking-tight text-foreground transition-transform duration-400 group-hover:-translate-y-full"
+                        className="block text-2xl leading-7 font-medium uppercase tracking-tight text-foreground whitespace-nowrap transition-transform duration-400 group-hover:-translate-y-full"
                         style={{ transitionTimingFunction: EASE }}
                       >
                         {link.label}
                       </span>
                       <span
-                        className="absolute top-0 left-0 block text-2xl leading-7 font-medium uppercase tracking-tight text-primary transition-transform duration-400 translate-y-full group-hover:translate-y-0"
+                        className="absolute top-0 left-0 block text-2xl leading-7 font-medium uppercase tracking-tight text-primary whitespace-nowrap transition-transform duration-400 translate-y-full group-hover:translate-y-0"
                         style={{ transitionTimingFunction: EASE }}
                         aria-hidden="true"
                       >

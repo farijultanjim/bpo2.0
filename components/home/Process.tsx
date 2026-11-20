@@ -92,8 +92,10 @@ export function Process() {
     <section
       id="process"
       ref={sectionRef}
-      className="overflow-hidden bg-accent text-ink"
+      className="relative overflow-hidden bg-accent text-ink"
     >
+      {/* Anchor target for Lenis / Navigation */}
+      <div id="work" className="absolute -top-16 pointer-events-none" />
       <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-44">
         <div className="grid items-end gap-10 lg:grid-cols-3 lg:gap-20">
           <h2 className="section-heading lg:col-span-2">

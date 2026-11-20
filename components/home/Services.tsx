@@ -940,14 +940,16 @@ export function Services() {
                   }}
                   className="group sticky min-h-[34rem] sm:min-h-[35rem] lg:min-h-[36rem] overflow-hidden rounded-3xl border border-paper/20 bg-ink shadow-2xl shadow-ink/70 flex flex-col justify-between p-7 sm:p-8 lg:p-9"
                 >
-                  {/* Full Background Image (Full-bleed & Bright) */}
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    sizes="(min-width: 1024px) 58vw, 100vw"
-                    className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                  />
+                  {/* Full Background Image (Full-bleed & Bright) wrapped in absolute container to satisfy Next.js fill constraint on sticky parents */}
+                  <div className="absolute inset-0">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(min-width: 1024px) 58vw, 100vw"
+                      className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                    />
+                  </div>
 
                   {/* Soft & Transparent Gradient: keeps the photo bright & vivid while supporting text readability */}
                   <div className="absolute inset-0 bg-gradient-to-b from-ink/15 via-ink/30 to-ink/75 pointer-events-none" />

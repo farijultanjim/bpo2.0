@@ -130,8 +130,10 @@ export function Metrics() {
     <section
       id="results"
       ref={sectionRef}
-      className="overflow-clip bg-paper px-5 py-24 text-ink sm:px-8 sm:py-32 lg:px-12 lg:py-44"
+      className="relative overflow-clip bg-paper px-5 py-24 text-ink sm:px-8 sm:py-32 lg:px-12 lg:py-44"
     >
+      {/* Anchor target for Lenis / Navigation */}
+      <div id="metrics" className="absolute -top-16 pointer-events-none" />
       <div className="relative mx-auto max-w-site">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
           <div className="lg:sticky lg:top-32 lg:h-fit">
