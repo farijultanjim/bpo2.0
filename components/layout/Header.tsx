@@ -17,6 +17,7 @@ import {
   Users,
 } from "lucide-react";
 import { useMagnetic } from "@/app/lib/use-magnetic";
+import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
 
 const EASE = "cubic-bezier(0.8, 0, 0.3, 1)";
 const CURVE_EASE = [0.22, 1, 0.36, 1] as const;
@@ -198,7 +199,7 @@ export function Header() {
         };
         if (reduced) return;
 
-        const pull = container.offsetWidth * (desktop ? 0.08 : 0.03);
+        const pull = container.offsetWidth * (desktop ? 0.05 : 0.02);
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: document.body,
@@ -573,8 +574,11 @@ export function Header() {
             <div
               ref={rightRef}
               id="header-right"
-              className="flex shrink-0 items-center gap-3 z-10"
+              className="flex shrink-0 items-center gap-2 sm:gap-3 z-10"
             >
+              {/* Theme Switcher for Stakeholder Review */}
+              <ThemeSwitcher />
+
               {/* Mobile-only menu toggle */}
               <button
                 id="header-right-menu-btn"
@@ -806,6 +810,14 @@ export function Header() {
                     </svg>
                   </span>
                 </a>
+
+                {/* Mobile Drawer Theme Switcher */}
+                <div className="flex items-center justify-between px-2 pt-1 border-t border-line/20">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-muted">
+                    Theme:
+                  </span>
+                  <ThemeSwitcher compact />
+                </div>
 
                 {/* 24/7 Operations Support Contact */}
                 <div className="flex items-center justify-between px-2 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-muted">

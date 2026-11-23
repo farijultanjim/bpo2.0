@@ -38,8 +38,9 @@ export default function RootLayout({
         <noscript>
           <style>{`.invisible{visibility:visible}canvas{opacity:1}`}</style>
         </noscript>
-        <CustomCursor />
+        {/* <CustomCursor /> */}
         <SmoothScroll>
+          
           <Header />
           {children}
           <Footer />

@@ -69,7 +69,7 @@ export function Faq() {
     <section
       id="faq"
       ref={sectionRef}
-      className="bg-background px-5 py-24 text-primary sm:px-8 sm:py-32 lg:px-12 lg:py-44"
+      className="bg-background px-5 py-24 text-foreground sm:px-8 sm:py-32 lg:px-12 lg:py-44"
     >
       <div className="mx-auto max-w-site">
         <div className="grid gap-16 lg:grid-cols-3 lg:gap-24">
@@ -90,14 +90,14 @@ export function Faq() {
             </h2>
             <p
               data-faq-heading
-              className="mt-8 max-w-sm text-base font-medium leading-relaxed text-primary/70"
+              className="mt-8 max-w-sm text-base font-medium leading-relaxed text-foreground/70"
             >
               Clear expectations build reliable partnerships. Here are the
               questions leadership teams ask us most.
             </p>
           </div>
 
-          <div data-faq-list className="lg:col-span-2 border-t border-primary">
+          <div data-faq-list className="lg:col-span-2 border-t border-foreground">
             {questions.map((item, index) => {
               const isOpen = openItem === index;
               const panelId = `faq-panel-${index}`;
@@ -106,7 +106,7 @@ export function Faq() {
                 <article
                   data-faq-item
                   key={item.question}
-                  className="border-b border-primary/20"
+                  className="border-b border-foreground/20"
                 >
                   <button
                     type="button"
@@ -116,14 +116,14 @@ export function Faq() {
                     className="group flex w-full items-start justify-between gap-8 py-7 text-left sm:py-9 cursor-pointer"
                   >
                     <span className="flex gap-5 sm:gap-8">
-                      <span className="pt-1 text-xs font-extrabold tracking-widest text-primary/40">
+                      <span className="pt-1 text-xs font-extrabold tracking-widest text-foreground/40">
                         0{index + 1}
                       </span>
                       <span className="max-w-2xl font-bricolage text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">
                         {item.question}
                       </span>
                     </span>
-                    <span className="grid size-11 shrink-0 place-items-center rounded-full border border-primary/25 transition-all duration-300 group-hover:bg-primary group-hover:text-background">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-full border border-foreground/25 transition-all duration-300 group-hover:bg-primary group-hover:text-background">
                       {isOpen ? (
                         <Minus size={18} strokeWidth={1.8} />
                       ) : (
@@ -139,7 +139,7 @@ export function Faq() {
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <p className="max-w-2xl pb-8 pl-10 pr-16 text-sm font-medium leading-relaxed text-primary/70 sm:pb-10 sm:pl-16 sm:text-base">
+                      <p className="max-w-2xl pb-8 pl-10 pr-16 text-sm font-medium leading-relaxed text-foreground/70 sm:pb-10 sm:pl-16 sm:text-base">
                         {item.answer}
                       </p>
                     </div>

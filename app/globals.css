@@ -2,7 +2,7 @@
 @import "lenis/dist/lenis.css";
 
 :root {
-  /* ── Spectra Brand Theme Tokens ── */
+  /* ── Spectra Brand Theme Tokens (Default: Forest Lime) ── */
   --primary: #183c31;
   --primary-hover: #0f2c23;
   --accent: #c9f36a;
@@ -17,6 +17,49 @@
   /* ── Typography ── */
   --font-manrope: var(--font-manrope-family, "Manrope", sans-serif);
   --font-bricolage: var(--font-bricolage-family, "Bricolage Grotesque", sans-serif);
+}
+
+/* ── Theme 2: Twilight Coral (Modern Tech / BPO) ── */
+[data-theme="coral"] {
+  --primary: #1E2548;
+  --primary-hover: #161C38;
+  --accent: #FF5A4E;
+  --accent-hover: #FF746A;
+  --background: #F5F3ED;
+  --foreground: #141724;
+  --surface: #ffffff;
+  --line: #E2DDD3;
+  --muted: #656C82;
+  --canvas: #EAE6DC;
+}
+
+/* ── Theme 3: Sapphire Cyan (Global Logistics Control Tower) ── */
+[data-theme="cobalt"] {
+  --primary: #083270;
+  --primary-hover: #052352;
+  --accent: #00E5FF;
+  --accent-hover: #33EBFF;
+  --background: #F0F6FF;
+  --foreground: #091A38;
+  --surface: #ffffff;
+  --line: #DCE7F7;
+  --muted: #566D92;
+  --canvas: #E6F0FC;
+}
+
+/* ── Theme 4: Electric Canary (High-Speed Logistics & Royal Cobalt) ── */
+[data-theme="canary"],
+[data-theme="amber"] {
+  --primary: #1C0770;
+  --primary-hover: #0054CC;
+  --accent: #FFF100;
+  --accent-hover: #FFE600;
+  --background: #F4F7FF;
+  --foreground: #08142C;
+  --surface: #ffffff;
+  --line: #D6E4FC;
+  --muted: #506992;
+  --canvas: #E7EFFF;
 }
 
 @theme inline {

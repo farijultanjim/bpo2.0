@@ -90,31 +90,31 @@ export function Craft() {
   }, []);
 
   return (
-    <section id="infrastructure" ref={sectionRef} className="overflow-hidden bg-background text-primary">
+    <section id="infrastructure" ref={sectionRef} className="overflow-hidden bg-background text-foreground">
       <div className="mx-auto max-w-site px-5 pb-20 pt-24 sm:px-8 sm:pt-32 lg:px-12 lg:pb-32 lg:pt-44">
-        <div className="grid gap-8 border-t border-primary/20 pt-6 lg:grid-cols-12 lg:gap-16">
+        <div className="grid gap-8 border-t border-foreground/20 pt-6 lg:grid-cols-12 lg:gap-16">
           {/* Left Column: Kicker + Quick Operational Badges */}
           <div data-reveal className="lg:col-span-4 space-y-6">
             <div className="flex items-center gap-3">
               <span className="size-2 rounded-full bg-accent" />
-              <p className="text-xs font-bold uppercase tracking-widest text-primary">
+              <p className="text-xs font-bold uppercase tracking-widest text-foreground">
                 Dedicated Capacity
               </p>
             </div>
             <div className="hidden lg:block space-y-3 pt-2">
-              <div className="rounded-xl border border-primary/10 bg-canvas/60 p-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-primary/60">
+              <div className="rounded-xl border border-foreground/10 bg-canvas/60 p-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-foreground/60">
                   Global Hubs
                 </p>
-                <p className="mt-1 text-sm font-bold text-primary">
+                <p className="mt-1 text-sm font-bold text-foreground">
                   New York • Dubai • Dhaka • Singapore
                 </p>
               </div>
-              <div className="rounded-xl border border-primary/10 bg-canvas/60 p-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-primary/60">
+              <div className="rounded-xl border border-foreground/10 bg-canvas/60 p-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-foreground/60">
                   Shift Coverage
                 </p>
-                <p className="mt-1 text-sm font-bold text-primary">
+                <p className="mt-1 text-sm font-bold text-foreground">
                   Real-time US-hours operational sync
                 </p>
               </div>
@@ -130,7 +130,7 @@ export function Craft() {
 
             <p
               data-reveal
-              className="max-w-3xl text-base font-medium leading-relaxed text-primary/75 sm:text-lg"
+              className="max-w-3xl text-base font-medium leading-relaxed text-foreground/75 sm:text-lg"
             >
               Extend your core team overseas without the hiring lag, night-shift
               burnout, or turnover. 500+ domain specialists work directly in your
@@ -141,38 +141,38 @@ export function Craft() {
 
             {/* Dependable Trust Pillars */}
             <div data-reveal className="grid gap-4 sm:grid-cols-3 pt-2">
-              <div className="rounded-2xl border border-primary/15 bg-canvas/50 p-5">
-                <p className="text-xs font-extrabold uppercase tracking-wider text-primary/50">
+              <div className="rounded-2xl border border-foreground/15 bg-canvas/50 p-5">
+                <p className="text-xs font-extrabold uppercase tracking-wider text-foreground/50">
                   01 / Coverage
                 </p>
-                <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-primary">
+                <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-foreground">
                   US Working Hours
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-primary/70">
+                <p className="mt-2 text-xs leading-relaxed text-foreground/70">
                   Multi-shift teams operating in real time across EST, CST, and PST business hours.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-primary/15 bg-canvas/50 p-5">
-                <p className="text-xs font-extrabold uppercase tracking-wider text-primary/50">
+              <div className="rounded-2xl border border-foreground/15 bg-canvas/50 p-5">
+                <p className="text-xs font-extrabold uppercase tracking-wider text-foreground/50">
                   02 / Software
                 </p>
-                <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-primary">
+                <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-foreground">
                   Your Own Tools
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-primary/70">
+                <p className="mt-2 text-xs leading-relaxed text-foreground/70">
                   We operate directly inside your TMS, ERP, carrier portals, email, and Slack channels.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-primary/15 bg-canvas/50 p-5">
-                <p className="text-xs font-extrabold uppercase tracking-wider text-primary/50">
+              <div className="rounded-2xl border border-foreground/15 bg-canvas/50 p-5">
+                <p className="text-xs font-extrabold uppercase tracking-wider text-foreground/50">
                   03 / Savings
                 </p>
-                <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-primary">
+                <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-foreground">
                   Up to 72% Lower Cost
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-primary/70">
+                <p className="mt-2 text-xs leading-relaxed text-foreground/70">
                   No payroll taxes, healthcare, 401K, or recruiting overhead for every added FTE.
                 </p>
               </div>

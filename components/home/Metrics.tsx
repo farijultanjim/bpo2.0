@@ -130,7 +130,7 @@ export function Metrics() {
     <section
       id="results"
       ref={sectionRef}
-      className="relative overflow-clip bg-background px-5 py-24 text-primary sm:px-8 sm:py-32 lg:px-12 lg:py-44"
+      className="relative overflow-clip bg-background px-5 py-24 text-foreground sm:px-8 sm:py-32 lg:px-12 lg:py-44"
     >
       {/* Anchor target for Lenis / Navigation */}
       <div id="metrics" className="absolute -top-16 pointer-events-none" />
@@ -153,7 +153,7 @@ export function Metrics() {
               </span>
             </h2>
 
-            <p className="mt-8 max-w-md text-base font-medium leading-relaxed text-primary/70 sm:text-lg">
+            <p className="mt-8 max-w-md text-base font-medium leading-relaxed text-foreground/70 sm:text-lg">
               Trust is earned through measurable cost reduction, strict SLA
               adherence, and audited operational security.
             </p>
@@ -171,19 +171,19 @@ export function Metrics() {
                 <article
                   data-result-row
                   key={result.label}
-                  className="group grid min-h-52 grid-cols-2 items-center gap-8 border-b border-primary/20 py-8 sm:grid-cols-3"
+                  className="group grid min-h-52 grid-cols-2 items-center gap-8 border-b border-foreground/20 py-8 sm:grid-cols-3"
                 >
                   <p className="font-bricolage text-6xl sm:text-7xl lg:text-8xl font-semibold leading-none tracking-tighter tabular-nums">
                     <span data-count>{format(result.value, result.decimals)}</span>
                     <span>{result.suffix}</span>
                   </p>
-                  <p className="hidden max-w-xs text-sm font-semibold leading-relaxed text-primary/70 sm:block sm:text-base">
+                  <p className="hidden max-w-xs text-sm font-semibold leading-relaxed text-foreground/70 sm:block sm:text-base">
                     {result.label}
                   </p>
-                  <span className="grid size-14 place-items-center justify-self-end rounded-full border border-primary/20 transition-all duration-500 group-hover:rotate-6 group-hover:border-primary group-hover:bg-primary group-hover:text-accent">
+                  <span className="grid size-14 place-items-center justify-self-end rounded-full border border-foreground/20 transition-all duration-500 group-hover:rotate-6 group-hover:border-foreground group-hover:bg-primary group-hover:text-accent">
                     <Icon size={22} strokeWidth={1.6} />
                   </span>
-                  <p className="col-span-2 max-w-xs text-sm font-semibold leading-relaxed text-primary/70 sm:hidden">
+                  <p className="col-span-2 max-w-xs text-sm font-semibold leading-relaxed text-foreground/70 sm:hidden">
                     {result.label}
                   </p>
                 </article>
