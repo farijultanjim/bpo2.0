@@ -114,7 +114,7 @@ const getIsDarkUnderHeader = (): boolean => {
       const cls = section.className || "";
       if (
         cls.includes("bg-accent") ||
-        cls.includes("bg-paper") ||
+        cls.includes("bg-background") ||
         cls.includes("bg-background") ||
         section.id === "process" ||
         section.id === "results" ||
@@ -370,7 +370,7 @@ export function Header() {
               </div>
               <span
                 className={`font-heading text-xl md:text-2xl font-extrabold tracking-tight uppercase leading-none select-none transition-colors duration-300 ${
-                  isDarkTheme ? "text-paper drop-shadow-md" : "text-foreground"
+                  isDarkTheme ? "text-background drop-shadow-md" : "text-foreground"
                 }`}
               >
                 SPECTRA
@@ -585,7 +585,9 @@ export function Header() {
                 aria-expanded={open}
                 aria-controls="header-menu"
                 className={`group relative flex lg:hidden h-11 items-center overflow-hidden rounded-full px-6 pr-4 text-sm font-bold uppercase tracking-wider transition-colors duration-300 cursor-pointer border-none shadow-none ${
-                  isDarkTheme ? "cta-button-dark" : "cta-button-light"
+                  isDarkTheme
+                    ? "bg-accent text-primary hover:bg-primary hover:text-accent"
+                    : "bg-primary text-background hover:bg-accent hover:text-primary"
                 }`}
               >
                 <div className="relative flex items-center justify-center overflow-hidden gap-2">
@@ -635,7 +637,9 @@ export function Header() {
                   smoothScrollTo("#contact", e);
                 }}
                 className={`group relative hidden lg:flex h-11 items-center overflow-hidden rounded-full px-6 pr-4 text-sm font-medium uppercase tracking-wider transition-colors duration-300 border-none shadow-none cursor-pointer ${
-                  isDarkTheme ? "cta-button-dark" : "cta-button-light"
+                  isDarkTheme
+                    ? "bg-accent text-primary hover:bg-primary hover:text-accent"
+                    : "bg-primary text-background hover:bg-accent hover:text-primary"
                 }`}
               >
                 {/* Sliding arrow on hover */}
@@ -670,19 +674,19 @@ export function Header() {
 
                 {/* Feature 3: Dynamic 24/7 Live Operations Beacon Pulse matching button theme */}
                 <span
-                  className="relative ml-3.5 flex size-2 items-center justify-center transition-transform duration-200 group-hover:scale-0"
+                  className="relative ml-2.5 flex size-1.5 items-center justify-center transition-transform duration-200 group-hover:scale-0"
                   style={{ transitionTimingFunction: EASE }}
                   aria-label="24/7 Live Support"
                 >
                   <span
-                    className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 transition-colors duration-300 ${
+                    className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 transition-colors duration-300 [animation-duration:700ms] ${
                       isDarkTheme
                         ? "bg-primary group-hover:bg-accent"
                         : "bg-accent group-hover:bg-primary"
                     }`}
                   />
                   <span
-                    className={`relative inline-flex size-2 rounded-full transition-colors duration-300 ${
+                    className={`relative inline-flex size-1.5 rounded-full transition-colors duration-300 ${
                       isDarkTheme
                         ? "bg-primary group-hover:bg-accent"
                         : "bg-accent group-hover:bg-primary"
@@ -776,10 +780,10 @@ export function Header() {
                   }}
                   className="group relative flex w-full h-11 items-center justify-between rounded-full bg-accent px-5 text-sm font-bold uppercase tracking-wider text-primary transition-all duration-300 hover:bg-accent-hover shadow-md cursor-pointer"
                 >
-                  <span className="flex items-center gap-2.5">
-                    <span className="relative flex size-2 items-center justify-center">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-                      <span className="relative inline-flex size-2 rounded-full bg-primary" />
+                  <span className="flex items-center gap-2">
+                    <span className="relative flex size-1.5 items-center justify-center">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75 [animation-duration:700ms]" />
+                      <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
                     </span>
                     Let&rsquo;s talk
                   </span>

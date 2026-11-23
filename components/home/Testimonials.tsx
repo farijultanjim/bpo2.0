@@ -117,14 +117,14 @@ export function Testimonials() {
     <section
       id="stories"
       ref={sectionRef}
-      className="relative scroll-track-stories bg-ink text-paper"
+      className="relative h-[500svh] bg-primary text-background"
     >
       <div className="sticky top-0 flex h-svh flex-col justify-between overflow-hidden px-5 pb-20 pt-20 sm:px-8 sm:pb-24 sm:pt-24 lg:px-12 lg:pb-28 lg:pt-28">
         <svg
           aria-hidden="true"
           viewBox="0 0 900 600"
           fill="none"
-          className="pointer-events-none absolute -right-40 -top-28 w-full max-w-2xl text-paper opacity-10"
+          className="pointer-events-none absolute -right-40 -top-28 w-full max-w-2xl text-background opacity-10"
         >
           <path
             d="M42 558 446 72l412 486M132 558 446 181l321 377M222 558l224-268 229 268"
@@ -152,7 +152,7 @@ export function Testimonials() {
             data-testimonial-intro
             className="hidden items-center gap-3 pb-1 lg:flex"
           >
-            <span className="h-px w-16 bg-paper/40" />
+            <span className="h-px w-16 bg-background/40" />
             <p className="text-xs font-extrabold uppercase tracking-widest">
               Scroll to read
             </p>
@@ -171,12 +171,12 @@ export function Testimonials() {
               <article
                 data-testimonial-card
                 key={testimonial.name}
-                className="testimonial-card-slide group flex max-w-2xl shrink-0 flex-col justify-between rounded-3xl bg-paper p-6 text-ink transition-transform duration-500 hover:-translate-y-2 sm:p-8 lg:p-8"
+                className="w-[85vw] sm:w-[68vw] lg:w-[46vw] group flex max-w-2xl shrink-0 flex-col justify-between rounded-3xl bg-background p-6 text-primary transition-transform duration-500 hover:-translate-y-2 sm:p-8 lg:p-8"
               >
                 <div className="flex items-center justify-between">
-                  <Quote className="text-ink/25" size={34} strokeWidth={1.5} />
+                  <Quote className="text-primary/25" size={34} strokeWidth={1.5} />
                   <div
-                    className="flex gap-1 text-ink"
+                    className="flex gap-1 text-primary"
                     aria-label="Five-star review"
                   >
                     {Array.from({ length: 5 }).map((_, star) => (
@@ -194,8 +194,8 @@ export function Testimonials() {
                   “{testimonial.quote}”
                 </blockquote>
 
-                <div className="flex items-center gap-4 border-t border-ink/20 pt-5">
-                  <span className="relative grid size-12 shrink-0 place-items-center overflow-hidden rounded-full bg-accent text-xs font-extrabold text-ink ring-1 ring-ink/10">
+                <div className="flex items-center gap-4 border-t border-primary/20 pt-5">
+                  <span className="relative grid size-12 shrink-0 place-items-center overflow-hidden rounded-full bg-accent text-xs font-extrabold text-primary ring-1 ring-ink/10">
                     {testimonial.image ? (
                       <Image
                         src={testimonial.image}
@@ -211,11 +211,11 @@ export function Testimonials() {
                   </span>
                   <div>
                     <p className="text-sm font-bold">{testimonial.name}</p>
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-ink/60">
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-primary/60">
                       {testimonial.project}
                     </p>
                   </div>
-                  <p className="ml-auto text-xs font-bold tracking-wider text-ink/55">
+                  <p className="ml-auto text-xs font-bold tracking-wider text-primary/55">
                     0{index + 1}
                   </p>
                 </div>

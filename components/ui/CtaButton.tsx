@@ -5,6 +5,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
 import { prefersReducedMotion } from "@/app/lib/motion";
+import { cn } from "@/app/lib/utils";
 
 export interface CtaButtonProps extends React.HTMLAttributes<HTMLElement> {
   children?: ReactNode;
@@ -95,26 +96,28 @@ export const CtaButton = forwardRef<HTMLElement, CtaButtonProps>(
     // Base container styles per variant - NO transition-transform or hover:scale so GSAP's magnetic tracking is 100% fluid
     const variantClasses = {
       accent:
-        "button-accent group inline-flex items-center gap-5 rounded-full py-2 pl-5 pr-2 text-sm font-bold cursor-pointer",
+        "bg-accent text-primary group inline-flex items-center gap-5 rounded-full py-2 pl-5 pr-2 text-sm font-bold cursor-pointer transition-colors duration-300",
       dark:
-        "button-dark group inline-flex items-center gap-5 rounded-full py-2 pl-6 pr-2 text-sm font-bold cursor-pointer",
+        "bg-primary text-background group inline-flex items-center gap-5 rounded-full py-2 pl-6 pr-2 text-sm font-bold cursor-pointer transition-colors duration-300",
       outline:
-        "group inline-flex items-center gap-3 rounded-full border border-paper/25 px-5 py-2.5 text-sm font-bold text-paper transition-colors duration-300 hover:bg-paper hover:text-ink cursor-pointer",
+        "group inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-2.5 text-sm font-bold text-background transition-colors duration-300 hover:bg-background hover:text-primary cursor-pointer",
     };
 
     // Inner icon disc styles per variant
     const discClasses = {
       accent:
-        "grid size-10 place-items-center rounded-full bg-ink text-paper transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0",
+        "grid size-10 place-items-center rounded-full bg-primary text-background transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0",
       dark:
-        "grid size-10 place-items-center rounded-full bg-paper text-ink transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0",
+        "grid size-10 place-items-center rounded-full bg-background text-primary transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0",
       outline:
-        "grid size-7 place-items-center rounded-full bg-paper/10 text-paper transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0",
+        "grid size-7 place-items-center rounded-full bg-white/10 text-background transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0",
     };
 
-    const combinedClassName = `${variantClasses[variant]} ${
-      fullWidth ? "w-full justify-between" : ""
-    } ${className}`.trim();
+    const combinedClassName = cn(
+      variantClasses[variant],
+      fullWidth && "w-full justify-between",
+      className
+    );
 
     const renderedIcon = icon || <ArrowUpRight size={18} strokeWidth={2} />;
 

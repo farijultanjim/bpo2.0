@@ -359,7 +359,7 @@ function ServiceStackCard({
           scale: reduced ? 1 : scale,
           y: reduced ? 0 : y,
         }}
-        className="group pointer-events-auto relative origin-top min-h-[30rem] sm:min-h-[31rem] lg:min-h-[32rem] overflow-hidden rounded-3xl border border-paper/20 bg-ink shadow-2xl shadow-black/60 flex flex-col justify-between p-6 sm:p-7 lg:p-8 w-full"
+        className="group pointer-events-auto relative origin-top min-h-[30rem] sm:min-h-[31rem] lg:min-h-[32rem] overflow-hidden rounded-3xl border border-white/10 bg-primary shadow-2xl shadow-black/60 flex flex-col justify-between p-6 sm:p-7 lg:p-8 w-full"
       >
         {/* Full Background Image (Full-bleed & Bright) with smooth entrance zoom-out */}
         <div className="absolute inset-0 overflow-hidden">
@@ -378,15 +378,15 @@ function ServiceStackCard({
         </div>
 
         {/* Soft & Transparent Gradient: keeps the photo bright & vivid while supporting text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/15 via-ink/30 to-ink/75 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/15 via-primary/30 to-primary/75 pointer-events-none" />
 
         {/* Top Header Row: Large Prominent Title & Floating Glass Icon (Clean & Uncut) */}
         <div className="relative z-1 flex items-start justify-between gap-4">
-          <h3 className="font-bricolage text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-paper drop-shadow-lg leading-tight">
+          <h3 className="font-bricolage text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-background drop-shadow-lg leading-tight">
             {service.title}
           </h3>
 
-          <span className="grid size-12 sm:size-14 place-items-center rounded-full border border-paper/30 bg-ink/50 text-paper backdrop-blur-md transition-all duration-500 group-hover:rotate-12 group-hover:bg-accent group-hover:text-ink shadow-md shrink-0">
+          <span className="grid size-12 sm:size-14 place-items-center rounded-full border border-white/15 bg-primary/50 text-background backdrop-blur-md transition-all duration-500 group-hover:rotate-12 group-hover:bg-accent group-hover:text-primary shadow-md shrink-0">
             <Icon size={24} strokeWidth={1.8} />
           </span>
         </div>
@@ -397,7 +397,7 @@ function ServiceStackCard({
             <p className="text-xs font-extrabold uppercase tracking-widest text-accent drop-shadow-md">
               Operational Execution
             </p>
-            <span className="text-xs font-semibold text-paper/75 uppercase tracking-wider hidden sm:inline-block drop-shadow-sm">
+            <span className="text-xs font-semibold text-background/75 uppercase tracking-wider hidden sm:inline-block drop-shadow-sm">
               Dedicated US-Hour Desk
             </span>
           </div>
@@ -406,18 +406,18 @@ function ServiceStackCard({
             {service.steps.map((step, sIdx) => (
               <div
                 key={step.title}
-                className="rounded-2xl border border-paper/20 bg-ink/50 p-3 sm:p-3.5 backdrop-blur-md transition-all duration-300 hover:border-accent/40 hover:bg-ink/75 shadow-sm"
+                className="rounded-2xl border border-white/10 bg-primary/50 p-3 sm:p-3.5 backdrop-blur-md transition-all duration-300 hover:border-accent/40 hover:bg-primary/75 shadow-sm"
               >
                 <div className="flex items-center gap-2">
                   <span className="text-[0.65rem] font-extrabold text-accent uppercase tracking-wider">
                     Step 0{sIdx + 1}
                   </span>
-                  <span className="size-1 rounded-full bg-paper/40" />
-                  <h4 className="font-bricolage text-xs sm:text-sm font-bold uppercase text-paper tracking-wide">
+                  <span className="size-1 rounded-full bg-background/40" />
+                  <h4 className="font-bricolage text-xs sm:text-sm font-bold uppercase text-background tracking-wide">
                     {step.title}
                   </h4>
                 </div>
-                <p className="mt-1 text-[0.72rem] sm:text-xs leading-relaxed text-paper/85 font-medium">
+                <p className="mt-1 text-[0.72rem] sm:text-xs leading-relaxed text-background/85 font-medium">
                   {step.description}
                 </p>
               </div>
@@ -426,8 +426,8 @@ function ServiceStackCard({
         </div>
 
         {/* Card Footer: Integration Note & Master CTA Button */}
-        <div className="relative z-1 flex items-center justify-between border-t border-paper/15 pt-4">
-          <p className="text-xs font-medium text-paper/80 hidden sm:block drop-shadow-sm">
+        <div className="relative z-1 flex items-center justify-between border-t border-white/10 pt-4">
+          <p className="text-xs font-medium text-background/80 hidden sm:block drop-shadow-sm">
             Direct integration into your CRM, TMS & freight software.
           </p>
           <CtaButton
@@ -441,6 +441,15 @@ function ServiceStackCard({
     </div>
   );
 }
+
+const getServiceTextClasses = (isActive: boolean, isPast: boolean) => {
+  if (isActive) {
+    return "opacity-100 blur-none translate-y-0 pointer-events-auto duration-850";
+  }
+  return `opacity-0 blur-[4px] pointer-events-none duration-700 ${
+    isPast ? "-translate-y-4" : "translate-y-4"
+  }`;
+};
 
 export function Services() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -619,7 +628,7 @@ export function Services() {
     <section
       id="services"
       ref={sectionRef}
-      className="relative bg-ink px-5 py-24 text-paper sm:px-8 sm:py-32 lg:px-12 lg:py-44"
+      className="relative bg-primary px-5 py-24 text-background sm:px-8 sm:py-32 lg:px-12 lg:py-44"
     >
       <div className="relative mx-auto max-w-site">
         {/* ========================================================= */}
@@ -630,7 +639,7 @@ export function Services() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <span className="size-2 rounded-full bg-accent" />
-              <p className="text-xs font-bold uppercase tracking-widest text-paper/80">
+              <p className="text-xs font-bold uppercase tracking-widest text-background/80">
                 What we do • Specialized Operations
               </p>
             </div>
@@ -640,19 +649,17 @@ export function Services() {
               {services.map((item, idx) => {
                 const isActive = idx === mobileIndex;
                 const isPast = idx < mobileIndex;
-                const stateClass = isActive
-                  ? "service-text-active"
-                  : isPast
-                    ? "service-text-hidden-up"
-                    : "service-text-hidden-down";
 
                 return (
                   <div
                     key={item.number}
-                    className={`col-start-1 row-start-1 space-y-3 ${stateClass}`}
+                    className={`col-start-1 row-start-1 space-y-3 transition-[opacity,filter,transform] ease-[cubic-bezier(0.25,1,0.5,1)] ${getServiceTextClasses(
+                      isActive,
+                      isPast,
+                    )}`}
                   >
                     <div className="space-y-1">
-                      <h2 className="font-bricolage text-3xl sm:text-4xl font-semibold uppercase tracking-tight text-paper">
+                      <h2 className="font-bricolage text-3xl sm:text-4xl font-semibold uppercase tracking-tight text-background">
                         {item.title}
                       </h2>
                       <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-accent">
@@ -660,7 +667,7 @@ export function Services() {
                       </p>
                     </div>
 
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed text-paper/75 line-clamp-3 sm:line-clamp-none">
+                    <p className="text-xs sm:text-sm font-medium leading-relaxed text-background/75 line-clamp-3 sm:line-clamp-none">
                       {item.description}
                     </p>
 
@@ -669,7 +676,7 @@ export function Services() {
                       {item.pills.map((pill) => (
                         <span
                           key={pill}
-                          className="rounded-full border border-paper/20 bg-paper/5 px-2.5 py-0.5 text-[0.65rem] font-semibold text-paper/90"
+                          className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[0.65rem] font-semibold text-background/90"
                         >
                           {pill}
                         </span>
@@ -682,10 +689,10 @@ export function Services() {
           </div>
 
           {/* Horizontal Scrollable Segmented Tab Bar (Symmetric & Balanced) */}
-          <div className="border-t border-paper/15 pt-4">
+          <div className="border-t border-white/10 pt-4">
             <div
               ref={mobileTabsRef}
-              className="flex items-center gap-2 overflow-x-auto py-1 scrollbar-none"
+              className="flex items-center gap-2 overflow-x-auto py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {services.map((service, idx) => {
                 const isSelected = idx === mobileIndex;
@@ -697,7 +704,7 @@ export function Services() {
                     className={`group relative flex shrink-0 items-center rounded-full px-3.5 py-2 text-xs font-bold transition-[background-color,color,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ${
                       isSelected
                         ? "bg-accent text-primary border border-accent"
-                        : "border border-paper/20 bg-paper/5 text-paper/70 hover:border-paper/40 hover:bg-paper/10 hover:text-paper"
+                        : "border border-white/15 bg-white/5 text-background/70 hover:border-white/30 hover:bg-white/10 hover:text-background"
                     }`}
                   >
                     <span className="shrink-0">{service.number}</span>
@@ -732,7 +739,7 @@ export function Services() {
                 isMobileScrollingRef.current = false;
               }
             }}
-            className={`relative flex gap-4 overflow-x-auto scrollbar-none px-1 py-1 ${
+            className={`relative flex gap-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-1 py-1 ${
               isSnapping ? "snap-x snap-mandatory" : ""
             }`}
             style={{
@@ -744,7 +751,7 @@ export function Services() {
               return (
                 <div
                   key={item.number}
-                  className="group relative overflow-hidden rounded-3xl border border-paper/20 bg-ink shadow-md flex flex-col justify-between p-5 pb-5 sm:p-7 sm:pb-7 w-[86vw] sm:w-[82vw] max-w-[27rem] shrink-0 snap-start min-h-[25.5rem]"
+                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-primary shadow-md flex flex-col justify-between p-5 pb-5 sm:p-7 sm:pb-7 w-[86vw] sm:w-[82vw] max-w-[27rem] shrink-0 snap-start min-h-[25.5rem]"
                 >
                   {/* Full-bleed Background Picture (Vivid & Bright) */}
                   <Image
@@ -756,15 +763,15 @@ export function Services() {
                   />
 
                   {/* Strictly Internal Gradient Scrim: 100% Clipped inside Rounded Card */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 via-50% to-ink/10 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 via-50% to-primary/10 pointer-events-none" />
 
                   {/* Card Top: Prominent Service Title & Floating Glass Icon */}
                   <div className="relative z-1 flex items-start justify-between gap-3">
-                    <h3 className="font-bricolage text-xl sm:text-2xl font-bold uppercase tracking-tight text-paper drop-shadow-lg leading-tight">
+                    <h3 className="font-bricolage text-xl sm:text-2xl font-bold uppercase tracking-tight text-background drop-shadow-lg leading-tight">
                       {item.title}
                     </h3>
 
-                    <span className="grid size-11 place-items-center rounded-full border border-paper/30 bg-ink/60 text-paper backdrop-blur-md transition-all duration-500 group-hover:rotate-12 group-hover:bg-accent group-hover:text-ink shadow-md shrink-0">
+                    <span className="grid size-11 place-items-center rounded-full border border-white/15 bg-primary/60 text-background backdrop-blur-md transition-all duration-500 group-hover:rotate-12 group-hover:bg-accent group-hover:text-primary shadow-md shrink-0">
                       <CurIcon size={20} strokeWidth={1.8} />
                     </span>
                   </div>
@@ -779,18 +786,18 @@ export function Services() {
                       {item.steps.map((step, stepIdx) => (
                         <div
                           key={step.title}
-                          className="rounded-2xl border border-paper/15 bg-ink/60 p-2.5 backdrop-blur-md transition-all duration-300 hover:border-accent/40 hover:bg-ink/80 shadow-sm"
+                          className="rounded-2xl border border-white/10 bg-primary/60 p-2.5 backdrop-blur-md transition-all duration-300 hover:border-accent/40 hover:bg-primary/80 shadow-sm"
                         >
                           <div className="flex items-center gap-1.5">
                             <span className="text-[0.62rem] font-extrabold text-accent uppercase tracking-wider">
                               0{stepIdx + 1}
                             </span>
-                            <span className="size-1 rounded-full bg-paper/40" />
-                            <h4 className="font-bricolage text-[0.72rem] font-bold uppercase text-paper leading-tight">
+                            <span className="size-1 rounded-full bg-background/40" />
+                            <h4 className="font-bricolage text-[0.72rem] font-bold uppercase text-background leading-tight">
                               {step.title}
                             </h4>
                           </div>
-                          <p className="mt-1 text-[0.68rem] leading-snug text-paper/85 font-medium">
+                          <p className="mt-1 text-[0.68rem] leading-snug text-background/85 font-medium">
                             {step.description}
                           </p>
                         </div>
@@ -810,7 +817,7 @@ export function Services() {
                   type="button"
                   onClick={prevMobileService}
                   aria-label="Previous Service"
-                  className="grid size-10 place-items-center rounded-full border border-paper/25 bg-ink/60 text-paper transition-all hover:bg-accent hover:text-ink cursor-pointer shadow-md"
+                  className="grid size-10 place-items-center rounded-full border border-white/15 bg-primary/60 text-background transition-all hover:bg-accent hover:text-primary cursor-pointer shadow-md"
                 >
                   <ChevronLeft size={18} />
                 </button>
@@ -818,11 +825,11 @@ export function Services() {
                   type="button"
                   onClick={nextMobileService}
                   aria-label="Next Service"
-                  className="grid size-10 place-items-center rounded-full border border-paper/25 bg-ink/60 text-paper transition-all hover:bg-accent hover:text-ink cursor-pointer shadow-md"
+                  className="grid size-10 place-items-center rounded-full border border-white/15 bg-primary/60 text-background transition-all hover:bg-accent hover:text-primary cursor-pointer shadow-md"
                 >
                   <ChevronRight size={18} />
                 </button>
-                <span className="ml-2 text-xs font-bold text-paper/60">
+                <span className="ml-2 text-xs font-bold text-background/60">
                   Swipe cards ↔
                 </span>
               </div>
@@ -838,7 +845,7 @@ export function Services() {
                     className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                       dotIdx === mobileIndex
                         ? "w-6 bg-accent"
-                        : "w-1.5 bg-paper/30 hover:bg-paper/50"
+                        : "w-1.5 bg-background/30 hover:bg-background/50"
                     }`}
                   />
                 ))}
@@ -863,7 +870,7 @@ export function Services() {
           <div className="lg:col-span-5 lg:sticky lg:top-0 lg:h-svh lg:flex lg:flex-col lg:justify-center lg:self-start space-y-6">
             <div className="flex items-center gap-3">
               <span className="size-2 rounded-full bg-accent" />
-              <p className="text-xs font-bold uppercase tracking-widest text-paper/80">
+              <p className="text-xs font-bold uppercase tracking-widest text-background/80">
                 What we do • Specialized Operations
               </p>
             </div>
@@ -873,19 +880,17 @@ export function Services() {
               {services.map((item, idx) => {
                 const isActive = idx === activeIndex;
                 const isPast = idx < activeIndex;
-                const stateClass = isActive
-                  ? "service-text-active"
-                  : isPast
-                    ? "service-text-hidden-up"
-                    : "service-text-hidden-down";
 
                 return (
                   <div
                     key={item.number}
-                    className={`col-start-1 row-start-1 space-y-4 ${stateClass}`}
+                    className={`col-start-1 row-start-1 space-y-4 transition-[opacity,filter,transform] ease-[cubic-bezier(0.25,1,0.5,1)] ${getServiceTextClasses(
+                      isActive,
+                      isPast,
+                    )}`}
                   >
                     <div className="space-y-2">
-                      <h2 className="font-bricolage text-4xl sm:text-5xl font-semibold uppercase tracking-tight text-paper">
+                      <h2 className="font-bricolage text-4xl sm:text-5xl font-semibold uppercase tracking-tight text-background">
                         {item.title}
                       </h2>
                       <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-accent">
@@ -893,7 +898,7 @@ export function Services() {
                       </p>
                     </div>
 
-                    <p className="text-sm sm:text-base font-medium leading-relaxed text-paper/75 max-w-md">
+                    <p className="text-sm sm:text-base font-medium leading-relaxed text-background/75 max-w-md">
                       {item.description}
                     </p>
 
@@ -902,7 +907,7 @@ export function Services() {
                       {item.pills.map((pill) => (
                         <span
                           key={pill}
-                          className="rounded-full border border-paper/20 bg-paper/5 px-3.5 py-1 text-xs font-semibold text-paper/90"
+                          className="rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-semibold text-background/90"
                         >
                           {pill}
                         </span>
@@ -914,13 +919,13 @@ export function Services() {
             </div>
 
             {/* Interactive 8-Service Navigator */}
-            <div className="pt-4 border-t border-paper/15 space-y-3">
-              <p className="text-xs font-extrabold uppercase tracking-widest text-paper/50">
+            <div className="pt-4 border-t border-white/10 space-y-3">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-background/50">
                 Jump to Division
               </p>
               <div
                 ref={desktopTabsRef}
-                className="flex items-center gap-2 overflow-x-auto py-1 scrollbar-none"
+                className="flex items-center gap-2 overflow-x-auto py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               >
                 {services.map((item, idx) => {
                   const isActive = idx === activeIndex;
@@ -932,7 +937,7 @@ export function Services() {
                       className={`group relative flex shrink-0 items-center rounded-full px-3.5 py-1.5 text-xs font-bold transition-[background-color,color,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ${
                         isActive
                           ? "bg-accent text-primary border border-accent shadow-sm"
-                          : "border border-paper/15 bg-paper/10 text-paper/70 hover:border-paper/30 hover:bg-paper/20 hover:text-paper"
+                          : "border border-white/15 bg-white/5 text-background/70 hover:border-white/30 hover:bg-white/15 hover:text-background"
                       }`}
                       aria-label={`Jump to ${item.title}`}
                     >

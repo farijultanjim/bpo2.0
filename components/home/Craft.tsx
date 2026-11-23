@@ -90,31 +90,31 @@ export function Craft() {
   }, []);
 
   return (
-    <section id="infrastructure" ref={sectionRef} className="overflow-hidden bg-paper text-ink">
+    <section id="infrastructure" ref={sectionRef} className="overflow-hidden bg-background text-primary">
       <div className="mx-auto max-w-site px-5 pb-20 pt-24 sm:px-8 sm:pt-32 lg:px-12 lg:pb-32 lg:pt-44">
-        <div className="grid gap-8 border-t border-ink/20 pt-6 lg:grid-cols-12 lg:gap-16">
+        <div className="grid gap-8 border-t border-primary/20 pt-6 lg:grid-cols-12 lg:gap-16">
           {/* Left Column: Kicker + Quick Operational Badges */}
           <div data-reveal className="lg:col-span-4 space-y-6">
             <div className="flex items-center gap-3">
               <span className="size-2 rounded-full bg-accent" />
-              <p className="text-xs font-bold uppercase tracking-widest text-ink">
+              <p className="text-xs font-bold uppercase tracking-widest text-primary">
                 Dedicated Capacity
               </p>
             </div>
             <div className="hidden lg:block space-y-3 pt-2">
-              <div className="rounded-xl border border-ink/10 bg-canvas/60 p-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-ink/60">
+              <div className="rounded-xl border border-primary/10 bg-canvas/60 p-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-primary/60">
                   Global Hubs
                 </p>
-                <p className="mt-1 text-sm font-bold text-ink">
+                <p className="mt-1 text-sm font-bold text-primary">
                   New York • Dubai • Dhaka • Singapore
                 </p>
               </div>
-              <div className="rounded-xl border border-ink/10 bg-canvas/60 p-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-ink/60">
+              <div className="rounded-xl border border-primary/10 bg-canvas/60 p-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-primary/60">
                   Shift Coverage
                 </p>
-                <p className="mt-1 text-sm font-bold text-ink">
+                <p className="mt-1 text-sm font-bold text-primary">
                   Real-time US-hours operational sync
                 </p>
               </div>
@@ -130,7 +130,7 @@ export function Craft() {
 
             <p
               data-reveal
-              className="max-w-3xl text-base font-medium leading-relaxed text-ink/75 sm:text-lg"
+              className="max-w-3xl text-base font-medium leading-relaxed text-primary/75 sm:text-lg"
             >
               Extend your core team overseas without the hiring lag, night-shift
               burnout, or turnover. 500+ domain specialists work directly in your
@@ -141,38 +141,38 @@ export function Craft() {
 
             {/* Dependable Trust Pillars */}
             <div data-reveal className="grid gap-4 sm:grid-cols-3 pt-2">
-              <div className="rounded-2xl border border-ink/15 bg-canvas/50 p-5">
-                <p className="text-xs font-extrabold uppercase tracking-wider text-ink/50">
+              <div className="rounded-2xl border border-primary/15 bg-canvas/50 p-5">
+                <p className="text-xs font-extrabold uppercase tracking-wider text-primary/50">
                   01 / Coverage
                 </p>
-                <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-ink">
+                <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-primary">
                   US Working Hours
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-ink/70">
+                <p className="mt-2 text-xs leading-relaxed text-primary/70">
                   Multi-shift teams operating in real time across EST, CST, and PST business hours.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-ink/15 bg-canvas/50 p-5">
-                <p className="text-xs font-extrabold uppercase tracking-wider text-ink/50">
+              <div className="rounded-2xl border border-primary/15 bg-canvas/50 p-5">
+                <p className="text-xs font-extrabold uppercase tracking-wider text-primary/50">
                   02 / Software
                 </p>
-                <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-ink">
+                <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-primary">
                   Your Own Tools
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-ink/70">
+                <p className="mt-2 text-xs leading-relaxed text-primary/70">
                   We operate directly inside your TMS, ERP, carrier portals, email, and Slack channels.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-ink/15 bg-canvas/50 p-5">
-                <p className="text-xs font-extrabold uppercase tracking-wider text-ink/50">
+              <div className="rounded-2xl border border-primary/15 bg-canvas/50 p-5">
+                <p className="text-xs font-extrabold uppercase tracking-wider text-primary/50">
                   03 / Savings
                 </p>
-                <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-ink">
+                <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-primary">
                   Up to 72% Lower Cost
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-ink/70">
+                <p className="mt-2 text-xs leading-relaxed text-primary/70">
                   No payroll taxes, healthcare, 401K, or recruiting overhead for every added FTE.
                 </p>
               </div>
@@ -190,9 +190,9 @@ export function Craft() {
 
       <div
         ref={imageRef}
-        className="relative mx-auto h-cinematic min-h-cinematic max-w-wide overflow-hidden mb-20"
+        className="relative mx-auto h-[70svh] min-h-[34rem] max-w-[120rem] overflow-hidden mb-20"
       >
-        <div data-parallax-image className="absolute parallax-bleed">
+        <div data-parallax-image className="absolute -top-[12%] -bottom-[12%] inset-x-0">
           <Image
             src="/images/bpo/global-operations.webp"
             alt="Spectra collaborative operations center"
@@ -202,13 +202,13 @@ export function Craft() {
             className="object-cover"
           />
         </div>
-        <div className="absolute inset-0 bg-linear-to-t from-ink/85 via-ink/25 to-transparent" />
-        <div className="absolute inset-x-5 bottom-7 flex items-end justify-between text-paper sm:inset-x-8 lg:inset-x-12 lg:bottom-10">
+        <div className="absolute inset-0 bg-linear-to-t from-primary/85 via-primary/25 to-transparent" />
+        <div className="absolute inset-x-5 bottom-7 flex items-end justify-between text-background sm:inset-x-8 lg:inset-x-12 lg:bottom-10">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-accent mb-2">
               Four Worldwide Hubs
             </p>
-            <p className="max-w-xs text-sm font-semibold uppercase leading-relaxed tracking-wider text-paper/90">
+            <p className="max-w-xs text-sm font-semibold uppercase leading-relaxed tracking-wider text-background/90">
               Dubai • New York • Dhaka • Singapore
             </p>
           </div>

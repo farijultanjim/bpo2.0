@@ -161,7 +161,7 @@ export function Hero() {
     <>
       <section
         ref={sectionRef}
-        className={`relative bg-ink ${reduced ? "h-svh" : "scroll-track-hero"}`}
+        className={`relative bg-primary ${reduced ? "h-svh" : "h-[450svh]"}`}
       >
         <div className="sticky top-0 h-svh overflow-hidden">
           <video
@@ -175,9 +175,9 @@ export function Hero() {
             aria-hidden="true"
           />
 
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/30 to-ink/90" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/55 via-primary/30 to-primary/90" />
 
-          <div className="absolute inset-0 flex flex-col px-5 py-5 text-paper sm:px-8 sm:py-7 lg:px-12 lg:py-9">
+          <div className="absolute inset-0 flex flex-col px-5 py-5 text-background sm:px-8 sm:py-7 lg:px-12 lg:py-9">
             <div
               ref={contentRef}
               className="mt-auto grid items-end gap-7 pb-3 lg:grid-cols-3 lg:gap-16 lg:pb-5"
@@ -191,10 +191,10 @@ export function Hero() {
                 </span>
               </h1>
 
-              <div className="lg:col-span-1 flex flex-col items-start gap-5 rounded-2xl bg-ink/40 p-5 backdrop-blur-sm lg:mb-7 lg:p-6">
+              <div className="lg:col-span-1 flex flex-col items-start gap-5 rounded-2xl bg-primary/40 p-5 backdrop-blur-sm lg:mb-7 lg:p-6">
                 <p
                   data-hero-detail
-                  className="invisible max-w-md text-sm font-medium leading-relaxed text-paper/90 sm:text-base"
+                  className="invisible max-w-md text-sm font-medium leading-relaxed text-background/90 sm:text-base"
                 >
                   Your offshore partner for freight forwarding and logistics
                   operations. 500+ domain experts working US hours with 24/7
@@ -225,10 +225,10 @@ export function Hero() {
                       {moment.number} / {moment.kicker}
                     </span>
                   </div>
-                  <h2 className="max-w-4xl font-bricolage text-4xl sm:text-6xl lg:text-7xl font-semibold uppercase leading-tight tracking-tighter text-paper drop-shadow-2xl">
+                  <h2 className="max-w-4xl font-bricolage text-4xl sm:text-6xl lg:text-7xl font-semibold uppercase leading-tight tracking-tighter text-background drop-shadow-2xl">
                     {moment.title}
                   </h2>
-                  <p className="mt-6 max-w-lg text-sm font-semibold leading-relaxed text-paper/80 drop-shadow-lg sm:text-base">
+                  <p className="mt-6 max-w-lg text-sm font-semibold leading-relaxed text-background/80 drop-shadow-lg sm:text-base">
                     {moment.copy}
                   </p>
                 </div>
@@ -238,9 +238,9 @@ export function Hero() {
 
           <div
             data-hero-detail
-            className="invisible absolute right-8 top-1/2 hidden origin-right -translate-y-1/2 rotate-90 items-center gap-3 text-paper xl:flex"
+            className="invisible absolute right-8 top-1/2 hidden origin-right -translate-y-1/2 rotate-90 items-center gap-3 text-background xl:flex"
           >
-            <span className="h-px w-12 bg-paper/50" />
+            <span className="h-px w-12 bg-background/50" />
             <span className="text-xs font-bold uppercase tracking-widest">
               Scroll to explore
             </span>
@@ -249,7 +249,7 @@ export function Hero() {
       </section>
 
       {reduced && (
-        <section className="bg-ink px-5 py-24 text-paper sm:px-8 lg:px-12">
+        <section className="bg-primary px-5 py-24 text-background sm:px-8 lg:px-12">
           <div className="mx-auto grid max-w-site gap-14 lg:grid-cols-3">
             {storyMoments.map((moment) => (
               <div key={moment.number}>
@@ -262,7 +262,7 @@ export function Hero() {
                 <h2 className="font-bricolage text-3xl font-semibold uppercase leading-tight tracking-tight">
                   {moment.title}
                 </h2>
-                <p className="mt-5 text-sm font-medium leading-relaxed text-paper/70">
+                <p className="mt-5 text-sm font-medium leading-relaxed text-background/70">
                   {moment.copy}
                 </p>
               </div>

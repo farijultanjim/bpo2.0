@@ -92,7 +92,7 @@ export function Process() {
     <section
       id="process"
       ref={sectionRef}
-      className="relative overflow-hidden bg-accent text-ink"
+      className="relative overflow-hidden bg-accent text-primary"
     >
       {/* Anchor target for Lenis / Navigation */}
       <div id="work" className="absolute -top-16 pointer-events-none" />
@@ -126,10 +126,10 @@ export function Process() {
         </div>
 
         <div data-process-grid className="relative mt-20 grid gap-5 lg:mt-32 lg:grid-cols-3">
-          <div className="absolute left-0 right-0 top-0 hidden h-px bg-ink/20 lg:block">
+          <div className="absolute left-0 right-0 top-0 hidden h-px bg-primary/20 lg:block">
             <div
               data-process-line
-              className="h-full origin-left bg-ink"
+              className="h-full origin-left bg-primary"
             />
           </div>
 
@@ -140,13 +140,13 @@ export function Process() {
               <article
                 data-process-card
                 key={step.number}
-                className="group flex min-h-80 sm:min-h-96 flex-col border-t border-ink/30 py-6 lg:border-t-0 lg:px-6 lg:pt-10 first:lg:pl-0 last:lg:pr-0"
+                className="group flex min-h-80 sm:min-h-96 flex-col border-t border-primary/30 py-6 lg:border-t-0 lg:px-6 lg:pt-10 first:lg:pl-0 last:lg:pr-0"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-extrabold tracking-widest">
                     STEP / {step.number}
                   </span>
-                  <span className="grid size-12 place-items-center rounded-full border border-ink/30 transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-ink group-hover:text-accent">
+                  <span className="grid size-12 place-items-center rounded-full border border-primary/30 transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-primary group-hover:text-accent">
                     <Icon size={20} strokeWidth={1.7} />
                   </span>
                 </div>
@@ -155,7 +155,7 @@ export function Process() {
                   <h3 className="font-bricolage text-4xl font-semibold uppercase tracking-tight sm:text-5xl">
                     {step.title}
                   </h3>
-                  <p className="mt-5 max-w-sm text-sm font-semibold leading-relaxed text-ink/70 sm:text-base">
+                  <p className="mt-5 max-w-sm text-sm font-semibold leading-relaxed text-primary/70 sm:text-base">
                     {step.copy}
                   </p>
                 </div>

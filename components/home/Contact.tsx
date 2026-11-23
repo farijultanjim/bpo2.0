@@ -57,13 +57,13 @@ export function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative overflow-hidden bg-ink px-5 pb-20 pt-24 text-paper sm:px-8 sm:pb-28 sm:pt-32 lg:px-12 lg:pb-36 lg:pt-44"
+      className="relative overflow-hidden bg-primary px-5 pb-20 pt-24 text-background sm:px-8 sm:pb-28 sm:pt-32 lg:px-12 lg:pb-36 lg:pt-44"
     >
       <svg
         aria-hidden="true"
         viewBox="0 0 1440 620"
         fill="none"
-        className="pointer-events-none absolute inset-x-0 bottom-0 w-full text-paper opacity-10"
+        className="pointer-events-none absolute inset-x-0 bottom-0 w-full text-background opacity-10"
       >
         <path
           data-contact-roof
@@ -92,9 +92,9 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-10 border-t border-paper/20 pt-7 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mt-14 flex flex-col gap-10 border-t border-white/15 pt-7 lg:flex-row lg:items-end lg:justify-between">
           <div data-contact-detail>
-            <p className="max-w-lg text-base font-medium leading-relaxed text-paper/75 sm:text-lg">
+            <p className="max-w-lg text-base font-medium leading-relaxed text-background/75 sm:text-lg">
               Connect with our solutions team. We&apos;ll evaluate your current
               operations, outline your offshore roadmap, and provide a fixed FTE
               savings forecast.
@@ -107,7 +107,7 @@ export function Contact() {
               </CtaButton>
               <a
                 href="tel:+18005927489"
-                className="inline-flex items-center gap-3 rounded-full border border-paper/25 px-5 py-2.5 text-sm font-bold transition-colors duration-300 hover:bg-paper hover:text-ink cursor-pointer"
+                className="inline-flex items-center gap-3 rounded-full border border-white/20 px-5 py-2.5 text-sm font-bold transition-colors duration-300 hover:bg-background hover:text-primary cursor-pointer"
               >
                 <Phone size={17} strokeWidth={1.8} />
                 +1 (800) 592-7489
@@ -119,7 +119,7 @@ export function Contact() {
             data-contact-detail
             href="#top"
             aria-label="Back to top"
-            className="group grid size-16 place-items-center rounded-full border border-paper/25 transition-colors duration-300 hover:bg-paper hover:text-ink lg:size-20"
+            className="group grid size-16 place-items-center rounded-full border border-white/20 transition-colors duration-300 hover:bg-background hover:text-primary lg:size-20"
           >
             <ArrowUp
               size={23}

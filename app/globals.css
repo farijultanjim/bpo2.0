@@ -2,37 +2,21 @@
 @import "lenis/dist/lenis.css";
 
 :root {
-  /* ── Color Palette (Spectra Brand) ── */
-  --color-primary: #183c31;
-  --color-primary-hover: #0f2c23;
-  --color-accent: #c9f36a;
-  --color-accent-hover: #d7ff83;
-  --color-background: #f6f7f2;
-  --color-foreground: #17241f;
-  --color-canvas: #e9eee5;
-  --color-surface: #ffffff;
-  --color-line: #e4e9e1;
-  --color-muted: #65716b;
-
-  /* Legacy & section utility mappings */
-  --color-ink: #183c31;
-  --color-paper: #f6f7f2;
-
-  /* ── Semantic aliases ── */
-  --background: var(--color-background);
-  --foreground: var(--color-foreground);
-  --primary: var(--color-primary);
-  --primary-hover: var(--color-primary-hover);
-  --accent: var(--color-accent);
-  --accent-hover: var(--color-accent-hover);
-  --surface: var(--color-surface);
-  --line: var(--color-line);
-  --foreground-inverse: #ffffff;
+  /* ── Spectra Brand Theme Tokens ── */
+  --primary: #183c31;
+  --primary-hover: #0f2c23;
+  --accent: #c9f36a;
+  --accent-hover: #d7ff83;
+  --background: #f6f7f2;
+  --foreground: #17241f;
+  --surface: #ffffff;
+  --line: #e4e9e1;
+  --muted: #65716b;
+  --canvas: #e9eee5;
 
   /* ── Typography ── */
   --font-manrope: var(--font-manrope-family, "Manrope", sans-serif);
   --font-bricolage: var(--font-bricolage-family, "Bricolage Grotesque", sans-serif);
-  --font-heading: var(--font-bricolage);
 }
 
 @theme inline {
@@ -44,118 +28,82 @@
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
   --color-line: var(--line);
-  --color-foreground-inverse: var(--foreground-inverse);
-  --color-ink: var(--color-ink);
-  --color-paper: var(--color-paper);
-  --color-canvas: var(--color-canvas);
-  --color-muted: var(--color-muted);
-  --font-manrope: var(--font-manrope);
-  --font-bricolage: var(--font-bricolage);
-  --font-heading: var(--font-heading);
+  --color-muted: var(--muted);
+  --color-canvas: var(--canvas);
+
+  /* Legacy mappings to primary and background so no third-party or residual code fails */
+  --color-ink: var(--primary);
+  --color-paper: var(--background);
+
+  /* Clean Typography aliases */
   --font-sans: var(--font-manrope);
   --font-display: var(--font-bricolage);
+  --font-manrope: var(--font-manrope);
+  --font-bricolage: var(--font-bricolage);
+  --font-heading: var(--font-bricolage);
+
+  /* Site layout container tokens */
+  --container-site: 100rem;
 }
 
-* {
-  box-sizing: border-box;
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background-color: var(--primary);
+    scroll-behavior: auto;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: clip;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Accessible focus ring across backgrounds */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .bg-background :focus-visible,
+  .bg-accent :focus-visible {
+    outline-color: var(--primary);
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--primary);
+  }
 }
 
-html {
-  background-color: var(--color-ink);
-  scroll-behavior: auto;
-}
+/* ── Modern Tailwind v4 Utilities ── */
 
-body {
-  margin: 0;
-  overflow-x: clip;
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-manrope);
-  text-rendering: optimizeLegibility;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.button-accent {
-  background-color: var(--color-accent);
-  color: var(--color-ink);
-}
-
-.button-dark {
-  background-color: var(--color-ink);
-  color: var(--color-paper);
-}
-
-/* Dynamic CTA Button Styles with reversed hover (no border, no shadow) */
-.cta-button-light {
-  background-color: var(--primary) !important;
-  color: var(--background) !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-.cta-button-light:hover {
-  background-color: var(--accent) !important;
-  color: var(--primary) !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.cta-button-dark {
-  background-color: var(--accent) !important;
-  color: var(--primary) !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-.cta-button-dark:hover {
-  background-color: var(--primary) !important;
-  color: var(--accent) !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* A single focus treatment that stays visible on every background the site uses. */
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* Hide scrollbars across all browsers */
-.scrollbar-none::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-.scrollbar-none {
-  -ms-overflow-style: none !important;
-  scrollbar-width: none !important;
-}
-
-.bg-paper :focus-visible,
-.bg-accent :focus-visible {
-  outline-color: var(--color-ink);
-}
-
-::selection {
-  background: var(--color-accent);
-  color: var(--color-ink);
-}
-
-.text-stroke {
+/* Text outline effect (used in Craft.tsx & Metrics.tsx) */
+@utility text-stroke {
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--color-ink);
+  -webkit-text-stroke: 1.5px var(--primary);
 }
 
-.section-heading {
-  font-family: var(--font-bricolage);
+/* Unified Section Heading Typography */
+@utility section-heading {
+  font-family: var(--font-display);
   font-size: clamp(3.2rem, 5.2vw, 4.7rem);
   font-weight: 600;
   line-height: 0.84;
@@ -163,86 +111,9 @@ a {
   text-transform: uppercase;
 }
 
-/* Site layout container tokens (matches the original 100rem / 1600px scale) */
-.max-w-site {
+/* Site layout container tokens */
+@utility max-w-site {
   max-width: 100rem;
-}
-
-.max-w-wide {
-  max-width: 120rem;
-}
-
-.h-cinematic {
-  height: 70svh;
-}
-
-.min-h-cinematic {
-  min-height: 34rem;
-}
-
-.min-h-card {
-  min-height: 32rem;
-}
-
-.service-text-active {
-  opacity: 1;
-  filter: blur(0px);
-  transform: translateY(0);
-  pointer-events: auto;
-  transition: opacity 850ms cubic-bezier(0.25, 1, 0.5, 1),
-              filter 850ms cubic-bezier(0.25, 1, 0.5, 1),
-              transform 850ms cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.service-text-hidden-up {
-  opacity: 0;
-  filter: blur(4px);
-  transform: translateY(-16px);
-  pointer-events: none;
-  transition: opacity 700ms cubic-bezier(0.25, 1, 0.5, 1),
-              filter 700ms cubic-bezier(0.25, 1, 0.5, 1),
-              transform 700ms cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.service-text-hidden-down {
-  opacity: 0;
-  filter: blur(4px);
-  transform: translateY(16px);
-  pointer-events: none;
-  transition: opacity 700ms cubic-bezier(0.25, 1, 0.5, 1),
-              filter 700ms cubic-bezier(0.25, 1, 0.5, 1),
-              transform 700ms cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.parallax-bleed {
-  top: -12%;
-  bottom: -12%;
-  left: 0;
-  right: 0;
-}
-
-.scroll-track-hero {
-  height: 450svh;
-}
-
-.scroll-track-stories {
-  height: 500svh;
-}
-
-.testimonial-card-slide {
-  width: 85vw;
-}
-
-@media (min-width: 640px) {
-  .testimonial-card-slide {
-    width: 68vw;
-  }
-}
-
-@media (min-width: 1024px) {
-  .testimonial-card-slide {
-    width: 46vw;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -259,8 +130,6 @@ a {
     transition-duration: 0.01ms !important;
   }
 
-  /* GSAP and Lenis are disabled in JS (see app/lib/motion.ts); this guarantees
-     anything the scripts hid stays readable even if they never run. */
   .invisible {
     visibility: visible;
   }
