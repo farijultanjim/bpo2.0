@@ -11,6 +11,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import gsap from "gsap";
+import { MOTION } from "@/app/lib/motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -372,7 +373,7 @@ function ServiceStackCard({
               alt={service.title}
               fill
               sizes="(min-width: 1024px) 58vw, 100vw"
-              className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+              className="object-cover transition-transform duration-1000 ease-[var(--ease-micro)] group-hover:scale-105"
             />
           </motion.div>
         </div>
@@ -550,7 +551,7 @@ export function Services() {
     gsap.to(container, {
       scrollLeft: targetScrollLeft,
       duration: 0.45,
-      ease: "power2.out",
+      ease: MOTION.micro.gsap,
       onComplete: () => {
         if (container) {
           container.style.scrollSnapType = "x mandatory";
@@ -653,7 +654,7 @@ export function Services() {
                 return (
                   <div
                     key={item.number}
-                    className={`col-start-1 row-start-1 space-y-3 transition-[opacity,filter,transform] ease-[cubic-bezier(0.25,1,0.5,1)] ${getServiceTextClasses(
+                    className={`col-start-1 row-start-1 space-y-3 transition-[opacity,filter,transform] ease-[var(--ease-signature)] ${getServiceTextClasses(
                       isActive,
                       isPast,
                     )}`}
@@ -701,7 +702,7 @@ export function Services() {
                     key={service.number}
                     type="button"
                     onClick={() => scrollMobileTo(idx)}
-                    className={`group relative flex shrink-0 items-center rounded-full px-3.5 py-2 text-xs font-bold transition-[background-color,color,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ${
+                    className={`group relative flex shrink-0 items-center rounded-full px-3.5 py-2 text-xs font-bold transition-[background-color,color,border-color] duration-500 ease-[var(--ease-signature)] cursor-pointer ${
                       isSelected
                         ? "bg-accent text-primary border border-accent"
                         : "border border-white/15 bg-white/5 text-background/70 hover:border-white/30 hover:bg-white/10 hover:text-background"
@@ -709,7 +710,7 @@ export function Services() {
                   >
                     <span className="shrink-0">{service.number}</span>
                     <span
-                      className={`inline-block overflow-hidden whitespace-nowrap transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                      className={`inline-block overflow-hidden whitespace-nowrap transition-all duration-500 ease-[var(--ease-signature)] ${
                         isSelected
                           ? "max-w-44 opacity-100 pl-2"
                           : "max-w-0 opacity-0 pl-0"
@@ -759,7 +760,7 @@ export function Services() {
                     alt={item.title}
                     fill
                     sizes="86vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 ease-[var(--ease-micro)] group-hover:scale-105"
                   />
 
                   {/* Strictly Internal Gradient Scrim: 100% Clipped inside Rounded Card */}
@@ -884,7 +885,7 @@ export function Services() {
                 return (
                   <div
                     key={item.number}
-                    className={`col-start-1 row-start-1 space-y-4 transition-[opacity,filter,transform] ease-[cubic-bezier(0.25,1,0.5,1)] ${getServiceTextClasses(
+                    className={`col-start-1 row-start-1 space-y-4 transition-[opacity,filter,transform] ease-[var(--ease-signature)] ${getServiceTextClasses(
                       isActive,
                       isPast,
                     )}`}
@@ -934,7 +935,7 @@ export function Services() {
                       key={item.number}
                       type="button"
                       onClick={() => scrollToService(idx)}
-                      className={`group relative flex shrink-0 items-center rounded-full px-3.5 py-1.5 text-xs font-bold transition-[background-color,color,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ${
+                      className={`group relative flex shrink-0 items-center rounded-full px-3.5 py-1.5 text-xs font-bold transition-[background-color,color,border-color] duration-500 ease-[var(--ease-signature)] cursor-pointer ${
                         isActive
                           ? "bg-accent text-primary border border-accent shadow-sm"
                           : "border border-white/15 bg-white/5 text-background/70 hover:border-white/30 hover:bg-white/15 hover:text-background"
@@ -943,7 +944,7 @@ export function Services() {
                     >
                       <span className="shrink-0">{item.number}</span>
                       <span
-                        className={`inline-block overflow-hidden whitespace-nowrap transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                        className={`inline-block overflow-hidden whitespace-nowrap transition-all duration-500 ease-[var(--ease-signature)] ${
                           isActive
                             ? "max-w-44 opacity-100 pl-2"
                             : "max-w-0 opacity-0 pl-0"

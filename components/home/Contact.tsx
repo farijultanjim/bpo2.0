@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUp, Phone } from "lucide-react";
-import { prefersReducedMotion } from "@/app/lib/motion";
+import { MOTION, prefersReducedMotion, registerMotionEasings } from "@/app/lib/motion";
 import { CtaButton } from "@/components/ui/CtaButton";
 
 export function Contact() {
@@ -12,6 +12,7 @@ export function Contact() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    registerMotionEasings();
     const section = sectionRef.current;
     if (!section) return;
     if (prefersReducedMotion()) return;
@@ -21,7 +22,7 @@ export function Contact() {
         yPercent: 110,
         duration: 1.35,
         stagger: 0.1,
-        ease: "power4.out",
+        ease: MOTION.signature.gsap,
         scrollTrigger: { trigger: section, start: "top 68%" },
       });
 
@@ -30,7 +31,7 @@ export function Contact() {
         opacity: 0,
         duration: 1,
         stagger: 0.1,
-        ease: "power3.out",
+        ease: MOTION.signature.gsap,
         scrollTrigger: { trigger: section, start: "top 58%" },
       });
 

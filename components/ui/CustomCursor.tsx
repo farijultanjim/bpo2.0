@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { MOTION } from "@/app/lib/motion";
 
 /**
  * Cuberto-style magnetic inverted cursor follower.
@@ -34,8 +35,8 @@ export function CustomCursor() {
     const cursor = cursorRef.current;
 
     // Direct transform setters via GSAP quickTo for 120fps tracking
-    const xTo = gsap.quickTo(cursor, "x", { duration: 0.35, ease: "power3.out" });
-    const yTo = gsap.quickTo(cursor, "y", { duration: 0.35, ease: "power3.out" });
+    const xTo = gsap.quickTo(cursor, "x", { duration: 0.35, ease: MOTION.micro.gsap });
+    const yTo = gsap.quickTo(cursor, "y", { duration: 0.35, ease: MOTION.micro.gsap });
 
     let isStuck = false;
     let stuckTarget: HTMLElement | null = null;
@@ -121,11 +122,11 @@ export function CustomCursor() {
       }`}
       style={{
         opacity: isVisible ? 1 : 0,
-        transition: "opacity 0.25s ease",
+        transition: `opacity 0.25s ${MOTION.micro.css}`,
       }}
     >
       <div
-        className={`flex items-center justify-center rounded-full text-center transition-all duration-300 ease-out ${
+        className={`flex items-center justify-center rounded-full text-center transition-all duration-300 ease-[var(--ease-micro)] ${
           isTextBadge
             ? "size-24 bg-accent text-primary scale-100 font-semibold shadow-xl text-[13px] tracking-wider uppercase"
             : isHovered

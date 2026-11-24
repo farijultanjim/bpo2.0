@@ -4,7 +4,7 @@ import React, { forwardRef, useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ArrowUpRight } from "lucide-react";
-import { prefersReducedMotion } from "@/app/lib/motion";
+import { MOTION, prefersReducedMotion } from "@/app/lib/motion";
 import { cn } from "@/app/lib/utils";
 
 export interface CtaButtonProps extends React.HTMLAttributes<HTMLElement> {
@@ -56,8 +56,8 @@ export const CtaButton = forwardRef<HTMLElement, CtaButtonProps>(
       if (prefersReducedMotion()) return;
       if (typeof window === "undefined") return;
 
-      const moveX = gsap.quickTo(element, "x", { duration: 0.4, ease: "power3.out" });
-      const moveY = gsap.quickTo(element, "y", { duration: 0.4, ease: "power3.out" });
+      const moveX = gsap.quickTo(element, "x", { duration: 0.4, ease: MOTION.micro.gsap });
+      const moveY = gsap.quickTo(element, "y", { duration: 0.4, ease: MOTION.micro.gsap });
 
       const onMove = (event: PointerEvent) => {
         const bounds = element.getBoundingClientRect();
@@ -106,11 +106,11 @@ export const CtaButton = forwardRef<HTMLElement, CtaButtonProps>(
     // Inner icon disc styles per variant
     const discClasses = {
       accent:
-        "grid size-10 place-items-center rounded-full bg-primary text-background transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0",
+        "grid size-10 place-items-center rounded-full bg-primary text-background transition-transform duration-500 ease-[var(--ease-micro)] group-hover:rotate-45 shrink-0",
       dark:
-        "grid size-10 place-items-center rounded-full bg-background text-primary transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0",
+        "grid size-10 place-items-center rounded-full bg-background text-primary transition-transform duration-500 ease-[var(--ease-micro)] group-hover:rotate-45 shrink-0",
       outline:
-        "grid size-7 place-items-center rounded-full bg-white/10 text-background transition-transform duration-500 ease-out group-hover:rotate-45 shrink-0",
+        "grid size-7 place-items-center rounded-full bg-white/10 text-background transition-transform duration-500 ease-[var(--ease-micro)] group-hover:rotate-45 shrink-0",
     };
 
     const combinedClassName = cn(

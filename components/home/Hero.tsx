@@ -2,31 +2,16 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { CustomEase } from "gsap/CustomEase";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { prefersReducedMotion } from "@/app/lib/motion";
+import { MOTION, prefersReducedMotion, registerMotionEasings } from "@/app/lib/motion";
 import { CtaButton } from "@/components/ui/CtaButton";
 
 const storyMoments = [
   {
     number: "01",
-    kicker: "Scalable solutions",
-    title: "Expand as your business grows.",
-    copy: "Add FTEs, shifts or processes based on your expansion plans or volume surges, without the hiring lag.",
-    position: "items-start text-left",
-  },
-  {
-    number: "02",
-    kicker: "Cost reduction",
-    title: "No overhead or benefits costs.",
-    copy: "Extend your team overseas and skip bonuses, healthcare and 401K for every added employee. Up to 72% lower salary cost per FTE.",
-    position: "items-end text-right",
-  },
-  {
-    number: "03",
-    kicker: "Seamless transition",
+    kicker: "Seamless & Cost-Effective",
     title: "An extension of your core team.",
-    copy: "We work US hours, meet the KPIs and milestones you set, and integrate directly into your processes and tools.",
+    copy: "Skip bonuses, healthcare, and hiring lag—saving up to 72% per FTE while our specialists work US hours directly inside your own processes and tools.",
     position: "items-center text-center",
   },
 ];
@@ -38,8 +23,8 @@ export function Hero() {
   const [reduced, setReduced] = useState(false);
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger, CustomEase);
-    CustomEase.create("roofReveal", "M0,0 C0.16,1 0.3,1 1,1");
+    gsap.registerPlugin(ScrollTrigger);
+    registerMotionEasings();
 
     const section = sectionRef.current;
     const video = videoRef.current;
@@ -76,11 +61,11 @@ export function Hero() {
       }
 
       introTimeline = gsap
-        .timeline({ paused: true, defaults: { ease: "roofReveal" } })
+        .timeline({ paused: true, defaults: { ease: MOTION.signature.gsap } })
         .fromTo(
           video,
           { autoAlpha: 0 },
-          { autoAlpha: 1, duration: 1.8, ease: "power2.out" },
+          { autoAlpha: 1, duration: 1.8, ease: MOTION.signature.gsap },
           0,
         )
         .fromTo(
@@ -99,11 +84,11 @@ export function Hero() {
       gsap.to(content, {
         yPercent: -18,
         opacity: 0,
-        ease: "power2.in",
+        ease: MOTION.exit.gsap,
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "18% top",
+          end: "35% top",
           scrub: true,
         },
       });
@@ -111,28 +96,25 @@ export function Hero() {
       const storyTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: "18% top",
-          end: "92% top",
-          scrub: 1,
+          start: "28% top",
+          end: "90% top",
+          scrub: 0.8,
         },
       });
 
       gsap.utils
         .toArray<HTMLElement>("[data-story-moment]")
-        .forEach((moment, index) => {
-          const position = index * 2;
-
+        .forEach((moment) => {
           storyTimeline
             .fromTo(
               moment,
-              { y: 70, opacity: 0 },
-              { y: 0, opacity: 1, duration: 0.72, ease: "power3.out" },
-              position,
+              { y: 60, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.45, ease: MOTION.signature.gsap },
             )
             .to(
               moment,
-              { y: -55, opacity: 0, duration: 0.72, ease: "power2.in" },
-              position + 1.15,
+              { y: -40, opacity: 0, duration: 0.35, ease: MOTION.exit.gsap },
+              "+=0.35",
             );
         });
     }, section);
@@ -161,7 +143,7 @@ export function Hero() {
     <>
       <section
         ref={sectionRef}
-        className={`relative bg-primary ${reduced ? "h-svh" : "h-[450svh]"}`}
+        className={`relative bg-primary ${reduced ? "h-svh" : "h-[210svh]"}`}
       >
         <div className="sticky top-0 h-svh overflow-hidden">
           <video
@@ -219,12 +201,9 @@ export function Hero() {
                   key={moment.number}
                   className={`absolute inset-x-5 top-1/2 flex -translate-y-1/2 flex-col opacity-0 sm:inset-x-8 lg:inset-x-12 ${moment.position}`}
                 >
-                  <div className="mb-5 flex items-center gap-3 text-accent">
-                    <span className="h-px w-10 bg-accent" />
-                    <span className="text-xs font-extrabold uppercase tracking-widest">
-                      {moment.number} / {moment.kicker}
-                    </span>
-                  </div>
+                  <span className="mb-5 text-xs font-extrabold uppercase tracking-widest text-accent">
+                    {moment.kicker}
+                  </span>
                   <h2 className="max-w-4xl font-bricolage text-4xl sm:text-6xl lg:text-7xl font-semibold uppercase leading-tight tracking-tighter text-background drop-shadow-2xl">
                     {moment.title}
                   </h2>
@@ -250,19 +229,16 @@ export function Hero() {
 
       {reduced && (
         <section className="bg-primary px-5 py-24 text-background sm:px-8 lg:px-12">
-          <div className="mx-auto grid max-w-site gap-14 lg:grid-cols-3">
+          <div className="mx-auto max-w-3xl text-center">
             {storyMoments.map((moment) => (
-              <div key={moment.number}>
-                <div className="mb-5 flex items-center gap-3 text-accent">
-                  <span className="h-px w-10 bg-accent" />
-                  <span className="text-xs font-extrabold uppercase tracking-widest">
-                    {moment.number} / {moment.kicker}
-                  </span>
-                </div>
+              <div key={moment.number} className="flex flex-col items-center">
+                <span className="mb-5 text-xs font-extrabold uppercase tracking-widest text-accent">
+                  {moment.kicker}
+                </span>
                 <h2 className="font-bricolage text-3xl font-semibold uppercase leading-tight tracking-tight">
                   {moment.title}
                 </h2>
-                <p className="mt-5 text-sm font-medium leading-relaxed text-background/70">
+                <p className="mt-5 max-w-xl text-sm font-medium leading-relaxed text-background/70">
                   {moment.copy}
                 </p>
               </div>

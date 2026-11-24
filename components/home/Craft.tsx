@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { prefersReducedMotion } from "@/app/lib/motion";
+import { MOTION, prefersReducedMotion, registerMotionEasings } from "@/app/lib/motion";
 import { CtaButton } from "@/components/ui/CtaButton";
 
 export function Craft() {
@@ -13,6 +13,7 @@ export function Craft() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    registerMotionEasings();
     const section = sectionRef.current;
     const image = imageRef.current;
     if (!section || !image) return;
@@ -24,7 +25,7 @@ export function Craft() {
         opacity: 0,
         duration: 1.2,
         stagger: 0.1,
-        ease: "power4.out",
+        ease: MOTION.signature.gsap,
         scrollTrigger: {
           trigger: section,
           start: "top 72%",

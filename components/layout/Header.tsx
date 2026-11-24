@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -17,17 +18,17 @@ import {
   Users,
 } from "lucide-react";
 import { useMagnetic } from "@/app/lib/use-magnetic";
-import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
+import { MOTION } from "@/app/lib/motion";
 
-const EASE = "cubic-bezier(0.8, 0, 0.3, 1)";
-const CURVE_EASE = [0.22, 1, 0.36, 1] as const;
+const EASE = MOTION.signature.css;
+const CURVE_EASE = MOTION.signature.framer;
 
 const NAV_LINKS = [
-  { label: "Services", href: "#services", hasDropdown: true },
-  { label: "Process", href: "#work" },
-  { label: "Why us", href: "#metrics" },
-  { label: "Infrastructure", href: "#infrastructure" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services", hasDropdown: true },
+  { label: "About us", href: "/about" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contact", href: "/contact" },
 ];
 const SERVICES_MENU = [
   {
@@ -90,6 +91,7 @@ const SERVICES_MENU = [
 
 
 const smoothScrollTo = (target: string, e?: React.MouseEvent) => {
+  if (!target || !target.startsWith("#")) return;
   if (e) e.preventDefault();
   const targetMap: Record<string, string> = {
     "#work": "#process",
@@ -132,8 +134,9 @@ const getIsDarkUnderHeader = (): boolean => {
 };
 
 export function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("#services");
+  const [activeSection, setActiveSection] = useState<string>("/");
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const servicesTimeoutRef = useRef<number | null>(null);
@@ -209,31 +212,36 @@ export function Header() {
             invalidateOnRefresh: true,
           },
         });
-        tl.to(header, { paddingTop: 14, ease: "none" }, 0)
-          .to(logoRef.current, { x: () => pull, ease: "none" }, 0)
-          .to(rightRef.current, { x: () => -pull, ease: "none" }, 0);
+        tl.to(header, { paddingTop: 14, ease: MOTION.scrub.gsap }, 0)
+          .to(logoRef.current, { x: () => pull, ease: MOTION.scrub.gsap }, 0)
+          .to(rightRef.current, { x: () => -pull, ease: MOTION.scrub.gsap }, 0);
       },
     );
     return () => mm.revert();
   }, []);
 
-  // Scroll Spy: accurately track active section in viewport
+  // Scroll Spy: accurately track active section if on page with section hash links
   useEffect(() => {
     const handleScrollSpy = () => {
       const scrollPos = window.scrollY + 220;
 
       for (let i = NAV_LINKS.length - 1; i >= 0; i--) {
         const link = NAV_LINKS[i];
+        if (!link.href.startsWith("#")) continue;
         const selector =
           link.href === "#work"
             ? "#process"
             : link.href === "#metrics"
               ? "#results"
               : link.href;
-        const el = document.querySelector(selector) as HTMLElement | null;
-        if (el && el.offsetTop <= scrollPos) {
-          setActiveSection(link.href);
-          break;
+        try {
+          const el = document.querySelector(selector) as HTMLElement | null;
+          if (el && el.offsetTop <= scrollPos) {
+            setActiveSection(link.href);
+            break;
+          }
+        } catch {
+          // ignore invalid selectors
         }
       }
     };
@@ -378,36 +386,42 @@ export function Header() {
               </span>
             </Link>
 
-            {/* Inline nav pill — fixed wide width from start, identical rounded-full pill shape, vertical expansion on hover */}
+            {/* Dynamic Morphing Capsule: compact pill initially, smoothly expanding in width & height on Services hover */}
             <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-0 items-start justify-center z-30 pointer-events-auto">
               <motion.nav
                 ref={navRef}
                 id="header-nav"
                 aria-label="Primary"
+                initial={false}
                 animate={{
+                  width: isServicesOpen ? 630 : 436,
                   boxShadow: isServicesOpen
                     ? "0 24px 60px -12px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.06)"
                     : "0 4px 14px -2px rgba(0, 0, 0, 0.12)",
                 }}
                 transition={{
-                  duration: 0.45,
-                  ease: CURVE_EASE,
+                  width: { duration: 0.38, ease: CURVE_EASE },
+                  boxShadow: { duration: 0.38, ease: CURVE_EASE },
                 }}
                 onMouseLeave={() => {
                   setHoveredIndex(null);
                   handleServicesLeave();
                 }}
-                className="relative w-[600px] xl:w-[640px] rounded-[26px] overflow-hidden border border-line/40 bg-surface/95 backdrop-blur-2xl p-1.5 transition-colors duration-300"
+                className="relative rounded-[26px] overflow-hidden border border-line/40 bg-surface/95 backdrop-blur-2xl p-1.5 transition-colors duration-300"
               >
-                {/* Top Row: 5 nav links spaced across the full pill width */}
-                <div className="flex items-center justify-between h-9 px-3 w-full">
+                {/* Top Row: 5 nav links stably centered with matching horizontal and vertical padding */}
+                <div className="flex items-center justify-center gap-1 h-9 w-full">
                   {NAV_LINKS.map((link, idx) => {
                     const isHovered = hoveredIndex === idx;
-                    const isActive = activeSection === link.href;
+                    const isActive =
+                      link.href.startsWith("#")
+                        ? activeSection === link.href
+                        : pathname === link.href ||
+                          (link.href !== "/" && pathname.startsWith(link.href));
                     const isServicesLink = link.label === "Services";
 
                     return (
-                      <a
+                      <Link
                         key={link.label}
                         href={link.href}
                         onMouseEnter={() => {
@@ -424,26 +438,19 @@ export function Header() {
                         }}
                         onClick={(e) => {
                           setIsServicesOpen(false);
-                          smoothScrollTo(link.href, e);
+                          if (link.href.startsWith("#")) {
+                            smoothScrollTo(link.href, e);
+                          }
                         }}
-                        className="group relative flex h-9 items-center gap-1.5 rounded-full px-4 text-[13px] font-medium uppercase tracking-wider transition-colors duration-200 z-1 cursor-pointer shrink-0"
-                        style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
+                        className="group relative flex h-9 items-center gap-1.5 rounded-full px-3 text-[13px] font-medium uppercase tracking-wider transition-colors duration-200 z-1 cursor-pointer shrink-0"
+                        style={{ transitionTimingFunction: MOTION.micro.css }}
                       >
-                        {/* Feature 1: Smooth Sliding Hover Pill via Framer Motion layoutId */}
-                        {isHovered && (
+                        {/* Smooth Sliding Hover / Active Pill via Framer Motion layoutId */}
+                        {(isHovered || (isActive && hoveredIndex === null)) && (
                           <motion.span
-                            layoutId="nav-hover-pill"
+                            layoutId="nav-indicator-pill"
                             className="absolute inset-0 rounded-full bg-accent/25 -z-1"
-                            transition={{ type: "spring", stiffness: 450, damping: 32 }}
-                          />
-                        )}
-
-                        {/* Feature 2: Active Section Dot Indicator */}
-                        {isActive && (
-                          <motion.span
-                            layoutId="nav-active-dot"
-                            className="absolute bottom-1 left-1/2 -translate-x-1/2 size-1 rounded-full bg-accent"
-                            transition={{ type: "spring", stiffness: 450, damping: 32 }}
+                            transition={MOTION.micro.spring}
                           />
                         )}
 
@@ -452,13 +459,13 @@ export function Header() {
                             className={`block leading-4 whitespace-nowrap transition-transform duration-400 group-hover:-translate-y-full ${
                               isActive ? "text-primary font-semibold" : "text-foreground"
                             }`}
-                            style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
+                            style={{ transitionTimingFunction: MOTION.micro.css }}
                           >
                             {link.label}
                           </span>
                           <span
                             className="absolute top-0 left-0 block leading-4 whitespace-nowrap translate-y-full transition-transform duration-400 group-hover:translate-y-0 text-primary font-semibold"
-                            style={{ transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)" }}
+                            style={{ transitionTimingFunction: MOTION.micro.css }}
                             aria-hidden="true"
                           >
                             {link.label}
@@ -474,7 +481,7 @@ export function Header() {
                             }`}
                           />
                         )}
-                      </a>
+                      </Link>
                     );
                   })}
                 </div>
@@ -488,10 +495,10 @@ export function Header() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{
-                        height: { duration: 0.45, ease: CURVE_EASE },
+                        height: { duration: 0.38, ease: CURVE_EASE },
                         opacity: { duration: 0.25, ease: CURVE_EASE },
                       }}
-                      className="overflow-hidden"
+                      className="overflow-hidden w-154.5"
                       onMouseEnter={handleServicesEnter}
                       onMouseLeave={handleServicesLeave}
                     >
@@ -548,7 +555,7 @@ export function Header() {
                       </div>
 
                       {/* Bottom Footer Action Strip */}
-                      <div className="mt-2 border-t border-line/25 px-4 py-2.5 flex items-center justify-between bg-canvas/40 rounded-b-[24px]">
+                      <div className="mt-2 border-t border-line/25 px-4 py-2.5 flex items-center justify-between bg-canvas/40 rounded-b-3xl">
                         <p className="text-[11px] font-medium text-muted">
                           Direct integration into CargoWise, McLeod & freight TMS.
                         </p>
@@ -574,11 +581,8 @@ export function Header() {
             <div
               ref={rightRef}
               id="header-right"
-              className="flex shrink-0 items-center gap-2 sm:gap-3 z-10"
+              className="flex shrink-0 items-center gap-3 z-10"
             >
-              {/* Theme Switcher for Stakeholder Review */}
-              <ThemeSwitcher />
-
               {/* Mobile-only menu toggle */}
               <button
                 id="header-right-menu-btn"
@@ -723,20 +727,32 @@ export function Header() {
             >
               {/* Navigation Links with Cascade delay */}
               <div className="space-y-1">
-                {NAV_LINKS.map((link, lIdx) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    tabIndex={open ? 0 : -1}
-                    onClick={(e) => {
-                      setOpen(false);
-                      smoothScrollTo(link.href, e);
-                    }}
-                    className="group relative flex items-center justify-between rounded-xl px-4 py-2.5 text-foreground transition-all duration-300 hover:bg-accent/15 cursor-pointer"
-                    style={{
-                      transitionDelay: open ? `${lIdx * 35}ms` : "0ms",
-                    }}
-                  >
+                {NAV_LINKS.map((link, lIdx) => {
+                  const isActive =
+                    link.href.startsWith("#")
+                      ? activeSection === link.href
+                      : pathname === link.href ||
+                        (link.href !== "/" && pathname.startsWith(link.href));
+                  return (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      tabIndex={open ? 0 : -1}
+                      onClick={(e) => {
+                        setOpen(false);
+                        if (link.href.startsWith("#")) {
+                          smoothScrollTo(link.href, e);
+                        }
+                      }}
+                      className={`group relative flex items-center justify-between rounded-xl px-4 py-2.5 transition-all duration-300 cursor-pointer ${
+                        isActive
+                          ? "bg-accent/20 text-primary font-semibold"
+                          : "text-foreground hover:bg-accent/15"
+                      }`}
+                      style={{
+                        transitionDelay: open ? `${lIdx * 35}ms` : "0ms",
+                      }}
+                    >
                     <div className="relative block h-7 overflow-hidden whitespace-nowrap">
                       <span
                         className="block text-xl leading-7 font-medium uppercase tracking-tight text-foreground whitespace-nowrap transition-transform duration-400 group-hover:-translate-y-full"
@@ -769,8 +785,9 @@ export function Header() {
                         d="M3.515 12h16.97m0 0L13.01 4.525M20.485 12l-7.475 7.476"
                       />
                     </svg>
-                  </a>
-                ))}
+                  </Link>
+                );
+              })}
               </div>
 
               {/* Mobile Drawer Bottom: Full-Width Prominent "Let's talk" CTA + Support */}
@@ -810,14 +827,6 @@ export function Header() {
                     </svg>
                   </span>
                 </a>
-
-                {/* Mobile Drawer Theme Switcher */}
-                <div className="flex items-center justify-between px-2 pt-1 border-t border-line/20">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-muted">
-                    Theme:
-                  </span>
-                  <ThemeSwitcher compact />
-                </div>
 
                 {/* 24/7 Operations Support Contact */}
                 <div className="flex items-center justify-between px-2 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-muted">

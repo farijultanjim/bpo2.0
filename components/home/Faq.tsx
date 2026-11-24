@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Minus, Plus } from "lucide-react";
-import { prefersReducedMotion } from "@/app/lib/motion";
+import { MOTION, prefersReducedMotion, registerMotionEasings } from "@/app/lib/motion";
 
 const questions = [
   {
@@ -35,6 +35,7 @@ export function Faq() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    registerMotionEasings();
     const section = sectionRef.current;
     if (!section) return;
     if (prefersReducedMotion()) return;
@@ -45,7 +46,7 @@ export function Faq() {
         opacity: 0,
         duration: 1.15,
         stagger: 0.08,
-        ease: "power4.out",
+        ease: MOTION.signature.gsap,
         scrollTrigger: { trigger: section, start: "top 70%" },
       });
 
@@ -54,7 +55,7 @@ export function Faq() {
         opacity: 0,
         duration: 0.9,
         stagger: 0.1,
-        ease: "power3.out",
+        ease: MOTION.signature.gsap,
         scrollTrigger: {
           trigger: "[data-faq-list]",
           start: "top 80%",
@@ -134,7 +135,7 @@ export function Faq() {
 
                   <div
                     id={panelId}
-                    className={`grid transition-[grid-template-rows] duration-700 ease-out ${
+                    className={`grid transition-[grid-template-rows] duration-700 ease-[var(--ease-micro)] ${
                       isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                     }`}
                   >

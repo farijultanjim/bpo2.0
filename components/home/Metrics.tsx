@@ -10,7 +10,7 @@ import {
   Star,
   type LucideProps,
 } from "lucide-react";
-import { prefersReducedMotion } from "@/app/lib/motion";
+import { MOTION, prefersReducedMotion, registerMotionEasings } from "@/app/lib/motion";
 
 type Result = {
   value: number;
@@ -58,6 +58,7 @@ export function Metrics() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    registerMotionEasings();
     const section = sectionRef.current;
     if (!section) return;
     if (prefersReducedMotion()) return;
@@ -68,7 +69,7 @@ export function Metrics() {
         rotate: 2,
         duration: 1.2,
         stagger: 0.08,
-        ease: "power4.out",
+        ease: MOTION.signature.gsap,
         scrollTrigger: { trigger: section, start: "top 68%" },
       });
 
@@ -77,7 +78,7 @@ export function Metrics() {
         opacity: 0,
         duration: 1,
         stagger: 0.12,
-        ease: "power3.out",
+        ease: MOTION.signature.gsap,
         scrollTrigger: {
           trigger: "[data-results-list]",
           start: "top 78%",
@@ -89,7 +90,7 @@ export function Metrics() {
         { scaleX: 0 },
         {
           scaleX: 1,
-          ease: "none",
+          ease: MOTION.scrub.gsap,
           scrollTrigger: {
             trigger: "[data-results-list]",
             start: "top 72%",
@@ -110,7 +111,7 @@ export function Metrics() {
           gsap.to(counter, {
             value,
             duration: 1.9,
-            ease: "power2.out",
+            ease: MOTION.signature.gsap,
             delay: index * 0.12,
             onUpdate() {
               node.textContent = format(counter.value, decimals);

@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Quote, Star } from "lucide-react";
-import { prefersReducedMotion } from "@/app/lib/motion";
+import { MOTION, prefersReducedMotion, registerMotionEasings } from "@/app/lib/motion";
 
 type Testimonial = {
   quote: string;
@@ -65,6 +65,7 @@ export function Testimonials() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    registerMotionEasings();
 
     const section = sectionRef.current;
     const viewport = viewportRef.current;
@@ -78,7 +79,7 @@ export function Testimonials() {
         opacity: 0,
         duration: 1,
         stagger: 0.08,
-        ease: "power4.out",
+        ease: MOTION.signature.gsap,
         scrollTrigger: {
           trigger: section,
           start: "top 72%",
@@ -87,7 +88,7 @@ export function Testimonials() {
 
       gsap.to(track, {
         x: () => -(track.scrollWidth - viewport.clientWidth),
-        ease: "none",
+        ease: MOTION.scrub.gsap,
         scrollTrigger: {
           trigger: section,
           start: "top top",
@@ -102,7 +103,7 @@ export function Testimonials() {
         opacity: 0,
         stagger: 0.12,
         duration: 1,
-        ease: "power3.out",
+        ease: MOTION.signature.gsap,
         scrollTrigger: {
           trigger: section,
           start: "top 62%",

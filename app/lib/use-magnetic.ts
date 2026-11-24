@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { prefersReducedMotion } from "./motion";
+import { MOTION, prefersReducedMotion } from "./motion";
 
 /**
  * Pulls an element a few pixels toward the cursor while hovered.
@@ -17,8 +17,8 @@ export function useMagnetic<T extends HTMLElement>(strength = 0.35) {
     if (prefersReducedMotion()) return;
     if (typeof window === "undefined") return;
 
-    const moveX = gsap.quickTo(element, "x", { duration: 0.4, ease: "power3.out" });
-    const moveY = gsap.quickTo(element, "y", { duration: 0.4, ease: "power3.out" });
+    const moveX = gsap.quickTo(element, "x", { duration: 0.4, ease: MOTION.micro.gsap });
+    const moveY = gsap.quickTo(element, "y", { duration: 0.4, ease: MOTION.micro.gsap });
 
     const onMove = (event: PointerEvent) => {
       const bounds = element.getBoundingClientRect();
