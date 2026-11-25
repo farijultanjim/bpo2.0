@@ -88,7 +88,7 @@ export function Hero() {
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "35% top",
+          end: "26% top",
           scrub: true,
         },
       });
@@ -96,8 +96,8 @@ export function Hero() {
       const storyTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: "28% top",
-          end: "90% top",
+          start: "32% top",
+          end: "92% top",
           scrub: 0.8,
         },
       });
@@ -143,7 +143,7 @@ export function Hero() {
     <>
       <section
         ref={sectionRef}
-        className={`relative bg-primary ${reduced ? "h-svh" : "h-[210svh]"}`}
+        className={`relative bg-primary ${reduced ? "h-svh" : "h-[235svh]"}`}
       >
         <div className="sticky top-0 h-svh overflow-hidden">
           <video

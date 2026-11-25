@@ -11,6 +11,7 @@ import {
   type LucideProps,
 } from "lucide-react";
 import { MOTION, prefersReducedMotion, registerMotionEasings } from "@/app/lib/motion";
+import { CtaButton } from "@/components/ui/CtaButton";
 
 type Result = {
   value: number;
@@ -74,14 +75,14 @@ export function Metrics() {
       });
 
       gsap.from("[data-result-row]", {
-        x: 90,
+        y: 32,
         opacity: 0,
-        duration: 1,
-        stagger: 0.12,
+        duration: 0.85,
+        stagger: 0.1,
         ease: MOTION.signature.gsap,
         scrollTrigger: {
           trigger: "[data-results-list]",
-          start: "top 78%",
+          start: "top 82%",
         },
       });
 
@@ -131,14 +132,14 @@ export function Metrics() {
     <section
       id="results"
       ref={sectionRef}
-      className="relative overflow-clip bg-background px-5 py-24 text-foreground sm:px-8 sm:py-32 lg:px-12 lg:py-44"
+      className="relative overflow-clip bg-background px-5 py-16 text-foreground sm:px-8 sm:py-24 lg:px-12 lg:py-28"
     >
       {/* Anchor target for Lenis / Navigation */}
       <div id="metrics" className="absolute -top-16 pointer-events-none" />
       <div className="relative mx-auto max-w-site">
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
-          <div className="lg:sticky lg:top-32 lg:h-fit">
-            <div className="mb-8 flex items-center gap-3">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 items-start">
+          <div className="lg:col-span-5 lg:sticky lg:top-28 lg:h-fit">
+            <div className="mb-6 flex items-center gap-3">
               <span className="size-2 rounded-full bg-accent" />
               <p className="text-xs font-bold uppercase tracking-widest">
                 Built on proof
@@ -154,37 +155,70 @@ export function Metrics() {
               </span>
             </h2>
 
-            <p className="mt-8 max-w-md text-base font-medium leading-relaxed text-foreground/70 sm:text-lg">
+            <p className="mt-6 max-w-md text-sm font-medium leading-relaxed text-foreground/70 sm:text-base">
               Trust is earned through measurable cost reduction, strict SLA
               adherence, and audited operational security.
             </p>
+
+            {/* Compact ROI Benchmark Strip */}
+            <div className="mt-7 max-w-md rounded-2xl border border-foreground/15 bg-canvas/60 p-4 sm:p-5">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-foreground/55">
+                    Annual FTE Benchmark
+                  </p>
+                  <p className="mt-1 text-sm font-bold text-foreground">
+                    <span className="line-through text-foreground/45 mr-2">$65k+ US</span>
+                    <span className="text-primary">~$18k Offshore</span>
+                  </p>
+                </div>
+                <span className="shrink-0 rounded-full bg-accent px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-primary">
+                  Save 72%
+                </span>
+              </div>
+              <div className="mt-4 pt-3.5 border-t border-foreground/10">
+                <CtaButton href="#contact" variant="dark" className="w-full justify-between">
+                  Calculate your savings
+                </CtaButton>
+              </div>
+            </div>
           </div>
 
-          <div data-results-list className="relative">
+          <div data-results-list className="relative lg:col-span-7">
             <div
               data-results-rule
               className="absolute inset-x-0 top-0 h-px origin-left bg-primary"
             />
-            {results.map((result) => {
+            {results.map((result, idx) => {
               const Icon = result.icon;
 
               return (
                 <article
                   data-result-row
                   key={result.label}
-                  className="group grid min-h-52 grid-cols-2 items-center gap-8 border-b border-foreground/20 py-8 sm:grid-cols-3"
+                  className="group grid grid-cols-[1fr_auto] items-center gap-x-6 gap-y-2 border-b border-foreground/15 px-3 py-5 transition-colors duration-300 ease-[var(--ease-micro)] hover:bg-canvas/50 sm:grid-cols-[auto_1fr_auto] sm:gap-8 sm:px-4 sm:py-6"
                 >
-                  <p className="font-bricolage text-6xl sm:text-7xl lg:text-8xl font-semibold leading-none tracking-tighter tabular-nums">
-                    <span data-count>{format(result.value, result.decimals)}</span>
-                    <span>{result.suffix}</span>
-                  </p>
-                  <p className="hidden max-w-xs text-sm font-semibold leading-relaxed text-foreground/70 sm:block sm:text-base">
+                  <div className="flex items-baseline gap-3 sm:min-w-[11.5rem]">
+                    <span className="text-[11px] font-mono font-bold text-foreground/35">
+                      0{idx + 1}
+                    </span>
+                    <p className="font-bricolage text-4xl sm:text-5xl lg:text-6xl font-semibold leading-none tracking-tighter tabular-nums text-foreground">
+                      <span data-count>{format(result.value, result.decimals)}</span>
+                      <span className="text-primary/80 transition-colors duration-300 group-hover:text-primary">
+                        {result.suffix}
+                      </span>
+                    </p>
+                  </div>
+
+                  <p className="hidden max-w-xs text-sm font-semibold leading-relaxed text-foreground/75 sm:block">
                     {result.label}
                   </p>
-                  <span className="grid size-14 place-items-center justify-self-end rounded-full border border-foreground/20 transition-all duration-500 group-hover:rotate-6 group-hover:border-foreground group-hover:bg-primary group-hover:text-accent">
-                    <Icon size={22} strokeWidth={1.6} />
+
+                  <span className="grid size-11 sm:size-12 place-items-center justify-self-end rounded-full border border-foreground/15 bg-background transition-all duration-300 ease-[var(--ease-micro)] group-hover:rotate-6 group-hover:border-primary group-hover:bg-primary group-hover:text-accent">
+                    <Icon size={20} strokeWidth={1.6} />
                   </span>
-                  <p className="col-span-2 max-w-xs text-sm font-semibold leading-relaxed text-foreground/70 sm:hidden">
+
+                  <p className="col-span-2 max-w-xs text-sm font-semibold leading-relaxed text-foreground/75 sm:hidden">
                     {result.label}
                   </p>
                 </article>

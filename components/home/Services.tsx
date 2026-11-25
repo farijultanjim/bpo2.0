@@ -501,14 +501,28 @@ export function Services() {
       activeBtn?.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
     }
 
+    const container = cardsContainerRef.current;
     const wrapper = cardWrappersRef.current[index];
-    if (wrapper) {
-      wrapper.scrollIntoView({ behavior: "smooth" });
+    if (container) {
+      const containerTop = container.getBoundingClientRect().top + window.scrollY;
+      const cardHeight = wrapper?.offsetHeight || window.innerHeight;
+      const targetY = containerTop + index * cardHeight;
+      const lenis = (
+        window as unknown as {
+          __lenis?: { scrollTo: (y: number, opts?: { duration?: number }) => void };
+        }
+      ).__lenis;
+
+      if (lenis) {
+        lenis.scrollTo(targetY, { duration: 0.9 });
+      } else {
+        window.scrollTo({ top: targetY, behavior: "smooth" });
+      }
     }
 
     jumpTimeoutRef.current = window.setTimeout(() => {
       isJumpingRef.current = false;
-    }, 900);
+    }, 950);
   };
 
   // Mobile continuous snap carousel state & smooth controllers

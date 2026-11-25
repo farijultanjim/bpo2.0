@@ -92,14 +92,14 @@ export function Craft() {
 
   return (
     <section id="infrastructure" ref={sectionRef} className="overflow-hidden bg-background text-foreground">
-      <div className="mx-auto max-w-site px-5 pb-20 pt-24 sm:px-8 sm:pt-32 lg:px-12 lg:pb-32 lg:pt-44">
+      <div className="mx-auto max-w-site px-5 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-24 lg:px-12 lg:pb-24 lg:pt-28">
         <div className="grid gap-8 border-t border-foreground/20 pt-6 lg:grid-cols-12 lg:gap-16">
           {/* Left Column: Kicker + Quick Operational Badges */}
           <div data-reveal className="lg:col-span-4 space-y-6">
             <div className="flex items-center gap-3">
               <span className="size-2 rounded-full bg-accent" />
               <p className="text-xs font-bold uppercase tracking-widest text-foreground">
-                Dedicated Capacity
+                Enterprise Infrastructure
               </p>
             </div>
             <div className="hidden lg:block space-y-3 pt-2">
@@ -122,8 +122,8 @@ export function Craft() {
             </div>
           </div>
 
-          {/* Right Column: Heading + Value Statement + Dependable Pillars + CTA */}
-          <div className="lg:col-span-8 space-y-8">
+          {/* Right Column: Heading + Infrastructure Statement + Trust Pillars + CTA */}
+          <div className="lg:col-span-8 space-y-7">
             <h2 className="section-heading">
               <span data-reveal className="block">Always on.</span>
               <span data-reveal className="block text-stroke">Every shift.</span>
@@ -133,56 +133,55 @@ export function Craft() {
               data-reveal
               className="max-w-3xl text-base font-medium leading-relaxed text-foreground/75 sm:text-lg"
             >
-              Extend your core team overseas without the hiring lag, night-shift
-              burnout, or turnover. 500+ domain specialists work directly in your
-              software stack during US business hours—clearing shipment
-              backlogs, monitoring dispatch, and resolving carrier exceptions before
-              your morning starts.
+              Enterprise-grade operations built for high-volume freight forwarders
+              and 3PLs. Our facilities run on redundant dual-fiber networks, strict
+              VDI/VPN security, and TMS-certified specialists—ensuring uninterrupted
+              execution across every US shift.
             </p>
 
-            {/* Dependable Trust Pillars */}
-            <div data-reveal className="grid gap-4 sm:grid-cols-3 pt-2">
+            {/* Infrastructure Trust Pillars */}
+            <div data-reveal className="grid gap-3.5 sm:grid-cols-3 pt-1">
               <div className="rounded-2xl border border-foreground/15 bg-canvas/50 p-5">
                 <p className="text-xs font-extrabold uppercase tracking-wider text-foreground/50">
-                  01 / Coverage
+                  01 / Security
                 </p>
                 <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-foreground">
-                  US Working Hours
+                  SOC 2 & ISO Aligned
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-foreground/70">
-                  Multi-shift teams operating in real time across EST, CST, and PST business hours.
+                  Clean-desk facilities, restricted USB access, and encrypted VDI/VPN tunnels for your data.
                 </p>
               </div>
 
               <div className="rounded-2xl border border-foreground/15 bg-canvas/50 p-5">
                 <p className="text-xs font-extrabold uppercase tracking-wider text-foreground/50">
-                  02 / Software
+                  02 / Redundancy
                 </p>
                 <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-foreground">
-                  Your Own Tools
+                  99.98% Uptime
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-foreground/70">
-                  We operate directly inside your TMS, ERP, carrier portals, email, and Slack channels.
+                  Dual-ISP enterprise fiber, automated failover, and 24/7 backup power across all hubs.
                 </p>
               </div>
 
               <div className="rounded-2xl border border-foreground/15 bg-canvas/50 p-5">
                 <p className="text-xs font-extrabold uppercase tracking-wider text-foreground/50">
-                  03 / Savings
+                  03 / Certified
                 </p>
                 <h3 className="mt-2 font-bricolage text-lg font-bold uppercase tracking-tight text-foreground">
-                  Up to 72% Lower Cost
+                  TMS-Ready Talent
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-foreground/70">
-                  No payroll taxes, healthcare, 401K, or recruiting overhead for every added FTE.
+                  Pre-vetted specialists trained in CargoWise, McLeod, Descartes, and carrier portals.
                 </p>
               </div>
             </div>
 
             {/* Direct Action Button */}
-            <div data-reveal className="pt-2">
-              <CtaButton href="#services">
-                Explore services
+            <div data-reveal className="pt-1">
+              <CtaButton href="#contact">
+                Book a discovery call
               </CtaButton>
             </div>
           </div>
@@ -191,7 +190,7 @@ export function Craft() {
 
       <div
         ref={imageRef}
-        className="relative mx-auto h-[70svh] min-h-[34rem] max-w-[120rem] overflow-hidden mb-20"
+        className="relative mx-auto h-[52svh] min-h-[24rem] sm:h-[62svh] lg:h-[70svh] lg:min-h-[34rem] max-w-[120rem] overflow-hidden mb-16 sm:mb-20"
       >
         <div data-parallax-image className="absolute -top-[12%] -bottom-[12%] inset-x-0">
           <Image

@@ -22,6 +22,16 @@
   --ease-signature: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-micro: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ── Featured Projects Showcase Tokens ── */
+  --project-fintech-bg: #112a22;
+  --project-fintech-accent: #c9f36a;
+  --project-cloud-bg: #132530;
+  --project-cloud-accent: #5eead4;
+  --project-health-bg: #172721;
+  --project-health-accent: #a3e635;
+  --project-security-bg: #1b222c;
+  --project-security-accent: #93c5fd;
 }
 
 @theme inline {
@@ -39,6 +49,16 @@
   /* Legacy mappings to primary and background so no third-party or residual code fails */
   --color-ink: var(--primary);
   --color-paper: var(--background);
+
+  /* Featured Projects color tokens */
+  --color-project-fintech-bg: var(--project-fintech-bg);
+  --color-project-fintech-accent: var(--project-fintech-accent);
+  --color-project-cloud-bg: var(--project-cloud-bg);
+  --color-project-cloud-accent: var(--project-cloud-accent);
+  --color-project-health-bg: var(--project-health-bg);
+  --color-project-health-accent: var(--project-health-accent);
+  --color-project-security-bg: var(--project-security-bg);
+  --color-project-security-accent: var(--project-security-accent);
 
   /* Clean Typography aliases */
   --font-sans: var(--font-manrope);
@@ -119,6 +139,86 @@
 /* Site layout container tokens */
 @utility max-w-site {
   max-width: 100rem;
+}
+
+/* ── Featured Projects Live Motion Keyframes ── */
+@keyframes radar-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-grow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.65;
+  }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes laser-scan {
+  0%,
+  100% {
+    transform: translateY(0px);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(126px);
+    opacity: 1;
+  }
+}
+
+.animate-radar-spin {
+  animation: radar-spin 12s linear infinite;
+}
+
+.animate-radar-spin-fast {
+  animation: radar-spin 5s linear infinite;
+}
+
+.animate-radar-counter {
+  animation: radar-spin 18s linear infinite reverse;
+}
+
+.animate-pulse-grow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse-grow 3s ease-in-out infinite;
+}
+
+.animate-dash-flow {
+  animation: dash-flow 2s linear infinite;
+}
+
+.animate-float-gentle {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
+.animate-laser-scan {
+  animation: laser-scan 3.2s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
