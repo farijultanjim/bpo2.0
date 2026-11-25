@@ -108,7 +108,7 @@ export function Craft() {
                   Global Hubs
                 </p>
                 <p className="mt-1 text-sm font-bold text-foreground">
-                  New York • Dubai • Dhaka • Singapore
+                  New York • Dubai • Dhaka
                 </p>
               </div>
               <div className="rounded-xl border border-foreground/10 bg-canvas/60 p-4">
@@ -206,10 +206,10 @@ export function Craft() {
         <div className="absolute inset-x-5 bottom-7 flex items-end justify-between text-background sm:inset-x-8 lg:inset-x-12 lg:bottom-10">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-accent mb-2">
-              Four Worldwide Hubs
+              Three Worldwide Hubs
             </p>
             <p className="max-w-xs text-sm font-semibold uppercase leading-relaxed tracking-wider text-background/90">
-              Dubai • New York • Dhaka • Singapore
+              New York • Dubai • Dhaka
             </p>
           </div>
           <p className="font-bricolage text-5xl font-semibold tracking-tighter sm:text-7xl">

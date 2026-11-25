@@ -344,45 +344,15 @@ export function Header() {
               ref={logoRef}
               id="header-logo"
               href="/"
-              aria-label="Spectra — Home"
+              aria-label="NexG — Home"
               className="group flex shrink-0 items-center gap-2.5 transition-opacity duration-300 hover:opacity-85 z-10"
             >
-              <div className="relative flex items-center justify-center size-8 md:size-9 rounded-lg bg-accent text-primary transition-transform duration-500 group-hover:rotate-45">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="text-primary"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M12 2L21 7V17L12 22L3 17V7L12 2Z"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M12 2V22"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeOpacity="0.4"
-                  />
-                  <path
-                    d="M3 7L21 17M3 17L21 7"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeOpacity="0.6"
-                  />
-                </svg>
-              </div>
               <span
-                className={`font-heading text-xl md:text-2xl font-extrabold tracking-tight uppercase leading-none select-none transition-colors duration-300 ${
+                className={`font-bricolage text-2xl md:text-[26px] font-extrabold tracking-tight leading-none select-none transition-colors duration-300 ${
                   isDarkTheme ? "text-background drop-shadow-md" : "text-foreground"
                 }`}
               >
-                SPECTRA
+                NexG
               </span>
             </Link>
 
