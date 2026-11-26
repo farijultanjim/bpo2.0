@@ -38,7 +38,7 @@ export const FEATURED_PROJECTS: Project[] = [
     year: "2025",
     metric: "4-Week Scale • 35 FTEs",
     summary:
-      "Integrated dedicated US-hours dispatch and shipment visibility teams directly inside CargoWise across 4 global hubs.",
+      "Integrated dedicated dispatch and shipment visibility teams directly inside CargoWise across North America, UK, Australia, and the Middle East.",
     color: "var(--project-cloud-bg)",
     accentColor: "var(--project-cloud-accent)",
   },

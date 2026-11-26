@@ -62,7 +62,7 @@ const SERVICES_MENU = [
   {
     number: "05",
     title: "Fleet & Truckload Tracking",
-    tagline: "FTL & LTL track & trace across US lanes",
+    tagline: "FTL & LTL track & trace across global lanes",
     href: "#services",
     icon: Truck,
   },
@@ -484,7 +484,7 @@ export function Header() {
                           </span>
                         </div>
                         <span className="text-[10px] font-bold text-primary uppercase tracking-wider bg-accent/25 px-2.5 py-0.5 rounded-full">
-                          24/7 US Hours Desk
+                          24/7 Global Desk
                         </span>
                       </div>
 

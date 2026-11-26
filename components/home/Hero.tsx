@@ -11,7 +11,7 @@ const storyMoments = [
     number: "01",
     kicker: "Seamless & Cost-Effective",
     title: "An extension of your core team.",
-    copy: "Skip bonuses, healthcare, and hiring lag—saving up to 72% per FTE while our specialists work US hours directly inside your own processes and tools.",
+    copy: "Skip bonuses, healthcare, and hiring lag—saving up to 72% per FTE while our specialists work in your local time zone across the US, UK, Canada, Australia & UAE.",
     position: "items-center text-center",
   },
 ];
@@ -179,8 +179,9 @@ export function Hero() {
                   className="invisible max-w-md text-sm font-medium leading-relaxed text-background/90 sm:text-base"
                 >
                   Your offshore partner for freight forwarding and logistics
-                  operations. 500+ domain experts working US hours with 24/7
-                  support and up to 72% lower cost per FTE.
+                  operations. 500+ domain experts aligned to US, UK, Canada,
+                  Australia &amp; UAE hours with 24/7 support and up to 72% lower
+                  cost per FTE.
                 </p>
                 <CtaButton
                   data-hero-detail

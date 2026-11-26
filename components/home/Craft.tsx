@@ -116,7 +116,7 @@ export function Craft() {
                   Shift Coverage
                 </p>
                 <p className="mt-1 text-sm font-bold text-foreground">
-                  Real-time US-hours operational sync
+                  Real-time US, UK, CA, AU &amp; UAE shift sync
                 </p>
               </div>
             </div>
@@ -136,7 +136,7 @@ export function Craft() {
               Enterprise-grade operations built for high-volume freight forwarders
               and 3PLs. Our facilities run on redundant dual-fiber networks, strict
               VDI/VPN security, and TMS-certified specialists—ensuring uninterrupted
-              execution across every US shift.
+              execution across North America, UK, Australia, and Middle East shifts.
             </p>
 
             {/* Infrastructure Trust Pillars */}

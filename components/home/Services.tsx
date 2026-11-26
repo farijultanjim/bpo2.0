@@ -111,10 +111,10 @@ const services: ServiceItem[] = [
     title: "Customer service",
     tagline: "A 24/7 front line for your customers",
     description:
-      "A dedicated front line that keeps your customers informed and exceptions under tight control, working US hours directly inside your CRM and email.",
+      "A dedicated front line that keeps your customers informed and exceptions under tight control, aligned to your local business hours across US, UK, Canada, Australia & UAE.",
     pills: [
       "24/7 coverage",
-      "US-hour alignment",
+      "Global time-zone sync",
       "Exception control",
       "Works in your tools",
     ],
@@ -134,8 +134,8 @@ const services: ServiceItem[] = [
         description: "Resolve port holds, customs delays & carrier reroutes.",
       },
       {
-        title: "Live US shifts",
-        description: "Real-time responses in your email, portal & Slack.",
+        title: "Live regional shifts",
+        description: "Real-time coverage across US, UK, CA, AU & UAE hours.",
       },
     ],
   },
@@ -399,7 +399,7 @@ function ServiceStackCard({
               Operational Execution
             </p>
             <span className="text-xs font-semibold text-background/75 uppercase tracking-wider hidden sm:inline-block drop-shadow-sm">
-              Dedicated US-Hour Desk
+              Dedicated 24/7 Global Desk
             </span>
           </div>
 

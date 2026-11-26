@@ -37,7 +37,7 @@ const testimonials: Testimonial[] = [
   {
     id: "strata",
     quote:
-      "Our domestic dispatchers were burning out handling overnight carrier calls. Spectra stepped in seamlessly and integrated directly with our McLeod TMS.",
+      "Our local dispatchers were burning out handling overnight carrier calls. NexG stepped in seamlessly and integrated directly with our McLeod TMS.",
     name: "Marcus Vance",
     project: "Director of Logistics, Strata",
     initials: "MV",
@@ -67,7 +67,7 @@ const testimonials: Testimonial[] = [
   {
     id: "omnicorp",
     quote:
-      "Working US hours with zero communication friction. They operate directly in our tools and feel like our own core team sitting next to us.",
+      "Aligned to our local time zone with zero communication friction. They operate directly in our tools and feel like our own core team sitting next to us.",
     name: "David Chen",
     project: "Managing Director, OmniCorp",
     initials: "DC",

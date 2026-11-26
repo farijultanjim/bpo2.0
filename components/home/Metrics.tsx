@@ -47,7 +47,7 @@ const results: Result[] = [
     value: 24,
     decimals: 0,
     suffix: "/7",
-    label: "Continuous operations & US hours coverage",
+    label: "Continuous 24/7 coverage across US, UK, CA, AU & UAE",
     icon: BadgeCheck,
   },
 ];
@@ -168,7 +168,7 @@ export function Metrics() {
                     Annual FTE Benchmark
                   </p>
                   <p className="mt-1 text-sm font-bold text-foreground">
-                    <span className="line-through text-foreground/45 mr-2">$65k+ US</span>
+                    <span className="line-through text-foreground/45 mr-2">$65k+ Local</span>
                     <span className="text-primary">~$18k Offshore</span>
                   </p>
                 </div>

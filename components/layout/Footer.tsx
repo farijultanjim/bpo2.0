@@ -277,8 +277,8 @@ export function Footer() {
               className="max-w-lg text-base font-medium leading-relaxed text-background/80"
             >
               A dedicated logistics &amp; BPO operations partner bringing domain
-              expertise, US-hours execution, and up to 72% cost savings
-              together.
+              expertise, global time-zone execution (US, UK, CA, AU &amp; UAE),
+              and up to 72% cost savings together.
             </p>
 
             <div

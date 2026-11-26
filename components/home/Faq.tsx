@@ -13,14 +13,14 @@ const questions = [
       "Most initial teams are shadowed, documented into SOPs, and operating live within 2 to 4 weeks, with zero operational downtime for your existing staff.",
   },
   {
-    question: "What are the typical cost savings compared to domestic FTEs?",
+    question: "What are the typical cost savings compared to local hires?",
     answer:
-      "Clients save between 60% and 72% per role. An offshore FTE typically costs around $18k annually versus $65k+ domestically, skipping healthcare, bonuses, and 401k liabilities.",
+      "Clients save between 60% and 72% per role. An offshore FTE typically costs around $18k annually versus $65k+ in the US, UK, Canada, Australia, or UAE—skipping local payroll taxes, healthcare, and benefits overhead.",
   },
   {
     question: "Will the offshore team operate in our own software and tools?",
     answer:
-      "Yes. Our domain specialists work directly inside your TMS (e.g. McLeod, CargoWise, Descartes), CRM, email, and communication tools (Slack/Teams) during your required US business hours.",
+      "Yes. Our domain specialists work directly inside your TMS (e.g. McLeod, CargoWise, Descartes), CRM, email, and communication tools (Slack/Teams) during your exact local business hours across North America, UK, Australia, or the Middle East.",
   },
   {
     question: "How is data security and compliance handled?",
