@@ -97,7 +97,25 @@ export function Process() {
     >
       {/* Anchor target for Lenis / Navigation */}
       <div id="work" className="absolute -top-16 pointer-events-none" />
-      <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-44">
+
+      {/* Large Flat Logistics Blueprint SVG: Freight Route & Container Grid */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 1440 420"
+        fill="none"
+        className="pointer-events-none absolute inset-x-0 bottom-0 w-full text-primary opacity-[0.08]"
+      >
+        <path d="M-40 340 L 280 220 L 560 280 L 920 120 L 1220 200 L 1480 80" stroke="currentColor" strokeWidth="2" strokeDasharray="10 8" />
+        <path d="M-40 380 H1480" stroke="currentColor" strokeWidth="1.5" />
+        <rect x="220" y="290" width="140" height="90" stroke="currentColor" strokeWidth="1.8" />
+        <rect x="360" y="290" width="140" height="90" stroke="currentColor" strokeWidth="1.8" />
+        <rect x="290" y="200" width="140" height="90" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="920" cy="120" r="36" stroke="currentColor" strokeWidth="1.6" />
+        <circle cx="920" cy="120" r="76" stroke="currentColor" strokeWidth="1.4" strokeDasharray="6 6" />
+        <circle cx="1220" cy="200" r="8" stroke="currentColor" strokeWidth="2" />
+      </svg>
+
+      <div className="relative mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32 lg:px-12 lg:py-44">
         <div className="grid items-end gap-10 lg:grid-cols-3 lg:gap-20">
           <h2 className="section-heading lg:col-span-2">
             <span className="block overflow-hidden py-1">
@@ -147,7 +165,7 @@ export function Process() {
                   <span className="text-xs font-extrabold tracking-widest">
                     STEP / {step.number}
                   </span>
-                  <span className="grid size-12 place-items-center rounded-full border border-primary/30 transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-primary group-hover:text-accent">
+                  <span className="grid size-12 place-items-center rounded-full border border-primary/30 transition-all duration-500 ease-[var(--ease-micro)] group-hover:-translate-y-1 group-hover:bg-primary group-hover:text-accent">
                     <Icon size={20} strokeWidth={1.7} />
                   </span>
                 </div>

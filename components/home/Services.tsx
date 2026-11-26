@@ -645,6 +645,37 @@ export function Services() {
       ref={sectionRef}
       className="relative bg-primary px-5 py-24 text-background sm:px-8 sm:py-32 lg:px-12 lg:py-44"
     >
+      {/* Large Flat Logistics Blueprint SVG: Sticky Cargo Container Ship & Port Horizon */}
+      <div className="pointer-events-none absolute inset-0 overflow-clip" aria-hidden="true">
+        <div className="sticky top-0 h-svh w-full">
+          <svg
+            viewBox="0 0 1440 420"
+            fill="none"
+            className="absolute inset-x-0 bottom-0 w-full text-background opacity-[0.07]"
+          >
+          {/* Ocean Horizon Lines */}
+          <path d="M-40 360 Q 180 340, 360 360 T 760 360 T 1160 360 T 1500 360" stroke="currentColor" strokeWidth="2" />
+          <path d="M-40 390 Q 200 372, 400 390 T 840 390 T 1240 390 T 1500 390" stroke="currentColor" strokeWidth="1.5" strokeDasharray="10 8" />
+          {/* Cargo Ship Hull */}
+          <path d="M220 355 L180 285 H1060 L1005 355" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
+          {/* Bridge / Superstructure */}
+          <path d="M900 285 V185 H985 V285 M920 185 V150 H965 V185 M942 150 V115" stroke="currentColor" strokeWidth="1.8" />
+          {/* Stacked Shipping Containers */}
+          <rect x="255" y="235" width="120" height="50" stroke="currentColor" strokeWidth="1.8" />
+          <rect x="385" y="235" width="120" height="50" stroke="currentColor" strokeWidth="1.8" />
+          <rect x="515" y="235" width="120" height="50" stroke="currentColor" strokeWidth="1.8" />
+          <rect x="645" y="235" width="120" height="50" stroke="currentColor" strokeWidth="1.8" />
+          <rect x="775" y="235" width="110" height="50" stroke="currentColor" strokeWidth="1.8" />
+          <rect x="315" y="185" width="120" height="50" stroke="currentColor" strokeWidth="1.8" />
+          <rect x="445" y="185" width="120" height="50" stroke="currentColor" strokeWidth="1.8" />
+          <rect x="575" y="185" width="120" height="50" stroke="currentColor" strokeWidth="1.8" />
+          <rect x="445" y="135" width="120" height="50" stroke="currentColor" strokeWidth="1.8" />
+          {/* Port Gantry Crane Silhouette */}
+          <path d="M1160 355 V85 H1390 M1160 155 L1260 85 M1260 85 V355 M1110 135 H1390 M1330 135 V215" stroke="currentColor" strokeWidth="1.8" />
+        </svg>
+        </div>
+      </div>
+
       <div className="relative mx-auto max-w-site">
         {/* ========================================================= */}
         {/* MOBILE VIEW (< lg: 1024px) - Fluid Continuous Snap Carousel */}

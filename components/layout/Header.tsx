@@ -501,9 +501,9 @@ export function Header() {
                                 setIsServicesOpen(false);
                                 smoothScrollTo(service.href, e);
                               }}
-                              className="group/item flex items-start gap-3 rounded-2xl p-2.5 transition-all duration-200 hover:bg-accent/15 cursor-pointer"
+                              className="group/item flex items-start gap-3 rounded-2xl p-2.5 transition-all duration-400 ease-[var(--ease-micro)] hover:bg-accent/15 cursor-pointer"
                             >
-                              <span className="grid size-9 shrink-0 place-items-center rounded-xl border border-line/40 bg-canvas/80 text-foreground transition-all duration-300 group-hover/item:border-accent group-hover/item:bg-accent group-hover/item:text-primary shadow-xs">
+                              <span className="grid size-9 shrink-0 place-items-center rounded-xl border border-line/40 bg-canvas/80 text-foreground transition-all duration-400 ease-[var(--ease-micro)] group-hover/item:border-accent group-hover/item:bg-accent group-hover/item:text-primary shadow-xs">
                                 <Icon size={17} strokeWidth={1.8} />
                               </span>
                               <div className="min-w-0 flex-1">
@@ -511,7 +511,7 @@ export function Header() {
                                   <span className="text-[10px] font-mono font-bold text-accent-hover tracking-wider">
                                     {service.number}
                                   </span>
-                                  <h4 className="font-bricolage text-[13px] font-bold uppercase tracking-tight text-foreground transition-colors duration-200 group-hover/item:text-primary truncate">
+                                  <h4 className="font-bricolage text-[13px] font-bold uppercase tracking-tight text-foreground transition-colors duration-400 ease-[var(--ease-micro)] group-hover/item:text-primary truncate">
                                     {service.title}
                                   </h4>
                                 </div>
@@ -535,10 +535,10 @@ export function Header() {
                             setIsServicesOpen(false);
                             smoothScrollTo("#services", e);
                           }}
-                          className="group/link inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary hover:text-accent-hover transition-colors cursor-pointer"
+                          className="group/link inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary hover:text-accent-hover transition-colors duration-400 ease-[var(--ease-micro)] cursor-pointer"
                         >
                           <span>Explore all services</span>
-                          <span className="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
+                          <span className="transition-transform duration-400 ease-[var(--ease-micro)] group-hover/link:translate-x-1">→</span>
                         </a>
                       </div>
                     </motion.div>
@@ -614,7 +614,7 @@ export function Header() {
                   setOpen(false);
                   smoothScrollTo("#contact", e);
                 }}
-                className={`group relative hidden lg:flex h-11 items-center overflow-hidden rounded-full px-6 pr-4 text-sm font-medium uppercase tracking-wider transition-colors duration-300 border-none shadow-none cursor-pointer ${
+                className={`group relative hidden lg:flex h-11 items-center overflow-hidden rounded-full px-6 pr-4 text-sm font-medium uppercase tracking-wider transition-colors duration-500 ease-[var(--ease-micro)] border-none shadow-none cursor-pointer ${
                   isDarkTheme
                     ? "bg-accent text-primary hover:bg-primary hover:text-accent"
                     : "bg-primary text-background hover:bg-accent hover:text-primary"
@@ -622,8 +622,8 @@ export function Header() {
               >
                 {/* Sliding arrow on hover */}
                 <span
-                  className="absolute left-4 top-1/2 -translate-y-1/2 -translate-x-9 transition-transform duration-300 group-hover:translate-x-0 text-current"
-                  style={{ transitionTimingFunction: EASE }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 -translate-x-9 transition-transform duration-500 group-hover:translate-x-0 text-current"
+                  style={{ transitionTimingFunction: MOTION.micro.css }}
                   aria-hidden="true"
                 >
                   <svg
@@ -644,16 +644,16 @@ export function Header() {
                 </span>
 
                 <span
-                  className="transition-transform duration-300 group-hover:translate-x-4"
-                  style={{ transitionTimingFunction: EASE }}
+                  className="transition-transform duration-500 group-hover:translate-x-4"
+                  style={{ transitionTimingFunction: MOTION.micro.css }}
                 >
                   Let&rsquo;s talk
                 </span>
 
                 {/* Feature 3: Dynamic 24/7 Live Operations Beacon Pulse matching button theme */}
                 <span
-                  className="relative ml-2.5 flex size-1.5 items-center justify-center transition-transform duration-200 group-hover:scale-0"
-                  style={{ transitionTimingFunction: EASE }}
+                  className="relative ml-2.5 flex size-1.5 items-center justify-center transition-transform duration-400 group-hover:scale-0"
+                  style={{ transitionTimingFunction: MOTION.micro.css }}
                   aria-label="24/7 Live Support"
                 >
                   <span

@@ -60,19 +60,20 @@ export function Contact() {
       ref={sectionRef}
       className="relative overflow-hidden bg-primary px-5 pb-20 pt-24 text-background sm:px-8 sm:pb-28 sm:pt-32 lg:px-12 lg:pb-36 lg:pt-44"
     >
+      {/* Large Flat Logistics Blueprint SVG: Global Control Tower & Cargo Horizon */}
       <svg
         aria-hidden="true"
-        viewBox="0 0 1440 620"
+        viewBox="0 0 1440 520"
         fill="none"
-        className="pointer-events-none absolute inset-x-0 bottom-0 w-full text-background opacity-10"
+        className="pointer-events-none absolute inset-x-0 bottom-0 w-full text-background opacity-[0.08]"
       >
         <path
           data-contact-roof
           pathLength="1"
           strokeDasharray="1"
-          d="M-50 590 360 185l230 225L844 42l646 548M360 185v405M844 42v548"
+          d="M-40 460 Q 320 260, 720 340 T 1480 180 M80 510 H1360 M280 510 V310 H440 V510 M520 510 V240 H700 V510 M980 510 V140 L1080 90 L1180 140 V510"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1.8"
         />
       </svg>
 
@@ -108,7 +109,7 @@ export function Contact() {
               </CtaButton>
               <a
                 href="tel:+18005927489"
-                className="inline-flex items-center gap-3 rounded-full border border-white/20 px-5 py-2.5 text-sm font-bold transition-colors duration-300 hover:bg-background hover:text-primary cursor-pointer"
+                className="inline-flex items-center gap-3 rounded-full border border-white/20 px-5 py-2.5 text-sm font-bold transition-colors duration-500 ease-[var(--ease-micro)] hover:bg-background hover:text-primary cursor-pointer"
               >
                 <Phone size={17} strokeWidth={1.8} />
                 +1 (800) 592-7489
@@ -120,12 +121,12 @@ export function Contact() {
             data-contact-detail
             href="#top"
             aria-label="Back to top"
-            className="group grid size-16 place-items-center rounded-full border border-white/20 transition-colors duration-300 hover:bg-background hover:text-primary lg:size-20"
+            className="group grid size-16 place-items-center rounded-full border border-white/20 transition-colors duration-500 ease-[var(--ease-micro)] hover:bg-background hover:text-primary lg:size-20"
           >
             <ArrowUp
               size={23}
               strokeWidth={1.6}
-              className="transition-transform duration-500 group-hover:-translate-y-1"
+              className="transition-transform duration-500 ease-[var(--ease-micro)] group-hover:-translate-y-1"
             />
           </a>
         </div>

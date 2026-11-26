@@ -196,7 +196,7 @@ export function Metrics() {
                 <article
                   data-result-row
                   key={result.label}
-                  className="group grid grid-cols-[1fr_auto] items-center gap-x-6 gap-y-2 border-b border-foreground/15 px-3 py-5 transition-colors duration-300 ease-[var(--ease-micro)] hover:bg-canvas/50 sm:grid-cols-[auto_1fr_auto] sm:gap-8 sm:px-4 sm:py-6"
+                  className="group grid grid-cols-[1fr_auto] items-center gap-x-6 gap-y-2 border-b border-foreground/15 px-3 py-5 transition-colors duration-500 ease-[var(--ease-micro)] hover:bg-canvas/50 sm:grid-cols-[auto_1fr_auto] sm:gap-8 sm:px-4 sm:py-6"
                 >
                   <div className="flex items-baseline gap-3 sm:min-w-[11.5rem]">
                     <span className="text-[11px] font-mono font-bold text-foreground/35">
@@ -204,7 +204,7 @@ export function Metrics() {
                     </span>
                     <p className="font-bricolage text-4xl sm:text-5xl lg:text-6xl font-semibold leading-none tracking-tighter tabular-nums text-foreground">
                       <span data-count>{format(result.value, result.decimals)}</span>
-                      <span className="text-primary/80 transition-colors duration-300 group-hover:text-primary">
+                      <span className="text-primary/80 transition-colors duration-500 ease-[var(--ease-micro)] group-hover:text-primary">
                         {result.suffix}
                       </span>
                     </p>
@@ -214,7 +214,7 @@ export function Metrics() {
                     {result.label}
                   </p>
 
-                  <span className="grid size-11 sm:size-12 place-items-center justify-self-end rounded-full border border-foreground/15 bg-background transition-all duration-300 ease-[var(--ease-micro)] group-hover:rotate-6 group-hover:border-primary group-hover:bg-primary group-hover:text-accent">
+                  <span className="grid size-11 sm:size-12 place-items-center justify-self-end rounded-full border border-foreground/15 bg-background transition-all duration-500 ease-[var(--ease-micro)] group-hover:rotate-6 group-hover:border-primary group-hover:bg-primary group-hover:text-accent">
                     <Icon size={20} strokeWidth={1.6} />
                   </span>
 

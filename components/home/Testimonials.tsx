@@ -259,18 +259,18 @@ export function Testimonials() {
       ref={sectionRef}
       className="relative overflow-hidden bg-primary text-background"
     >
-      {/* Subtle architectural watermark */}
+      {/* Large Flat Logistics Blueprint SVG: Global Network & Flight Arcs */}
       <svg
         aria-hidden="true"
-        viewBox="0 0 900 600"
+        viewBox="0 0 1440 540"
         fill="none"
-        className="pointer-events-none absolute -right-40 -top-28 w-full max-w-2xl text-background opacity-10"
+        className="pointer-events-none absolute inset-x-0 bottom-0 w-full text-background opacity-[0.08]"
       >
-        <path
-          d="M42 558 446 72l412 486M132 558 446 181l321 377M222 558l224-268 229 268"
-          stroke="currentColor"
-          strokeWidth="2"
-        />
+        <circle cx="1160" cy="180" r="210" stroke="currentColor" strokeWidth="1.6" />
+        <ellipse cx="1160" cy="180" rx="210" ry="75" stroke="currentColor" strokeWidth="1.4" />
+        <ellipse cx="1160" cy="180" rx="85" ry="210" stroke="currentColor" strokeWidth="1.4" />
+        <path d="M-40 460 Q 340 240, 740 360 T 1480 200" stroke="currentColor" strokeWidth="1.8" strokeDasharray="10 8" />
+        <path d="M120 520 Q 520 320, 960 410 T 1480 310" stroke="currentColor" strokeWidth="1.5" />
       </svg>
 
       {/* Desktop View: Exact 100svh Pinned Stage — fits 14" laptops to 30" monitors cleanly */}

@@ -96,6 +96,53 @@ export function Faq() {
               Clear expectations build reliable partnerships. Here are the
               questions leadership teams ask us most.
             </p>
+
+            {/* Playful Architectural Doodle & Curved Arrow pointing toward FAQ list */}
+            <div data-faq-heading className="mt-10 hidden lg:block select-none" aria-hidden="true">
+              <svg
+                viewBox="0 0 240 150"
+                fill="none"
+                className="w-52 text-primary"
+              >
+                <circle
+                  cx="56"
+                  cy="76"
+                  r="42"
+                  stroke="currentColor"
+                  strokeOpacity="0.18"
+                  strokeWidth="1.4"
+                  strokeDasharray="5 5"
+                  className="animate-radar-spin origin-[56px_76px]"
+                />
+                <circle cx="56" cy="76" r="24" fill="var(--accent)" fillOpacity="0.35" />
+                <text
+                  x="56"
+                  y="83"
+                  textAnchor="middle"
+                  fill="currentColor"
+                  className="font-bricolage text-[22px] font-bold"
+                >
+                  ?
+                </text>
+                <path
+                  d="M108 76 C 142 76, 162 54, 214 62"
+                  stroke="currentColor"
+                  strokeOpacity="0.35"
+                  strokeWidth="1.8"
+                  strokeDasharray="5 4"
+                  strokeLinecap="round"
+                  className="animate-dash-flow"
+                />
+                <path
+                  d="M204 53 L216 62 L203 70"
+                  stroke="currentColor"
+                  strokeOpacity="0.45"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
           </div>
 
           <div data-faq-list className="lg:col-span-2 border-t border-foreground">
@@ -124,7 +171,7 @@ export function Faq() {
                         {item.question}
                       </span>
                     </span>
-                    <span className="grid size-11 shrink-0 place-items-center rounded-full border border-foreground/25 transition-all duration-300 group-hover:bg-primary group-hover:text-background">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-full border border-foreground/25 transition-all duration-500 ease-[var(--ease-micro)] group-hover:bg-primary group-hover:text-background">
                       {isOpen ? (
                         <Minus size={18} strokeWidth={1.8} />
                       ) : (

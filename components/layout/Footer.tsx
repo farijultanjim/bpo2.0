@@ -287,14 +287,14 @@ export function Footer() {
             >
               <a
                 href="mailto:contact@nexg.com"
-                className="font-semibold text-background transition-colors duration-200 hover:text-accent"
+                className="font-semibold text-background transition-colors duration-400 ease-[var(--ease-micro)] hover:text-accent"
               >
                 contact@nexg.com
               </a>
               <span className="text-white/20">•</span>
               <a
                 href="tel:+18005927489"
-                className="font-mono text-background/80 transition-colors duration-200 hover:text-accent"
+                className="font-mono text-background/80 transition-colors duration-400 ease-[var(--ease-micro)] hover:text-accent"
               >
                 +1 (800) 592-7489
               </a>
@@ -331,12 +331,12 @@ export function Footer() {
               type="button"
               onClick={scrollToTop}
               aria-label="Back to top"
-              className="group grid size-14 shrink-0 cursor-pointer place-items-center rounded-full border border-white/20 bg-white/[0.05] text-background transition-all duration-300 ease-[var(--ease-micro)] hover:border-accent hover:bg-accent hover:text-primary sm:size-16"
+              className="group grid size-14 shrink-0 cursor-pointer place-items-center rounded-full border border-white/20 bg-white/[0.05] text-background transition-all duration-500 ease-[var(--ease-micro)] hover:border-accent hover:bg-accent hover:text-primary sm:size-16"
             >
               <ArrowUp
                 size={22}
                 strokeWidth={1.8}
-                className="transition-transform duration-300 ease-[var(--ease-micro)] group-hover:-translate-y-1"
+                className="transition-transform duration-500 ease-[var(--ease-micro)] group-hover:-translate-y-1"
               />
             </button>
           </div>
@@ -355,7 +355,7 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-background/75 transition-colors duration-200 hover:text-background"
+                      className="text-background/75 transition-colors duration-400 ease-[var(--ease-micro)] hover:text-background"
                     >
                       {link.label}
                     </Link>
@@ -373,7 +373,7 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-background/75 transition-colors duration-200 hover:text-background"
+                      className="text-background/75 transition-colors duration-400 ease-[var(--ease-micro)] hover:text-background"
                     >
                       {link.label}
                     </Link>
@@ -391,7 +391,7 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-background/75 transition-colors duration-200 hover:text-background"
+                      className="text-background/75 transition-colors duration-400 ease-[var(--ease-micro)] hover:text-background"
                     >
                       {link.label}
                     </Link>
@@ -431,7 +431,7 @@ export function Footer() {
                   </p>
                   <a
                     href={`tel:${office.phone.replace(/[^+\d]/g, "")}`}
-                    className="inline-block text-sm font-medium text-background/90 transition-colors duration-200 hover:text-accent"
+                    className="inline-block text-sm font-medium text-background/90 transition-colors duration-400 ease-[var(--ease-micro)] hover:text-accent"
                   >
                     {office.phone}
                   </a>
@@ -448,9 +448,9 @@ export function Footer() {
         >
           <a
             href="#contact"
-            className="group inline-flex items-center gap-3.5 transition-opacity duration-200 hover:opacity-90"
+            className="group inline-flex items-center gap-3.5 transition-opacity duration-400 ease-[var(--ease-micro)] hover:opacity-90"
           >
-            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-primary shadow-md transition-transform duration-300 ease-[var(--ease-micro)] group-hover:scale-105">
+            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-primary shadow-md transition-transform duration-500 ease-[var(--ease-micro)] group-hover:scale-105">
               <Download size={17} strokeWidth={2.2} />
             </span>
             <div>
@@ -476,7 +476,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 aria-label={social.name}
                 title={social.name}
-                className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.08] text-background/85 transition-all duration-200 ease-[var(--ease-micro)] hover:border-accent hover:bg-accent hover:text-primary"
+                className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.08] text-background/85 transition-all duration-400 ease-[var(--ease-micro)] hover:border-accent hover:bg-accent hover:text-primary"
               >
                 {social.icon}
               </a>

@@ -96,11 +96,11 @@ export const CtaButton = forwardRef<HTMLElement, CtaButtonProps>(
     // Base container styles per variant - NO transition-transform or hover:scale so GSAP's magnetic tracking is 100% fluid
     const variantClasses = {
       accent:
-        "bg-accent text-primary group inline-flex items-center gap-5 rounded-full py-2 pl-5 pr-2 text-sm font-bold cursor-pointer transition-colors duration-300",
+        "bg-accent text-primary group inline-flex items-center gap-5 rounded-full py-2 pl-5 pr-2 text-sm font-bold cursor-pointer transition-colors duration-500 ease-[var(--ease-micro)]",
       dark:
-        "bg-primary text-background group inline-flex items-center gap-5 rounded-full py-2 pl-6 pr-2 text-sm font-bold cursor-pointer transition-colors duration-300",
+        "bg-primary text-background group inline-flex items-center gap-5 rounded-full py-2 pl-6 pr-2 text-sm font-bold cursor-pointer transition-colors duration-500 ease-[var(--ease-micro)]",
       outline:
-        "group inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-2.5 text-sm font-bold text-background transition-colors duration-300 hover:bg-background hover:text-primary cursor-pointer",
+        "group inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-2.5 text-sm font-bold text-background transition-colors duration-500 ease-[var(--ease-micro)] hover:bg-background hover:text-primary cursor-pointer",
     };
 
     // Inner icon disc styles per variant

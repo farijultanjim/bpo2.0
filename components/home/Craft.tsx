@@ -91,8 +91,25 @@ export function Craft() {
   }, []);
 
   return (
-    <section id="infrastructure" ref={sectionRef} className="overflow-hidden bg-background text-foreground">
-      <div className="mx-auto max-w-site px-5 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-24 lg:px-12 lg:pb-24 lg:pt-28">
+    <section id="infrastructure" ref={sectionRef} className="relative overflow-hidden bg-background text-foreground">
+      {/* Large Flat Logistics Blueprint SVG: Global Meridian & Connected Hubs */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 1440 480"
+        fill="none"
+        className="pointer-events-none absolute inset-x-0 top-0 w-full text-primary opacity-[0.08]"
+      >
+        <circle cx="1120" cy="210" r="240" stroke="currentColor" strokeWidth="1.6" />
+        <ellipse cx="1120" cy="210" rx="240" ry="90" stroke="currentColor" strokeWidth="1.4" />
+        <ellipse cx="1120" cy="210" rx="100" ry="240" stroke="currentColor" strokeWidth="1.4" />
+        <path d="M-40 330 Q 340 120, 720 260 T 1480 140" stroke="currentColor" strokeWidth="1.8" strokeDasharray="10 8" />
+        <path d="M-40 390 Q 420 200, 860 310 T 1480 230" stroke="currentColor" strokeWidth="1.4" />
+        <circle cx="340" cy="192" r="6" stroke="currentColor" strokeWidth="2" />
+        <circle cx="720" cy="260" r="6" stroke="currentColor" strokeWidth="2" />
+        <circle cx="1120" cy="210" r="7" stroke="currentColor" strokeWidth="2" />
+      </svg>
+
+      <div className="relative mx-auto max-w-site px-5 pb-16 pt-16 sm:px-8 sm:pb-20 sm:pt-24 lg:px-12 lg:pb-24 lg:pt-28">
         <div className="grid gap-8 border-t border-foreground/20 pt-6 lg:grid-cols-12 lg:gap-16">
           {/* Left Column: Kicker + Quick Operational Badges */}
           <div data-reveal className="lg:col-span-4 space-y-6">
